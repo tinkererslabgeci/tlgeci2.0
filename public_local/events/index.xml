@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Events on Your Community</title>
+    <link>https://example.com/events/</link>
+    <description>Recent content in Events on Your Community</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 06 Aug 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://example.com/events/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Our first meetup</title>
+      <link>https://example.com/events/first-meetup/</link>
+      <pubDate>Thu, 06 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>https://example.com/events/first-meetup/</guid>
+      <description>&lt;p&gt;Describe the event. This one is dated in the future so it shows under &lt;strong&gt;Upcoming&lt;/strong&gt;, events move to &lt;strong&gt;Past&lt;/strong&gt; automatically after their date.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Meetup on Your Community</title>
+		<link>http://localhost:1313/tags/meetup/</link>
+		<description>Recent content in Meetup on Your Community</description>
+		<generator>Hugo</generator>
+		<language>en</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 06 Aug 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/tags/meetup/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Our first meetup</title>
+				<link>http://localhost:1313/events/first-meetup/</link>
+				<pubDate>Thu, 06 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/events/first-meetup/</guid>
+				<description>&lt;p&gt;Describe the event. This one is dated in the future so it shows under &lt;strong&gt;Upcoming&lt;/strong&gt;, events move to &lt;strong&gt;Past&lt;/strong&gt; automatically after their date.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Our launch night</title>
+				<link>http://localhost:1313/events/launch-night/</link>
+				<pubDate>Thu, 14 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/events/launch-night/</guid>
+				<description>&lt;p&gt;A recap of our launch night. Both talks were recorded, catch up below.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

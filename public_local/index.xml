@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Home on Your Community</title>
+    <link>https://example.com/</link>
+    <description>Recent content in Home on Your Community</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 06 Aug 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://example.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Example Coffee Co.</title>
+      <link>https://example.com/sponsors/example-coffee/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://example.com/sponsors/example-coffee/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Organizer Handbook</title>
+      <link>https://example.com/handbook/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://example.com/handbook/</guid>
+      <description>&lt;h2 id=&#34;welcome--how-to-use-this&#34;&gt;Welcome &amp;amp; how to use this&lt;/h2&gt;&#xA;&lt;p&gt;Thank you for helping run Your Community. Organizing is a team effort, and you are never expected to do it alone. This handbook is the &lt;em&gt;why&lt;/em&gt; and &lt;em&gt;what&lt;/em&gt;, the principles and expectations. The &lt;a href=&#34;https://example.com/runbooks/&#34;&gt;Runbooks&lt;/a&gt; are the &lt;em&gt;how&lt;/em&gt;, tick-box checklists you follow the week of an event.&lt;/p&gt;&#xA;&lt;div class=&#34;g-callout&#34;&gt;&#xA;  &lt;i class=&#34;fa-solid fa-circle-info&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&#xA;  &lt;div class=&#34;g-callout__body&#34;&gt;&#xA;    &lt;div class=&#34;g-callout__title&#34;&gt;Our north star&lt;/div&gt;&#xA;&lt;p&gt;Every decision comes back to one question: &lt;em&gt;will this help someone who has never been to a meetup feel welcome here?&lt;/em&gt; If yes, we&amp;rsquo;re on the right track.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Sam Example</title>
+      <link>https://example.com/organizers/sam/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://example.com/organizers/sam/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Meetup Runbooks</title>
+      <link>https://example.com/runbooks/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://example.com/runbooks/</guid>
+      <description>&lt;h2 id=&#34;1--book-a-venue&#34;&gt;1 · Book a venue&lt;/h2&gt;&#xA;&lt;p&gt;Lock the room before anything else, the date depends on it. See the handbook&amp;rsquo;s &lt;a href=&#34;https://example.com/handbook/&#34;&gt;venue criteria&lt;/a&gt; for what makes a good space.&lt;/p&gt;&#xA;&lt;div class=&#34;g-checklist&#34; data-key=&#34;rb-venue&#34;&gt;&#xA;  &lt;div class=&#34;g-checklist__head&#34;&gt;&#xA;    &lt;span&gt;Checklist&lt;/span&gt;&#xA;    &lt;span class=&#34;g-checklist__count&#34;&gt;0/7 done&lt;/span&gt;&#xA;  &lt;/div&gt;&#xA;  &lt;ul&gt;&#xA;    &lt;li&gt;&#xA;      &lt;button class=&#34;g-check&#34; type=&#34;button&#34; role=&#34;checkbox&#34; aria-checked=&#34;false&#34;&gt;&#xA;        &lt;span class=&#34;g-check__box&#34;&gt;&lt;/span&gt;&#xA;        &lt;span class=&#34;g-check__label&#34;&gt;Shortlist 2–3 possible venues from our host contacts.&lt;/span&gt;&#xA;      &lt;/button&gt;&#xA;    &lt;/li&gt;&#xA;    &lt;li&gt;&#xA;      &lt;button class=&#34;g-check&#34; type=&#34;button&#34; role=&#34;checkbox&#34; aria-checked=&#34;false&#34;&gt;&#xA;        &lt;span class=&#34;g-check__box&#34;&gt;&lt;/span&gt;&#xA;        &lt;span class=&#34;g-check__label&#34;&gt;Confirm capacity (20–40), step-free access and an accessible washroom.&lt;/span&gt;&#xA;      &lt;/button&gt;&#xA;    &lt;/li&gt;&#xA;    &lt;li&gt;&#xA;      &lt;button class=&#34;g-check&#34; type=&#34;button&#34; role=&#34;checkbox&#34; aria-checked=&#34;false&#34;&gt;&#xA;        &lt;span class=&#34;g-check__box&#34;&gt;&lt;/span&gt;&#xA;        &lt;span class=&#34;g-check__label&#34;&gt;Confirm the equipment and setup your format needs.&lt;/span&gt;&#xA;      &lt;/button&gt;&#xA;    &lt;/li&gt;&#xA;    &lt;li&gt;&#xA;      &lt;button class=&#34;g-check&#34; type=&#34;button&#34; role=&#34;checkbox&#34; aria-checked=&#34;false&#34;&gt;&#xA;        &lt;span class=&#34;g-check__box&#34;&gt;&lt;/span&gt;&#xA;        &lt;span class=&#34;g-check__label&#34;&gt;Agree the date, start/end time and who holds the key.&lt;/span&gt;&#xA;      &lt;/button&gt;&#xA;    &lt;/li&gt;&#xA;    &lt;li&gt;&#xA;      &lt;button class=&#34;g-check&#34; type=&#34;button&#34; role=&#34;checkbox&#34; aria-checked=&#34;false&#34;&gt;&#xA;        &lt;span class=&#34;g-check__box&#34;&gt;&lt;/span&gt;&#xA;        &lt;span class=&#34;g-check__label&#34;&gt;Visit or verify the room in person.&lt;/span&gt;&#xA;      &lt;/button&gt;&#xA;    &lt;/li&gt;&#xA;    &lt;li&gt;&#xA;      &lt;button class=&#34;g-check&#34; type=&#34;button&#34; role=&#34;checkbox&#34; aria-checked=&#34;false&#34;&gt;&#xA;        &lt;span class=&#34;g-check__box&#34;&gt;&lt;/span&gt;&#xA;        &lt;span class=&#34;g-check__label&#34;&gt;Get the host&amp;rsquo;s day-of phone number and building access details.&lt;/span&gt;&#xA;      &lt;/button&gt;&#xA;    &lt;/li&gt;&#xA;    &lt;li&gt;&#xA;      &lt;button class=&#34;g-check&#34; type=&#34;button&#34; role=&#34;checkbox&#34; aria-checked=&#34;false&#34;&gt;&#xA;        &lt;span class=&#34;g-check__box&#34;&gt;&lt;/span&gt;&#xA;        &lt;span class=&#34;g-check__label&#34;&gt;Send the host a written confirmation with date, time and headcount.&lt;/span&gt;&#xA;      &lt;/button&gt;&#xA;    &lt;/li&gt;&#xA;  &lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;h2 id=&#34;2--line-up-a-session-host&#34;&gt;2 · Line up a session host&lt;/h2&gt;&#xA;&lt;p&gt;A confirmed venue makes it easy to invite a host. Remember: first-timers welcome, offer to help them prepare.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Your Local Makerspace</title>
+      <link>https://example.com/sponsors/your-makerspace/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://example.com/sponsors/your-makerspace/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Our first meetup</title>
+      <link>https://example.com/events/first-meetup/</link>
+      <pubDate>Thu, 06 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>https://example.com/events/first-meetup/</guid>
+      <description>&lt;p&gt;Describe the event. This one is dated in the future so it shows under &lt;strong&gt;Upcoming&lt;/strong&gt;, events move to &lt;strong&gt;Past&lt;/strong&gt; automatically after their date.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Hello, world: our first post</title>
+      <link>https://example.com/blog/hello-world/</link>
+      <pubDate>Wed, 01 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>https://example.com/blog/hello-world/</guid>
+      <description>&lt;p&gt;This is a starter post. Replace it with your first recap or announcement.&lt;/p&gt;&#xA;&lt;p&gt;It references an author profile (see &lt;code&gt;authors/sam.md&lt;/code&gt;), so the byline links to a profile page and a bio card appears below, that&amp;rsquo;s the theme&amp;rsquo;s multi-author system in action.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>About us</title>
+      <link>https://example.com/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://example.com/about/</guid>
+      <description>&lt;p&gt;Write two or three warm paragraphs about your community: who it&amp;rsquo;s for, what a gathering looks like, and that newcomers are always welcome.&lt;/p&gt;&#xA;&lt;h2 id=&#34;land-acknowledgement&#34;&gt;Land acknowledgement&lt;/h2&gt;&#xA;&lt;p&gt;Add your community&amp;rsquo;s land acknowledgement or welcome statement here, or remove this section.&lt;/p&gt;&#xA;&lt;h2 id=&#34;common-questions&#34;&gt;Common questions&lt;/h2&gt;&#xA;&lt;div class=&#34;g-faq&#34;&gt;&#xA;&#xA;&lt;details class=&#34;g-faq__item&#34; open&gt;&#xA;  &lt;summary class=&#34;g-faq__q&#34;&gt;Do I need experience to join?&lt;/summary&gt;&#xA;  &lt;div class=&#34;g-faq__a g-prose&#34;&gt;No. Newcomers are exactly who this is for, come as you are.&lt;/div&gt;&#xA;&lt;/details&gt;&#xA;&lt;details class=&#34;g-faq__item&#34;&gt;&#xA;  &lt;summary class=&#34;g-faq__q&#34;&gt;Is it free?&lt;/summary&gt;&#xA;  &lt;div class=&#34;g-faq__a g-prose&#34;&gt;Yes. Events are free to attend.&lt;/div&gt;&#xA;&lt;/details&gt;&#xA;&lt;details class=&#34;g-faq__item&#34;&gt;&#xA;  &lt;summary class=&#34;g-faq__q&#34;&gt;How do I find the room?&lt;/summary&gt;&#xA;  &lt;div class=&#34;g-faq__a g-prose&#34;&gt;Check the event page for arrival notes (buzz codes, door instructions). If in doubt, ask an organizer when you arrive.&lt;/div&gt;&#xA;&lt;/details&gt;&#xA;&#xA;&lt;/div&gt;&lt;script type=&#34;application/ld+json&#34;&gt;{&#34;@context&#34;:&#34;https://schema.org&#34;,&#34;@type&#34;:&#34;FAQPage&#34;,&#34;mainEntity&#34;:[{&#34;@type&#34;:&#34;Question&#34;,&#34;acceptedAnswer&#34;:{&#34;@type&#34;:&#34;Answer&#34;,&#34;text&#34;:&#34;No. Newcomers are exactly who this is for, come as you are.&#34;},&#34;name&#34;:&#34;Do I need experience to join?&#34;},{&#34;@type&#34;:&#34;Question&#34;,&#34;acceptedAnswer&#34;:{&#34;@type&#34;:&#34;Answer&#34;,&#34;text&#34;:&#34;Yes. Events are free to attend.&#34;},&#34;name&#34;:&#34;Is it free?&#34;},{&#34;@type&#34;:&#34;Question&#34;,&#34;acceptedAnswer&#34;:{&#34;@type&#34;:&#34;Answer&#34;,&#34;text&#34;:&#34;Check the event page for arrival notes (buzz codes, door instructions). If in doubt, ask an organizer when you arrive.&#34;},&#34;name&#34;:&#34;How do I find the room?&#34;}]}&lt;/script&gt;</description>
+    </item>
+    <item>
+      <title>Alex Example</title>
+      <link>https://example.com/speakers/alex/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://example.com/speakers/alex/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Code of Conduct</title>
+      <link>https://example.com/code-of-conduct/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://example.com/code-of-conduct/</guid>
+      <description>&lt;h2 id=&#34;the-short-version&#34;&gt;The short version&lt;/h2&gt;&#xA;&lt;p&gt;Be kind. Be respectful. Assume good faith. Your Community is a community of people with a wide range of backgrounds and experience, and we&amp;rsquo;re here to enjoy this together. Harassment and exclusionary behaviour are never acceptable.&lt;/p&gt;&#xA;&lt;h2 id=&#34;expected-behaviour&#34;&gt;Expected behaviour&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Be welcoming, friendly and patient, especially with newcomers.&lt;/li&gt;&#xA;&lt;li&gt;Be considerate in your speech and actions, and respectful of differing viewpoints.&lt;/li&gt;&#xA;&lt;li&gt;Assume the person you&amp;rsquo;re talking to knows things you don&amp;rsquo;t, and vice versa.&lt;/li&gt;&#xA;&lt;li&gt;Give others space and time to speak; make room for quieter voices.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;unacceptable-behaviour&#34;&gt;Unacceptable behaviour&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Harassment, intimidation, or discrimination in any form.&lt;/li&gt;&#xA;&lt;li&gt;Offensive comments related to gender, gender identity, sexual orientation, disability, physical appearance, race, ethnicity, religion or experience level.&lt;/li&gt;&#xA;&lt;li&gt;Unwelcome sexual attention, or deliberate intimidation, stalking or following.&lt;/li&gt;&#xA;&lt;li&gt;Sustained disruption of sessions or other events.&lt;/li&gt;&#xA;&lt;li&gt;Photographing or recording someone without their consent.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;div class=&#34;g-callout g-callout--warn&#34;&gt;&#xA;  &lt;i class=&#34;fa-solid fa-triangle-exclamation&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&#xA;  &lt;div class=&#34;g-callout__body&#34;&gt;&#xA;    &lt;div class=&#34;g-callout__title&#34;&gt;Reporting&lt;/div&gt;&#xA;&lt;p&gt;If you experience or witness behaviour that makes you feel unsafe, tell any organizer at the event, or email &lt;strong&gt;&lt;a href=&#34;mailto:hello@example.com&#34;&gt;hello@example.com&lt;/a&gt;&lt;/strong&gt;. Reports are taken seriously and handled with discretion, and we will always protect the privacy of the person reporting.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Community Hall</title>
+      <link>https://example.com/venues/community-hall/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://example.com/venues/community-hall/</guid>
+      <description>&lt;p&gt;Describe the venue: the room, the vibe, anything a first-time visitor should know. Events that set &lt;code&gt;venueRef = &amp;quot;community-hall&amp;quot;&lt;/code&gt; inherit this venue&amp;rsquo;s name, address and arrival notes automatically.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Get involved</title>
+      <link>https://example.com/get-involved/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://example.com/get-involved/</guid>
+      <description>&lt;h2 id=&#34;host-a-session&#34;&gt;Host a session&lt;/h2&gt;&#xA;&lt;p&gt;We&amp;rsquo;re always looking for members to lead a session! No experience necessary. Whether it&amp;rsquo;s your first time or your fiftieth, we welcome you, and we&amp;rsquo;ll help you prepare, rehearse, or even co-host.&lt;/p&gt;&#xA;&lt;p&gt;Sessions run 20–30 minutes; show &amp;amp; tell spots are just five. Bring anything our community would love.&lt;/p&gt;&#xA;&lt;a class=&#34;g-btn g-btn--primary&#34; href=&#34;mailto:hello@example.com?subject=Session%20idea&#34;&gt;&lt;i class=&#34;fa-solid fa-hand-sparkles&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;Suggest a session&#xA;&lt;/a&gt;&#xA;&#xA;&lt;h2 id=&#34;offer-a-venue&#34;&gt;Offer a venue&lt;/h2&gt;&#xA;&lt;p&gt;Have a room for 20–40 people, near transit, with step-free access? You can host our next gathering. Community halls, cafés and workplaces make wonderful hosts. See the &lt;a href=&#34;https://example.com/handbook/&#34;&gt;venue checklist&lt;/a&gt; for what we look for.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Sam Example</title>
+      <link>https://example.com/authors/sam/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://example.com/authors/sam/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Venues on Your Community</title>
+    <link>https://example.com/venues/</link>
+    <description>Recent content in Venues on Your Community</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <atom:link href="https://example.com/venues/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Community Hall</title>
+      <link>https://example.com/venues/community-hall/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://example.com/venues/community-hall/</guid>
+      <description>&lt;p&gt;Describe the venue: the room, the vibe, anything a first-time visitor should know. Events that set &lt;code&gt;venueRef = &amp;quot;community-hall&amp;quot;&lt;/code&gt; inherit this venue&amp;rsquo;s name, address and arrival notes automatically.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

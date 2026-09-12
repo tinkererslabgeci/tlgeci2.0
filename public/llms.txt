@@ -1,0 +1,16 @@
+# Your Community
+
+Describe your community here.
+
+No upcoming events are scheduled right now.
+
+Join the community chat: https://example.com/chat
+
+## Links
+Start here (newcomers): http://localhost:1313/start/
+About and FAQ: http://localhost:1313/about/
+Events: http://localhost:1313/events/
+Calendar feed (iCalendar): http://localhost:1313/events/calendar.ics
+Talk archive: http://localhost:1313/talks/
+
+Built with the Popular theme.
