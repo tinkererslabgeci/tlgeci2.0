@@ -1,0 +1,27 @@
+{{ define "main" }}
+{{ partial "page-hero.html" (dict "eyebrow" (.Params.eyebrow | default (i18n "eyebrowDocs")) "title" .Title "lead" .Params.lead) }}
+<div class="g-container g-doc">
+  <nav class="g-doc-toc" aria-label="{{ i18n "eyebrowDocs" }}">
+    <div class="g-doc-toc__label">{{ i18n "eyebrowDocs" }}</div>
+    {{ range sort (where site.RegularPages "Type" "docs") "Weight" }}
+      <a href="{{ .RelPermalink }}"{{ if eq .Permalink $.Permalink }} class="is-active" aria-current="page"{{ end }}>{{ .Title }}</a>
+      {{- /* Nest the current page's section links directly under its entry.
+           Fragments.Headings wraps everything in an empty root node when the
+           content has no h1 (the docs pattern starts at h2), so skip nodes
+           without an ID and promote their children a level. */ -}}
+      {{ if eq .Permalink $.Permalink }}
+        {{ range $.Fragments.Headings }}
+          {{ $tops := slice . }}{{ if not .ID }}{{ $tops = .Headings }}{{ end }}
+          {{ range $tops }}
+            <a href="#{{ .ID }}" style="padding-left:1.35rem;font-size:var(--text-xs)">{{ .Title | safeHTML }}</a>
+            {{ range .Headings }}<a href="#{{ .ID }}" style="padding-left:2rem;font-size:var(--text-xs)">{{ .Title | safeHTML }}</a>{{ end }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  </nav>
+  <div class="g-doc__content g-prose">
+    {{ .Content }}
+  </div>
+</div>
+{{ end }}

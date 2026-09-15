@@ -1,0 +1,11 @@
+{{- /* A gallery photo (§6). `alt` is required: the build fails with an
+       actionable message when it is missing, which is what keeps the
+       image-alt CI green by construction. No lightbox, the figure links to
+       the full-size image. */ -}}
+{{- $src := .Get "src" -}}
+{{- $alt := .Get "alt" -}}
+{{- if not $alt }}{{ errorf "photo shortcode requires a non-empty alt (%s)" .Position }}{{ end -}}
+<figure class="g-gallery__item">
+  <a href="{{ partial "rel-src.html" $src }}"><img src="{{ partial "rel-src.html" $src }}" alt="{{ $alt }}" loading="lazy" decoding="async"></a>
+  {{- with .Get "caption" }}<figcaption>{{ . }}</figcaption>{{ end }}
+</figure>

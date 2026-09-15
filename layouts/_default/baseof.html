@@ -1,0 +1,27 @@
+{{- /* Popular base template */ -}}
+<!DOCTYPE html>
+<html lang="{{ site.Language.Lang | default "en" }}">
+<head>
+  {{ partial "head.html" . }}
+</head>
+<body class="{{ if .IsHome }}is-home{{ end }}" data-copy-label="{{ i18n "copyCode" }}" data-checklist-done="{{ i18n "checklistDone" }}">
+  <a class="g-skip" href="#main">{{ i18n "skipToContent" }}</a>
+  {{ partial "notice.html" . }}
+  {{ partial "header.html" . }}
+  <main id="main">
+    {{ block "main" . }}{{ end }}
+  </main>
+  {{ partial "footer.html" . }}
+  {{ partial "demo-bar.html" . }}
+  {{ partial "preview-bar.html" . }}
+
+  {{- $js := slice
+      (resources.Get "js/nav.js")
+      (resources.Get "js/checklist.js")
+      (resources.Get "js/toc.js")
+      (resources.Get "js/blog-filter.js")
+      (resources.Get "js/copy-code.js")
+      | resources.Concat "js/popular.js" | minify | fingerprint -}}
+  <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
+</body>
+</html>

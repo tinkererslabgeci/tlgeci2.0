@@ -1,0 +1,52 @@
+{{- /* <head> contents: meta, fonts, concatenated CSS pipeline, brand token overrides */ -}}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{{- /* Says which generator built the page, the conventional way to identify a
+     static site. The Hugo theme directory does not require it, but its Astro
+     twin's reviewers check for exactly this tag, and a theme should be
+     identifiable from its own output either way. */ -}}
+{{ hugo.Generator }}
+<title>{{ if .IsHome }}{{ site.Title }}{{ if site.Params.tagline }}, {{ site.Params.tagline }}{{ end }}{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}</title>
+
+{{ partial "seo.html" . }}
+
+{{- /* FontAwesome (icons), served by the site itself from static/fontawesome/.
+     A site works offline, survives a CDN outage or a URL change, and tells no
+     third party who is reading it. Point params.fontAwesome at a URL to use a
+     CDN instead; an external value passes through rel-href.html untouched,
+     while the local default picks up the baseURL subpath. The preconnect and
+     integrity attributes below apply only to the cdnjs URL the theme used to
+     default to, and are kept for sites that still set it. */ -}}
+{{- $cdnjs := "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" -}}
+{{- $fa := site.Params.fontAwesome | default "/fontawesome/css/all.min.css" -}}
+{{ if eq $fa $cdnjs }}<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+{{ end }}<link rel="stylesheet" href="{{ partial "rel-href.html" $fa }}" referrerpolicy="no-referrer"{{ if eq $fa $cdnjs }} integrity="sha384-PPIZEGYM1v8zp5Py7UjFb79S58UeqCL9pYVnVPURKEqvioPROaVAJKKLzvH2rDnI" crossorigin="anonymous"{{ end }}>
+
+{{- /* CSS pipeline: tokens first (so overrides cascade), then base + components.
+       fonts.css carries the @font-face rules for the theme's two self-hosted
+       families (static/fonts/, see its README). Its url()s are relative, so
+       they resolve against this concatenated bundle and survive a subpath
+       install; the old @import is gone, and with it the rule that fonts.css
+       had to come first. */ -}}
+{{- $bundle := slice
+    (resources.Get "css/tokens/fonts.css")
+    (resources.Get "css/tokens/colors.css")
+    (resources.Get "css/tokens/typography.css")
+    (resources.Get "css/tokens/spacing.css")
+    (resources.Get "css/tokens/elevation.css")
+    (resources.Get "css/base.css")
+    (resources.Get "css/components.css") -}}
+{{- $css := $bundle | resources.Concat "css/popular.css" -}}
+{{- if hugo.IsProduction }}{{ $css = $css | minify | fingerprint }}{{ end -}}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}"{{ with $css.Data.Integrity }} integrity="{{ . }}"{{ end }}>
+
+{{- /* Brand overrides from config, recolor/retype the whole site here. */ -}}
+{{ partial "brand-vars.html" . }}
+
+{{ with (site.Params.favicon | default site.Params.logo) }}<link rel="icon" href="{{ partial "rel-src.html" . }}">{{ end }}
+{{ range site.Params.customCSS }}<link rel="stylesheet" href="{{ partial "rel-src.html" . }}">{{ end }}
+
+{{- /* Site hook: create layouts/partials/head-extra.html in your site to
+       inject analytics, verification tags, extra fonts, anything head-level,
+       without overriding this whole file. */ -}}
+{{ partial "head-extra.html" . }}

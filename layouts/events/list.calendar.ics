@@ -1,0 +1,41 @@
+{{- /* iCalendar feed of events: upcoming plus the last 90 days. Every content
+     line is CRLF-terminated and folded at 75 octets by fold.html; text values
+     are escaped by ics-escape.html. DTSTART reuses parse-time.html so the feed
+     and the Event JSON-LD never disagree about start times. */ -}}
+{{- $dur := 120 -}}{{- with site.Params.events }}{{ with .defaultDurationMinutes }}{{ $dur = . }}{{ end }}{{ end -}}
+{{- $cutoff := now.AddDate 0 0 -90 -}}
+{{- $events := (where (where site.RegularPages "Section" "events") "Date" ">=" $cutoff).ByDate -}}
+{{- partial "fold.html" (printf "BEGIN:VCALENDAR") -}}
+{{- partial "fold.html" "VERSION:2.0" -}}
+{{- partial "fold.html" (printf "PRODID:-//%s//Popular theme//EN" site.Title) -}}
+{{- partial "fold.html" "CALSCALE:GREGORIAN" -}}
+{{- partial "fold.html" "METHOD:PUBLISH" -}}
+{{- partial "fold.html" (printf "X-WR-CALNAME:%s events" site.Title) -}}
+{{- range $events -}}
+{{- $hm := partial "parse-time.html" .Params.time -}}
+{{- partial "fold.html" "BEGIN:VEVENT" -}}
+{{- partial "fold.html" (printf "UID:%s" .Permalink) -}}
+{{- partial "fold.html" (printf "DTSTAMP:%s" (now.UTC.Format "20060102T150405Z")) -}}
+{{- if $hm -}}
+{{- $start := printf "%s%s00" (.Date.Format "20060102T") (replaceRE ":" "" $hm) -}}
+{{- partial "fold.html" (printf "DTSTART:%s" $start) -}}
+{{- /* DTEND = midnight + (parsed minutes + duration), version-safe Duration. */ -}}
+{{- $parts := split $hm ":" -}}
+{{- $mins := add (mul (int (index $parts 0)) 60) (int (index $parts 1)) -}}
+{{- $endT := (.Date.Add (time.ParseDuration (printf "%dm" (add $mins $dur)))).Format "20060102T150405" -}}
+{{- partial "fold.html" (printf "DTEND:%s" $endT) -}}
+{{- else -}}
+{{- partial "fold.html" (printf "DTSTART;VALUE=DATE:%s" (.Date.Format "20060102")) -}}
+{{- end -}}
+{{- partial "fold.html" (printf "SUMMARY:%s" (partial "ics-escape.html" .Title)) -}}
+{{- $venue := "" -}}{{- with .Params.venueRef }}{{ with site.GetPage (print "/venues/" .) }}{{ $venue = .Title }}{{ with .Params.address }}{{ $venue = printf "%s, %s" $venue . }}{{ end }}{{ end }}{{ else }}{{ $venue = .Params.venue }}{{ end -}}
+{{- with $venue }}{{ partial "fold.html" (printf "LOCATION:%s" (partial "ics-escape.html" .)) }}{{ end -}}
+{{- $desc := trim (.Description | default .Summary | plainify) " \n" -}}
+{{- with .Params.checkin }}{{ $desc = printf "%s\n%s" $desc . }}{{ end -}}
+{{- $desc = printf "%s\n%s" $desc .Permalink -}}
+{{- partial "fold.html" (printf "DESCRIPTION:%s" (partial "ics-escape.html" $desc)) -}}
+{{- partial "fold.html" (printf "URL:%s" .Permalink) -}}
+{{- partial "fold.html" (printf "STATUS:%s" (cond (eq .Params.cancelled true) "CANCELLED" "CONFIRMED")) -}}
+{{- partial "fold.html" "END:VEVENT" -}}
+{{- end -}}
+{{- partial "fold.html" "END:VCALENDAR" -}}

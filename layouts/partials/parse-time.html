@@ -1,0 +1,25 @@
+{{- /* Parse an event `time` free-text field to "HH:MM" (24h), or "" when the
+     leading token is not a clock time. The single source of truth for the
+     time-parsing contract (PARITY.md); used by jsonld-event.html and the iCal
+     feed so structured data and the calendar can never disagree. */ -}}
+{{- $raw := trim (. | default "") " " -}}
+{{- $out := "" -}}
+{{- $tok := index (findRE `(?i)^[0-9]{1,2}:[0-9]{2} ?(am|pm)?` $raw 1) 0 -}}
+{{- with $tok -}}
+  {{- $t := . | lower | replaceRE " " "" -}}
+  {{- $pm := hasSuffix $t "pm" -}}{{- $am := hasSuffix $t "am" -}}
+  {{- $hm := $t | replaceRE "(am|pm)$" "" -}}
+  {{- $parts := split $hm ":" -}}
+  {{- $h := int (index $parts 0) -}}{{- $min := int (index $parts 1) -}}
+  {{- $ok := true -}}
+  {{- if or $am $pm -}}
+    {{- if or (lt $h 1) (gt $h 12) -}}{{- $ok = false -}}{{- end -}}
+    {{- if and $pm (lt $h 12) -}}{{- $h = add $h 12 -}}{{- end -}}
+    {{- if and $am (eq $h 12) -}}{{- $h = 0 -}}{{- end -}}
+  {{- else -}}
+    {{- if gt $h 23 -}}{{- $ok = false -}}{{- end -}}
+  {{- end -}}
+  {{- if gt $min 59 -}}{{- $ok = false -}}{{- end -}}
+  {{- if $ok -}}{{- $out = printf "%02d:%02d" $h $min -}}{{- end -}}
+{{- end -}}
+{{- $out -}}

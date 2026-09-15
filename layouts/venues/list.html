@@ -1,0 +1,19 @@
+{{ define "main" }}
+{{ partial "page-hero.html" (dict "eyebrow" (.Params.eyebrow | default (i18n "eyebrowVenue")) "title" .Title "lead" .Params.lead) }}
+<section class="g-bg-white g-section">
+  <div class="g-container">
+    <div class="g-grid-3">
+      {{ range .Pages.ByTitle }}
+      <article class="g-card">
+        {{ with .Params.photo }}<a href="{{ $.RelPermalink }}" class="g-card__media"><img src="{{ partial "rel-src.html" . }}" alt="{{ $.Title }}" loading="lazy" decoding="async"></a>{{ end }}
+        <div class="g-card__body">
+          <h3 class="g-card__title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+          {{ with .Params.address }}<div class="g-card__text"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> {{ . }}</div>{{ end }}
+          {{ with .Description }}<div class="g-card__text">{{ . }}</div>{{ end }}
+        </div>
+      </article>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}

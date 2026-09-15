@@ -1,0 +1,20 @@
+{{- /* Emit one iCalendar content line, CRLF-terminated and folded at 75
+     octets. Byte-accurate: iterates runes (split "") and accumulates while
+     the byte length (len) stays within the limit (75 first line, 74 for
+     continuations, which carry a leading space). */ -}}
+{{- $out := "" -}}
+{{- $cur := "" -}}
+{{- $first := true -}}
+{{- range $r := split . "" -}}
+  {{- $limit := cond $first 75 74 -}}
+  {{- $try := printf "%s%s" $cur $r -}}
+  {{- if gt (len $try) $limit -}}
+    {{- $out = printf "%s%s%s\r\n" $out (cond $first "" " ") $cur -}}
+    {{- $first = false -}}
+    {{- $cur = $r -}}
+  {{- else -}}
+    {{- $cur = $try -}}
+  {{- end -}}
+{{- end -}}
+{{- $out = printf "%s%s%s\r\n" $out (cond $first "" " ") $cur -}}
+{{- $out | safeHTML -}}

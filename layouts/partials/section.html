@@ -1,0 +1,8 @@
+{{- /* section.html: resolve a renameable content-section name to its
+     configured value. Usage: {{ partial "section.html" "authors" }}.
+     Sites override via [params.sections] in hugo.toml (e.g. authors =
+     "hosts"). Defaults below match the theme's own section names. */ -}}
+{{- $defaults := dict "authors" "authors" "team" "organizers" -}}
+{{- $val := index $defaults . -}}
+{{- with site.Params.sections }}{{ with index . $ }}{{ $val = . }}{{ end }}{{ end -}}
+{{- $val -}}

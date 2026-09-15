@@ -1,0 +1,10 @@
+{{- /* Social icon links from [[params.social]] (icon = FontAwesome class). */ -}}
+{{ with site.Params.social }}
+<div class="g-persona__socials" style="gap:0.5rem">
+  {{ range . }}
+    <a class="g-social" href="{{ partial "rel-href.html" .url }}" aria-label="{{ .label }}" rel="me noopener" target="_blank">
+      <i class="{{ .icon }}" aria-hidden="true"></i>
+    </a>
+  {{ end }}
+</div>
+{{ end }}

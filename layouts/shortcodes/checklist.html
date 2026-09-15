@@ -1,0 +1,35 @@
+{{- /* Persistent checklist. One item per line in the body:
+
+  {{% checklist key="rb-venue" %}}
+  Shortlist 2–3 possible venues
+  Confirm capacity and step-free access
+  Send the host a written confirmation
+  {{% /checklist %}}
+
+  `key` must be unique across the site, it namespaces the saved progress. */ -}}
+{{- $key := .Get "key" | default (.Page.File.UniqueID) -}}
+{{- $page := .Page -}}
+{{- $items := slice -}}
+{{- range (split (trim .Inner "\n") "\n") -}}
+  {{- $t := trim . " \t-*" -}}
+  {{- if $t }}{{ $items = $items | append $t }}{{ end -}}
+{{- end -}}
+<div class="g-checklist" data-key="{{ $key }}">
+  <div class="g-checklist__head">
+    <span>{{ i18n "checklist" }}</span>
+    <span class="g-checklist__count">0/{{ len $items }} {{ i18n "checklistDone" }}</span>
+  </div>
+  {{- /* Keep the emitted HTML free of blank lines. With the {{%...%}} form the
+       output is re-parsed as markdown, and a whitespace-only line would end
+       the HTML block and turn the indented tags into a code block. */}}
+  <ul>
+    {{- range $items }}
+    <li>
+      <button class="g-check" type="button" role="checkbox" aria-checked="false">
+        <span class="g-check__box"></span>
+        <span class="g-check__label">{{ $page.RenderString . }}</span>
+      </button>
+    </li>
+    {{- end }}
+  </ul>
+</div>

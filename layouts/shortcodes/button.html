@@ -1,0 +1,5 @@
+{{- /* {{< button url="/x" label="RSVP" variant="primary" size="lg" icon="fa-solid fa-calendar" >}} */ -}}
+<a class="g-btn g-btn--{{ .Get "variant" | default "primary" }}{{ with .Get "size" }} g-btn--{{ . }}{{ end }}" href="{{ partial "rel-href.html" (.Get "url") }}">
+  {{- with .Get "icon" }}<i class="{{ . }}" aria-hidden="true"></i>{{ end -}}
+  {{ .Get "label" }}
+</a>

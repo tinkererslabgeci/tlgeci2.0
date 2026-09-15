@@ -1,0 +1,48 @@
+{{- /* preview-bar.html: fixed banner shown ONLY when site.Params.previewMode is
+       set. A generator (the web wizard) sets it on the throwaway build it shows
+       in an iframe; the config written into the adopter's own repo never sets
+       it, so the banner is structurally incapable of reaching a real site. The
+       demo bar's comment applies here for the same reason: nobody sets the
+       param by accident.
+
+       Informational only, no controls. A preview is served with
+       `sandbox="allow-scripts"` and no allow-same-origin, so a button in here
+       could not drive the surrounding page even if it wanted to. Actions belong
+       in the wizard chrome outside the iframe.
+
+       Unlike demo-bar.html this does NOT hide under hugo.IsServer: a preview is
+       a one-off build, and someone running the same config under `hugo server`
+       is previewing too and should see the same chrome.
+
+       previewMode accepts `true` or a table with an optional `note`, e.g.
+       [params.previewMode]
+         note = "Expires in 60 minutes." */ -}}
+{{- with site.Params.previewMode }}
+{{- $note := "" }}{{ if reflect.IsMap . }}{{ $note = .note }}{{ end }}
+{{- /* The demo bar occupies the same corner. When a demo site is previewed,
+       both are on, so sit above it rather than on top of it. Matches
+       demo-bar.html's own visibility rule: it hides under hugo server. */ -}}
+{{- $stacked := and site.Params.demoBar (not hugo.IsServer) }}
+<style>
+  .g-previewbar { position: fixed; bottom: 14px; left: 50%; transform: translateX(-50%); z-index: 90;
+    display: flex; align-items: center; gap: 8px; padding: 8px 16px; max-width: calc(100vw - 28px);
+    background: color-mix(in srgb, var(--ink-900) 92%, transparent); color: var(--ink-200);
+    border-radius: var(--radius-pill); box-shadow: var(--shadow-lg); font-size: var(--text-xs);
+    font-family: var(--font-sans); backdrop-filter: blur(8px); }
+  .g-previewbar__label { color: var(--ink-400); font-weight: var(--weight-semibold);
+    letter-spacing: var(--tracking-wide); text-transform: uppercase; font-size: 0.65rem; }
+  .g-previewbar__note { color: var(--ink-400); }
+  @media (max-width: 640px) { .g-previewbar__label { display: none; } }
+  /* Reserve space so the fixed bar never covers the footer credit. */
+  .g-footer__bottom { padding-bottom: 72px; }
+  /* Both bars on the same site: stack, and reserve for both. */
+  .g-previewbar--stacked { bottom: 62px; }
+  {{ if $stacked }}.g-footer__bottom { padding-bottom: 120px; }{{ end }}
+</style>
+<div class="g-previewbar{{ if $stacked }} g-previewbar--stacked{{ end }}" role="status">
+  <i class="fa-solid fa-eye" aria-hidden="true"></i>
+  <span class="g-previewbar__label">{{ i18n "previewLabel" }}</span>
+  <span>{{ i18n "previewBanner" }}</span>
+  {{ with $note }}<span class="g-previewbar__note">{{ . }}</span>{{ end }}
+</div>
+{{- end }}

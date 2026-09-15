@@ -1,0 +1,41 @@
+{{ define "main" }}
+{{- /* Venue page: details, arrival notes, and every event held here. */ -}}
+{{ partial "page-hero.html" (dict "eyebrow" (.Params.eyebrow | default (i18n "eyebrowVenue")) "title" .Title "lead" .Params.address "backHref" "venues/" "backLabel" (i18n "allVenues")) }}
+<section class="g-bg-white g-section">
+  <div class="g-container">
+    <div class="g-article" style="margin-bottom:var(--space-5)">
+      {{ with .Params.photo }}<img src="{{ partial "rel-src.html" . }}" alt="{{ $.Title }}" loading="lazy" decoding="async" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:var(--radius-xl);box-shadow:var(--shadow-md);margin-bottom:var(--space-4)">{{ end }}
+      <div class="g-meta-line" style="margin-bottom:var(--space-3)">
+        {{ with .Params.address }}<span><i class="fa-solid fa-location-dot" aria-hidden="true"></i> {{ . }}</span>{{ end }}
+        {{ with .Params.website }}<span><i class="fa-solid fa-globe" aria-hidden="true"></i> <a href="{{ partial "rel-href.html" . }}" rel="noopener" target="_blank">{{ i18n "website" }}</a></span>{{ end }}
+      </div>
+      {{ if or .Params.notes .Params.accessibility }}
+      <div class="g-callout" style="flex-direction:column;gap:.6rem">
+        <div class="g-callout__title">{{ i18n "beforeYouArrive" }}</div>
+        {{ with .Params.notes }}<div class="g-callout__body"><i class="fa-solid fa-door-open" aria-hidden="true"></i> {{ . }}</div>{{ end }}
+        {{ with .Params.accessibility }}<div class="g-callout__body"><i class="fa-solid fa-universal-access" aria-hidden="true"></i> {{ . }}</div>{{ end }}
+      </div>
+      {{ end }}
+      {{- $hasAccess := or .Params.wheelchair .Params.transit .Params.parking .Params.access -}}
+      {{ if $hasAccess }}
+      <div class="g-section-head" style="margin-top:var(--space-4)"><span class="g-eyebrow">{{ i18n "eyebrowVenue" }}</span><h2 style="font-size:var(--text-xl)">{{ i18n "gettingThere" }}</h2></div>
+      {{ if eq .Params.wheelchair true }}<p><span class="g-badge g-badge--success g-badge--soft"><i class="fa-solid fa-wheelchair" aria-hidden="true"></i> {{ i18n "wheelchairAccessible" }}</span></p>{{ end }}
+      <div class="g-meta-line" style="flex-direction:column;align-items:flex-start;gap:.4rem">
+        {{ with .Params.transit }}<span><i class="fa-solid fa-train-subway" aria-hidden="true"></i> <strong>{{ i18n "transit" }}:</strong> {{ . }}</span>{{ end }}
+        {{ with .Params.parking }}<span><i class="fa-solid fa-square-parking" aria-hidden="true"></i> <strong>{{ i18n "parking" }}:</strong> {{ . }}</span>{{ end }}
+      </div>
+      {{ with .Params.access }}<div class="g-prose" style="margin-top:var(--space-3)">{{ $.RenderString . }}</div>{{ end }}
+      {{ end }}
+      {{ with .Content }}<div class="g-prose" style="margin-top:var(--space-4)">{{ . }}</div>{{ end }}
+    </div>
+    {{- $slug := .File.ContentBaseName -}}
+    {{- $events := where (where site.RegularPages "Section" "events") "Params.venueRef" $slug -}}
+    {{ with $events }}
+      <div class="g-section-head"><span class="g-eyebrow">{{ i18n "eyebrowEvents" }}</span><h2>{{ i18n "venueEvents" }}</h2></div>
+      <div class="g-stack" style="margin-top:var(--space-4);gap:var(--space-3)">
+        {{ range .ByDate.Reverse }}{{ partial "event-row.html" . }}{{ end }}
+      </div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

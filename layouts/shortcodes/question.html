@@ -1,0 +1,9 @@
+{{- /* One FAQ item. `q` is the question; the body is the markdown answer.
+     Optional `open` renders it expanded. Registers its Q&A on the parent
+     faq block for the FAQPage JSON-LD. */ -}}
+{{- $answer := .Inner | .Page.RenderString -}}
+<details class="g-faq__item"{{ if .Get "open" }} open{{ end }}>
+  <summary class="g-faq__q">{{ .Get "q" }}</summary>
+  <div class="g-faq__a g-prose">{{ $answer }}</div>
+</details>
+{{- .Parent.Scratch.Add "faqItems" (slice (dict "q" (.Get "q") "a" (trim ($answer | plainify) " \n"))) -}}

@@ -1,0 +1,28 @@
+{{- /* Dark footer: brand + land acknowledgement + link columns + socials. */ -}}
+<footer class="g-footer">
+  <div class="g-container g-footer__top">
+    <div class="g-footer__brand">
+      {{ with site.Params.logo }}<img src="{{ partial "rel-src.html" . }}" alt="{{ site.Title }}">{{ end }}
+      {{ with site.Params.landAcknowledgement }}<p class="g-footer__ack">{{ . }}</p>{{ end }}
+      {{ partial "social.html" . }}
+    </div>
+
+    {{ range site.Params.footer.columns }}
+      <div class="g-footer__col">
+        <div class="g-footer__col-title">{{ .title }}</div>
+        <ul>
+          {{ range .links }}<li><a href="{{ partial "rel-href.html" .url }}">{{ .label }}</a></li>{{ end }}
+        </ul>
+      </div>
+    {{ end }}
+  </div>
+
+  <div class="g-footer__bottom">
+    <div class="g-container">
+      <span>© {{ now.Year }} {{ site.Title }}</span>
+      {{ with site.Params.community }}{{ with .chat }}<span><a href="{{ partial "rel-href.html" .url }}"{{ if not (hasPrefix .url "/") }} rel="noopener" target="_blank"{{ end }}><i class="fa-solid fa-comments" aria-hidden="true"></i> {{ .label | default (i18n "joinChat") }}</a></span>{{ end }}{{ end }}
+      {{ with site.Params.footer.credit }}<span><a href="{{ partial "rel-href.html" .url }}" rel="noopener">{{ .label }}</a>{{ if and site.Params.popularVersion (in .url "mariatta.ca") }} · v{{ site.Params.popularVersion }}{{ end }}</span>{{ end }}
+      {{ with site.Params.footer.tagline }}<span>{{ . }}</span>{{ end }}
+    </div>
+  </div>
+</footer>

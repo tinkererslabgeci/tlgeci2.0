@@ -1,0 +1,54 @@
+{{ define "main" }}
+{{ partial "page-hero.html" (dict "eyebrow" (.Params.eyebrow | default (i18n "talks")) "title" .Title "lead" (.Params.lead | default (i18n "talksLead"))) }}
+{{- /* §3 talk archive: aggregate every talk across events, newest first. A
+     talk is an entry in an event's talks[] array or, for single-talk meetups,
+     the event itself when it carries event-level recording/slides. Filterable
+     by the parent event's tags via the shared blog-filter.js. Enabled by the
+     presence of content/talks/_index.md. */ -}}
+{{- $events := (where site.RegularPages "Section" "events").ByDate.Reverse -}}
+{{- $rows := slice -}}
+{{- range $events -}}
+  {{- $e := . -}}
+  {{- $tags := .Params.tags | default slice -}}
+  {{- if .Params.talks -}}
+    {{- range .Params.talks -}}
+      {{- $rows = $rows | append (dict "title" .title "speaker" .speaker "recording" .recording "slides" .slides "event" $e "tags" $tags "simple" false) -}}
+    {{- end -}}
+  {{- else if or .Params.recording .Params.slides -}}
+    {{- $spslug := "" -}}{{- with .Params.speakers -}}{{ $spslug = index . 0 }}{{- end -}}
+    {{- $rows = $rows | append (dict "title" $e.Title "speaker" $spslug "recording" .Params.recording "slides" .Params.slides "event" $e "tags" $tags "simple" true) -}}
+  {{- end -}}
+{{- end -}}
+{{- $alltags := slice -}}
+{{- range $rows }}{{ range .tags }}{{ $alltags = $alltags | append . }}{{ end }}{{ end -}}
+{{- $alltags = $alltags | uniq | sort -}}
+<section class="g-bg-white g-section">
+  <div class="g-container">
+    <div class="g-row" data-filterbar style="margin-bottom:var(--space-5)">
+      {{ with $alltags }}
+        <span style="font-size:var(--text-sm);color:var(--text-muted)">{{ i18n "filterLabel" }}</span>
+        <button class="g-filter is-active" data-filter="*">{{ i18n "filterAll" }}</button>
+        {{ range . }}<button class="g-filter" data-filter="{{ . }}">#{{ . }}</button>{{ end }}
+      {{ end }}
+    </div>
+    <div class="g-stack" style="gap:var(--space-3)">
+      {{ range $rows }}
+      {{- $sp := "" -}}
+      {{- if .speaker }}{{ $sp = site.GetPage (print "/speakers/" .speaker) }}{{ if not $sp }}{{ warnf "talks: speaker %q matches no speaker page" .speaker }}{{ end }}{{ end -}}
+      {{- $spname := "" -}}{{ if $sp }}{{ $spname = $sp.Title }}{{ else if .simple }}{{ $spname = .event.Params.speaker }}{{ end }}
+      <div class="g-talk" data-tags="{{ delimit .tags "," }}">
+        <div class="g-talk__title">{{ .title }}</div>
+        {{ with $spname }}<div class="g-talk__by"><i class="fa-solid fa-microphone-lines" aria-hidden="true"></i> {{ if $sp }}<a href="{{ $sp.RelPermalink }}">{{ . }}</a>{{ else }}{{ . }}{{ end }}</div>{{ end }}
+        <div class="g-talk__event"><i class="fa-solid fa-calendar-day" aria-hidden="true"></i> <a href="{{ .event.RelPermalink }}">{{ .event.Title }}</a> · {{ .event.Date | time.Format ":date_medium" }}</div>
+        {{ if or .recording .slides }}
+        <div class="g-row" style="gap:var(--space-2)">
+          {{ with .recording }}<a class="g-btn g-btn--sm g-btn--outline" href="{{ partial "rel-href.html" . }}" rel="noopener" target="_blank"><i class="fa-solid fa-circle-play" aria-hidden="true"></i> {{ i18n "watchRecording" }}</a>{{ end }}
+          {{ with .slides }}<a class="g-btn g-btn--sm g-btn--ghost" href="{{ partial "rel-href.html" . }}" rel="noopener" target="_blank"><i class="fa-solid fa-file-lines" aria-hidden="true"></i> {{ i18n "viewSlides" }}</a>{{ end }}
+        </div>
+        {{ end }}
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}

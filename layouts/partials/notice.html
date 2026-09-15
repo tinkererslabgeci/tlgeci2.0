@@ -1,0 +1,14 @@
+{{- /* Site-wide notice banner (§5). params.notice = { text, url? }.
+       Static, not dismissible, no JS. Text is inline-markdown rendered.
+       Called from baseof.html above the header. */ -}}
+{{- with site.Params.notice -}}
+  {{- $notice := . -}}
+  {{- with .text -}}
+  <div class="g-notice" role="status">
+    <div class="g-notice__inner">
+      <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+      <span>{{ $.RenderString . }}{{ with $notice.url }} <a href="{{ partial "rel-href.html" . }}">{{ i18n "learnMore" }}</a>{{ end }}</span>
+    </div>
+  </div>
+  {{- end -}}
+{{- end -}}

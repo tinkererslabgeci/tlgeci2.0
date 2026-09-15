@@ -1,0 +1,17 @@
+{{ define "main" }}
+{{ partial "page-hero.html" (dict "eyebrow" .Params.eyebrow "title" .Title "lead" .Params.lead) }}
+<section class="g-bg-white g-section">
+  <div class="g-container">
+    <div class="g-article">
+      {{- /* Back link to the parent section for nested pages (about/conduct,
+           about/financials). Root-level pages have the home page as parent
+           and show none. Label prefers the parent's `shortTitle`. */ -}}
+      {{- $parent := .Parent -}}
+      {{- if and $parent (not $parent.IsHome) }}
+      <a href="{{ $parent.RelPermalink }}" style="display:inline-flex;gap:.4rem;align-items:center;font-size:var(--text-sm);font-weight:var(--weight-medium);margin-bottom:1rem"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> {{ $parent.Params.shortTitle | default $parent.Title }}</a>
+      {{- end }}
+      <div class="g-prose">{{ .Content }}</div>
+    </div>
+  </div>
+</section>
+{{ end }}

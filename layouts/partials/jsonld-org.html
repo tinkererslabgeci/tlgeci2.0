@@ -1,0 +1,9 @@
+{{- /* schema.org/Organization JSON-LD for the home page. sameAs reuses the
+     social config (URLs only). Omits keys that don't resolve. */ -}}
+{{- $sameAs := slice -}}
+{{- range site.Params.social }}{{ with .url }}{{ $sameAs = $sameAs | append . }}{{ end }}{{ end -}}
+{{- $ld := dict "@context" "https://schema.org" "@type" "Organization" "name" site.Title "url" (partial "abs-url.html" "/") -}}
+{{- with site.Params.logo }}{{ $ld = merge $ld (dict "logo" (partial "abs-url.html" .)) }}{{ end -}}
+{{- with site.Params.description }}{{ $ld = merge $ld (dict "description" .) }}{{ end -}}
+{{- with $sameAs }}{{ $ld = merge $ld (dict "sameAs" .) }}{{ end -}}
+<script type="application/ld+json">{{ $ld | jsonify | safeJS }}</script>

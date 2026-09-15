@@ -1,0 +1,11 @@
+{{- /* {{% callout tone="tip" title="Two-deep rule" %}}Aim for **two** organizers.{{% /callout %}}
+       Use the {{% %}} form so the body is rendered as Markdown. tone: info | tip | warn */ -}}
+{{- $tone := .Get "tone" | default "info" -}}
+{{- $icon := cond (eq $tone "tip") "fa-solid fa-lightbulb" (cond (eq $tone "warn") "fa-solid fa-triangle-exclamation" "fa-solid fa-circle-info") -}}
+<div class="g-callout{{ if ne $tone "info" }} g-callout--{{ $tone }}{{ end }}">
+  <i class="{{ $icon }}" aria-hidden="true"></i>
+  <div class="g-callout__body">
+    {{ with .Get "title" }}<div class="g-callout__title">{{ . }}</div>{{ end }}
+    {{ .Inner }}
+  </div>
+</div>

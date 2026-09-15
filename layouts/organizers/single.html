@@ -1,0 +1,13 @@
+{{ define "main" }}
+{{- /* Organizer profile: bio card + any page body. Organizer entries are not
+     tied to events, so unlike speakers there is no session grid here. */ -}}
+{{ $teamSec := partial "section.html" "team" }}{{ partial "page-hero.html" (dict "eyebrow" (.Params.eyebrow | default (i18n "eyebrowOrganizer")) "title" .Title "backHref" (print $teamSec "/") "backLabel" (i18n "allOrganizers")) }}
+<section class="g-bg-white g-section">
+  <div class="g-container">
+    <div class="g-article">
+      {{ partial "author-box.html" (dict "page" .) }}
+      {{ with .Content }}<div class="g-prose" style="margin-top:var(--space-4)">{{ . }}</div>{{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}

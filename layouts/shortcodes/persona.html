@@ -1,0 +1,9 @@
+{{- /* {{% persona name="Jordan Rivera" title="Example Co." photo="images/jordan.jpg" accent="primary" %}}Bio text.{{% /persona %}} */ -}}
+<div class="g-persona{{ if eq (.Get "accent") "primary" }} g-persona--primary{{ end }}">
+  {{ with .Get "photo" }}<img class="g-persona__img" src="{{ partial "rel-src.html" . }}" alt="{{ $.Get "name" }}">{{ end }}
+  <div>
+    <div class="g-persona__name">{{ .Get "name" }}</div>
+    {{ with .Get "title" }}<div class="g-persona__role">{{ . }}</div>{{ end }}
+    {{ with .Inner }}<p class="g-persona__bio">{{ . }}</p>{{ end }}
+  </div>
+</div>

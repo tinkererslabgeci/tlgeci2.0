@@ -1,0 +1,7 @@
+{{- /* Pull-quote (§6): a styled blockquote with optional attribution.
+       Use the {{% %}} form so the quote renders as Markdown.
+       {{% pullquote cite="A happy member" %}}The best Tuesday of my month.{{% /pullquote %}} */ -}}
+<figure class="g-pullquote">
+  <blockquote>{{ .Inner }}</blockquote>
+  {{- with .Get "cite" }}<figcaption>{{ . }}</figcaption>{{ end }}
+</figure>

@@ -1,0 +1,18 @@
+{{- /* FAQ block. Nest question shortcodes inside:
+       {{< faq >}}{{< question q="…" >}}answer{{< /question >}}{{< /faq >}}
+     Renders native <details> (zero JS). Emits FAQPage JSON-LD from the
+     collected Q&A (gated on params.seo.faqJsonLd, default true). No rich
+     results are expected (Google restricts FAQ rich results); this aids
+     indexing and AI answer engines. Recommend one faq block per page. */ -}}
+<div class="g-faq">
+{{ .Inner }}
+</div>
+{{- $emit := true -}}{{- with site.Params.seo }}{{ if eq .faqJsonLd false }}{{ $emit = false }}{{ end }}{{ end -}}
+{{- if $emit -}}
+{{- with .Scratch.Get "faqItems" -}}
+{{- $entities := slice -}}
+{{- range . }}{{ $entities = $entities | append (dict "@type" "Question" "name" .q "acceptedAnswer" (dict "@type" "Answer" "text" .a)) }}{{ end -}}
+{{- $ld := dict "@context" "https://schema.org" "@type" "FAQPage" "mainEntity" $entities -}}
+<script type="application/ld+json">{{ $ld | jsonify | safeJS }}</script>
+{{- end -}}
+{{- end -}}

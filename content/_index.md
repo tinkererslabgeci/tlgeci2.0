@@ -2,12 +2,12 @@
 title = "Home"
 
 [hero]
-  eyebrow = "Your · Community · Here"
-  title = "A warm welcome to your community"
-  lead = "Replace this with one friendly paragraph about who you are and who's welcome (hint: everyone)."
+  eyebrow = "An Independent Lab"
+  title = "This is Tinkerers’ Lab at GEC Idukki."
+  lead = "We’re a round-the-clock independent student-run lab where everyone is welcome to do anything."
   image = "images/hero.png"
   [[hero.ctas]]
-    label = "RSVP"
+    label = "Book a Slot"
     url = "https://example.com/rsvp"
     icon = "fa-solid fa-calendar"
     variant = "primary"
@@ -20,53 +20,39 @@ title = "Home"
   value = "@pastEventCount"
   label = "events hosted"
 [[stats]]
-  value = "2026"
-  label = "founded"
+  value = "128"
+  label = "tools"
 [[stats]]
-  value = "All"
-  label = "welcome"
+  value = "24×7"
+  label = "open"
 [[stats]]
-  value = "Free"
-  label = "to attend"
+  value = "4,00,000"
+  label = "rupees worth equipments"
 
 [featuresHead]
-  eyebrow = "What we do"
-  title = "What your community is all about"
-  lead = "Three cards, three reasons to show up."
+  eyebrow = "What We Do"
+  title = "Okay, but how’re we any different from the department labs?"
+  lead = "Quite different."
 
 [[features]]
   icon = "fa-solid fa-people-group"
-  title = "Meet"
-  body = "Describe your regular gathering."
+  title = "Run by You"
+  body = "Tinkerers’ Lab is run completely by student volunteers. No faculties involved."
 [[features]]
   icon = "fa-solid fa-hand-sparkles"
-  title = "Make"
-  body = "Describe your hands-on activity."
+  title = "Make Anything"
+  body = "Anyone can make anything in the lab. Just book a slot. No permission hassle or departmental beaureacracy."
 [[features]]
-  icon = "fa-solid fa-heart"
-  title = "Belong"
-  body = "Describe your community's spirit."
-
-# Optional: quotes from members. Delete this whole block to hide the section.
-[testimonialsHead]
-  eyebrow = "Kind words"
-  title = "What members say"
-
-[[testimonials]]
-  quote = "A short quote from a happy member goes here."
-  name = "Member name"
-  role = "A few words about them"
-[[testimonials]]
-  quote = "Another member quote goes here."
-  name = "Member name"
-  role = "A few words about them"
+  icon = "fa-solid fa-gear"
+  title = "State of the Art"
+  body = "Imagine highest quality equiments: Taparia, Bosch, Stanley, SIL."
 
 [getInvolved]
-  eyebrow = "Community"
+  eyebrow = "Collaborate"
   title = "There's a place for everyone here"
-  lead = "Host a session, offer a venue, or just show up."
+  lead = "Host a session at the lab, request fabrication orders, or sponsor events, regardless of whether technical or non-technical"
   [[getInvolved.ctas]]
-    label = "Get involved"
+    label = "Get in touch"
     url = "/get-involved/"
     variant = "primary"
 +++

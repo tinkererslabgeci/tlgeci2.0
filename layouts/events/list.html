@@ -1,0 +1,42 @@
+{{ define "main" }}
+{{ partial "page-hero.html" (dict "eyebrow" (.Params.eyebrow | default (i18n "eyebrowEvents")) "title" .Title "lead" .Params.lead) }}
+{{- $all := .Pages -}}
+{{- $upcoming := (where $all "Date" ">=" now).ByDate -}}
+{{- $past := (where $all "Date" "<" now).ByDate.Reverse -}}
+
+<section class="g-bg-white g-section">
+  <div class="g-container">
+    <div class="g-section-head">
+      <span class="g-eyebrow">{{ i18n "comingUp" }}</span>
+      <h2>{{ i18n "upcomingEvents" }}</h2>
+      <p class="g-lead">{{ i18n "upcomingLead" }}</p>
+      {{ with .OutputFormats.Get "Calendar" }}<div class="g-row" style="margin-top:var(--space-3)"><a class="g-btn g-btn--outline g-btn--sm" href="{{ .RelPermalink }}"><i class="fa-solid fa-calendar-plus" aria-hidden="true"></i> {{ i18n "subscribeCalendar" }}</a></div>{{ end }}
+    </div>
+    <div class="g-stack" style="margin-top:var(--space-4);gap:var(--space-3)">
+      {{ range $upcoming.GroupByDate "2006" "asc" }}
+      <h3 class="g-year">{{ .Key }}</h3>
+      {{ range .Pages }}{{ partial "event-row.html" . }}{{ end }}
+      {{ end }}
+      {{ if not $upcoming }}{{ partial "events-empty.html" . }}{{ end }}
+    </div>
+  </div>
+</section>
+
+{{ if $past }}
+{{- $pager := .Paginate $past -}}
+<section class="g-bg-tertiary g-section">
+  <div class="g-container">
+    <div class="g-section-head"><span class="g-eyebrow">{{ i18n "lookingBack" }}</span><h2>{{ i18n "pastEvents" }}</h2></div>
+    <div class="g-stack" style="margin-top:var(--space-4);gap:var(--space-3)">
+      {{ range $pager.Pages.GroupByDate "2006" }}
+      <h3 class="g-year">{{ .Key }}</h3>
+      {{ range .Pages }}{{ partial "event-row.html" . }}{{ end }}
+      {{ end }}
+    </div>
+    {{ partial "pagination.html" $pager }}
+  </div>
+</section>
+{{ end }}
+
+{{ with .Content }}<section class="g-bg-white g-section"><div class="g-container"><div class="g-article g-prose">{{ . }}</div></div></section>{{ end }}
+{{ end }}

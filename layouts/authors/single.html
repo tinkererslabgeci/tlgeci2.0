@@ -1,0 +1,20 @@
+{{ define "main" }}
+{{- /* Author profile: bio card + everything they've written. */ -}}
+{{ partial "page-hero.html" (dict "eyebrow" (.Params.eyebrow | default (i18n "eyebrowAuthor")) "title" .Title) }}
+<section class="g-bg-white g-section">
+  <div class="g-container">
+    <div class="g-article" style="margin-bottom:var(--space-5)">
+      {{ partial "author-box.html" (dict "page" .) }}
+      {{ with .Content }}<div class="g-prose" style="margin-top:var(--space-4)">{{ . }}</div>{{ end }}
+    </div>
+    {{- $slug := .File.ContentBaseName -}}
+    {{- $posts := where (where site.RegularPages "Section" "blog") "Params.authors" "intersect" (slice $slug) -}}
+    {{ with $posts }}
+      <div class="g-section-head"><span class="g-eyebrow">{{ i18n "posts" }}</span><h2>{{ i18n "writtenBy" $.Title }}</h2></div>
+      <div class="g-grid-3" style="margin-top:var(--space-4)">
+        {{ range .ByDate.Reverse }}{{ partial "post-card.html" . }}{{ end }}
+      </div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

@@ -1,0 +1,14 @@
+{{- /* Absolute URL for canonicals, feeds and structured data: scheme + host +
+     any baseURL subpath + the path. absURL has the same trap as relLangURL
+     (see rel-href.html): leading-slash input is treated as server-root and
+     loses the subpath, so `absURL "/"` on https://example.com/sub/ returns
+     https://example.com/. Trim the slash first; anything already absolute
+     (https://, //) passes through untouched. Astro's counterpart is
+     absoluteUrl() in lib/url.ts. Returns a plain string, so callers get
+     normal attribute escaping and jsonify sees a string. */ -}}
+{{- $u := . -}}
+{{- if or (hasPrefix $u "http") (hasPrefix $u "//") -}}
+{{- $u -}}
+{{- else -}}
+{{- strings.TrimPrefix "/" $u | absURL -}}
+{{- end -}}

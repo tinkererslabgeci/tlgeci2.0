@@ -1,0 +1,23 @@
+{{- /* schema.org/BlogPosting JSON-LD for a blog single. Authors resolve via
+     the section resolver; falls back to the Organization when none resolve. */ -}}
+{{- $sec := partial "section.html" "authors" -}}
+{{- $authors := slice -}}
+{{- range .Params.authors }}{{ with site.GetPage (print "/" $sec "/" .) }}{{ $authors = $authors | append (dict "@type" "Person" "name" .Title) }}{{ end }}{{ end -}}
+{{- range .Params.guestAuthors }}{{ $authors = $authors | append (dict "@type" "Person" "name" .name) }}{{ end -}}
+{{- $publisher := dict "@type" "Organization" "name" site.Title "url" (partial "abs-url.html" "/") -}}
+{{- if not $authors }}{{ $authors = slice $publisher }}{{ end -}}
+{{- $headline := .Title -}}{{- if gt (len $headline) 110 }}{{ $headline = printf "%s…" (substr $headline 0 109) }}{{ end -}}
+{{- $ld := dict
+      "@context" "https://schema.org"
+      "@type" "BlogPosting"
+      "headline" $headline
+      "datePublished" (.Date.Format "2006-01-02T15:04:05Z07:00")
+      "dateModified" (.Lastmod.Format "2006-01-02T15:04:05Z07:00")
+      "author" $authors
+      "url" .Permalink
+      "publisher" $publisher
+-}}
+{{- with .Description | default .Summary }}{{ $ld = merge $ld (dict "description" (. | plainify | truncate 300)) }}{{ end -}}
+{{- $img := .Params.image | default site.Params.ogImage -}}
+{{- with $img }}{{ $ld = merge $ld (dict "image" (partial "abs-url.html" .)) }}{{ end -}}
+<script type="application/ld+json">{{ $ld | jsonify | safeJS }}</script>

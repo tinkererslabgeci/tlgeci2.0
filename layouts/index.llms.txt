@@ -1,0 +1,23 @@
+{{- /* §8 llms.txt: a plain-text summary for AI agents. Mirrors Astro's
+     src/pages/llms.txt.ts. Emitted as the home page's LLMS output format
+     (see the theme's hugo.toml). Regenerated every build so the next-event
+     line stays true. */ -}}
+{{- $chat := "" -}}{{- with site.Params.community }}{{ $chat = .chat }}{{ end -}}
+{{- $events := sort (where (where site.RegularPages "Section" "events") "Date" ">=" now) "Date" "asc" -}}
+{{- $next := index $events 0 -}}
+# {{ site.Title }}
+{{ with site.Params.description }}
+{{ . }}
+{{ end }}
+{{ if $next }}Next event: {{ $next.Title }} on {{ $next.Date | time.Format ":date_full" }}{{ with $next.Params.time }}, {{ . }}{{ end }} ({{ $next.Permalink }}){{ else }}No upcoming events are scheduled right now.{{ end }}
+{{ with $chat }}
+Join the community chat: {{ .url }}
+{{ end }}
+## Links
+{{ with site.GetPage "/start" }}Start here (newcomers): {{ .Permalink }}
+{{ end }}{{- with site.GetPage "/about" }}About and FAQ: {{ .Permalink }}
+{{ end }}Events: {{ (site.GetPage "/events").Permalink }}
+Calendar feed (iCalendar): {{ "events/calendar.ics" | absURL }}
+{{ with site.GetPage "/talks" }}Talk archive: {{ .Permalink }}
+{{ end }}
+Built with the Popular theme.

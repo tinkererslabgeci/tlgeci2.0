@@ -1,0 +1,20 @@
+{{- /* Pager. Context = a Paginator returned by .Paginate.
+     Renders nothing when everything fits on one page. */ -}}
+{{- if gt .TotalPages 1 -}}
+<nav class="g-pager" aria-label="{{ i18n "paginationLabel" }}">
+  {{- with .Prev }}
+  <a class="g-pager__nav" href="{{ .URL }}" rel="prev"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>{{ i18n "paginationPrev" }}</a>
+  {{- end }}
+  {{- $current := .PageNumber -}}
+  {{- range .Pagers }}
+  {{- if eq .PageNumber $current }}
+  <span class="g-pager__num is-active" aria-current="page">{{ .PageNumber }}</span>
+  {{- else }}
+  <a class="g-pager__num" href="{{ .URL }}">{{ .PageNumber }}</a>
+  {{- end }}
+  {{- end }}
+  {{- with .Next }}
+  <a class="g-pager__nav" href="{{ .URL }}" rel="next">{{ i18n "paginationNext" }}<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a>
+  {{- end }}
+</nav>
+{{- end -}}

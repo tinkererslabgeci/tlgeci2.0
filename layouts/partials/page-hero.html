@@ -1,0 +1,11 @@
+{{- /* Interior page hero band. Call with a dict:
+       {{ partial "page-hero.html" (dict "eyebrow" "Blog" "title" .Title "lead" .Params.lead) }} */ -}}
+<header class="g-pagehero">
+  <div class="g-container">
+    {{ with .backHref }}<div style="margin-bottom:1rem"><a href="{{ . | relLangURL }}" style="display:inline-flex;gap:.4rem;align-items:center;font-size:var(--text-sm);font-weight:var(--weight-medium)"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> {{ $.backLabel }}</a></div>{{ end }}
+    {{ with .eyebrow }}<span class="g-eyebrow">{{ . }}</span>{{ end }}
+    <h1>{{ .title }}</h1>
+    {{ with .lead }}<p class="g-pagehero__lead">{{ . }}</p>{{ end }}
+    {{ with .actions }}<div class="g-row" style="margin-top:var(--space-4)">{{ . | safeHTML }}</div>{{ end }}
+  </div>
+</header>

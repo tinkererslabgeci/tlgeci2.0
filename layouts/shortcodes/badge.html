@@ -1,0 +1,5 @@
+{{- /* {{< badge tone="success" soft="true" icon="fa-solid fa-heart" >}}Confirmed{{< /badge >}} */ -}}
+<span class="g-badge{{ with .Get "tone" }} g-badge--{{ . }}{{ end }}{{ if eq (.Get "soft") "true" }} g-badge--soft{{ end }}">
+  {{- with .Get "icon" }}<i class="{{ . }}" aria-hidden="true"></i>{{ end -}}
+  {{ .Inner }}
+</span>

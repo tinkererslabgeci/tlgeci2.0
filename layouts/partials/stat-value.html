@@ -1,0 +1,18 @@
+{{- /* Resolve a home-page stat value. Reusable from any template:
+     {{ partial "stat-value.html" "@count:blog" }}.
+     - @pastEventCount           live count of past events, rounded ("70+")
+     - @count:<section>          live count of regular pages in a section
+     - @count:<section>:rounded  same, rounded down to "70+" at ten or more
+     Any other value passes through unchanged. */ -}}
+{{- $value := . -}}
+{{- if eq $value "@pastEventCount" -}}
+  {{- $n := len (where (where site.RegularPages "Section" "events") "Date" "<" now) -}}
+  {{- $value = cond (ge $n 10) (printf "%d+" (mul (div $n 10) 10)) (printf "%d" $n) -}}
+{{- else if hasPrefix $value "@count:" -}}
+  {{- $rest := strings.TrimPrefix "@count:" $value -}}
+  {{- $rounded := false -}}
+  {{- if hasSuffix $rest ":rounded" }}{{ $rounded = true }}{{ $rest = strings.TrimSuffix ":rounded" $rest }}{{ end -}}
+  {{- $n := len (where site.RegularPages "Section" $rest) -}}
+  {{- $value = cond $rounded (cond (ge $n 10) (printf "%d+" (mul (div $n 10) 10)) (printf "%d" $n)) (printf "%d" $n) -}}
+{{- end -}}
+{{- $value -}}

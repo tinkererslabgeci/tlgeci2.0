@@ -1,0 +1,18 @@
+{{- /* Designed empty state for zero upcoming events (§5). Shown on the home
+       page and events list instead of a blank section. Message, then the chat
+       CTA (if params.community.chat is set, §4) and the calendar-subscribe
+       link (if the Calendar output format is enabled, §1). Context is the
+       Page. */ -}}
+{{- $cal := "" -}}
+{{- with (site.GetPage "/events") -}}{{ with .OutputFormats.Get "Calendar" }}{{ $cal = .RelPermalink }}{{ end }}{{- end -}}
+{{- $chat := "" -}}{{- with site.Params.community -}}{{ $chat = .chat }}{{- end -}}
+<div class="g-empty">
+  <span class="g-medallion g-medallion--lg"><i class="fa-solid fa-calendar-day" aria-hidden="true"></i></span>
+  <p class="g-lead">{{ i18n "noUpcomingEvents" }}</p>
+  {{- if or $chat $cal }}
+  <div class="g-row" style="justify-content:center">
+    {{ with $chat }}{{ with .url }}<a class="g-btn g-btn--primary" href="{{ partial "rel-href.html" . }}"{{ if not (hasPrefix . "/") }} rel="noopener" target="_blank"{{ end }}><i class="fa-solid fa-comments" aria-hidden="true"></i> {{ $chat.label | default (i18n "joinChat") }}</a>{{ end }}{{ end }}
+    {{ with $cal }}<a class="g-btn g-btn--outline" href="{{ partial "rel-href.html" . }}"><i class="fa-solid fa-calendar-plus" aria-hidden="true"></i> {{ i18n "subscribeCalendar" }}</a>{{ end }}
+  </div>
+  {{- end }}
+</div>

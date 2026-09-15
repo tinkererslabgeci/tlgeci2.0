@@ -1,0 +1,29 @@
+{{- /* author-box.html: bio card for a post author.
+       Context: dict with either "page" (an /authors/ page) or "guest" (inline
+       front-matter dict: name, title, photo, bio, website, social[]). */ -}}
+{{- $p := .page -}}{{- $g := .guest -}}
+<div class="g-persona g-persona--primary">
+  {{- if $p }}
+    {{ with $p.Params.photo }}<img class="g-persona__img" src="{{ partial "rel-src.html" . }}" alt="{{ $p.Title }}" loading="lazy" decoding="async">{{ end }}
+    <div>
+      <div class="g-persona__name"><a href="{{ $p.RelPermalink }}" style="color:inherit">{{ $p.Title }}</a></div>
+      {{ with $p.Params.role }}<div class="g-persona__role">{{ . }}</div>{{ end }}
+      {{ with $p.Params.bio | default $p.Description }}<p class="g-persona__bio">{{ . }}</p>{{ end }}
+      <div class="g-persona__socials">
+        {{ with $p.Params.website }}<a href="{{ partial "rel-href.html" . }}" aria-label="{{ i18n "website" }}" rel="noopener" target="_blank"><i class="fa-solid fa-globe" aria-hidden="true"></i></a>{{ end }}
+        {{ range $p.Params.social }}<a href="{{ partial "rel-href.html" .url }}" aria-label="{{ .label }}" rel="noopener" target="_blank"><i class="{{ .icon }}" aria-hidden="true"></i></a>{{ end }}
+      </div>
+    </div>
+  {{ else if $g }}
+    {{ with $g.photo }}<img class="g-persona__img" src="{{ partial "rel-src.html" . }}" alt="{{ $g.name }}" loading="lazy" decoding="async">{{ end }}
+    <div>
+      <div class="g-persona__name">{{ $g.name }}{{ " " }}<span class="g-badge g-badge--soft" style="vertical-align:middle">{{ i18n "guest" }}</span></div>
+      {{ with $g.title }}<div class="g-persona__role">{{ . }}</div>{{ end }}
+      {{ with $g.bio }}<p class="g-persona__bio">{{ . }}</p>{{ end }}
+      <div class="g-persona__socials">
+        {{ with $g.website }}<a href="{{ partial "rel-href.html" . }}" aria-label="{{ i18n "website" }}" rel="noopener" target="_blank"><i class="fa-solid fa-globe" aria-hidden="true"></i></a>{{ end }}
+        {{ range $g.social }}<a href="{{ partial "rel-href.html" .url }}" aria-label="{{ .label }}" rel="noopener" target="_blank"><i class="{{ .icon }}" aria-hidden="true"></i></a>{{ end }}
+      </div>
+    </div>
+  {{ end -}}
+</div>

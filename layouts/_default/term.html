@@ -1,0 +1,12 @@
+{{ define "main" }}
+{{ partial "page-hero.html" (dict "eyebrow" "Tag" "title" (printf "#%s" .Title) "lead" (printf "%d post(s) tagged %s" (len .Pages) .Title)) }}
+<section class="g-bg-white g-section">
+  <div class="g-container">
+    {{- $pager := .Paginate .Pages.ByDate.Reverse -}}
+    <div class="g-grid-3">
+      {{ range $pager.Pages }}{{ partial "post-card.html" . }}{{ end }}
+    </div>
+    {{ partial "pagination.html" $pager }}
+  </div>
+</section>
+{{ end }}

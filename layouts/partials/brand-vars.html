@@ -1,0 +1,45 @@
+{{- /* brand-vars.html
+       Emits a :root override block from [params.brand] so a whole site can be
+       re-coloured and re-typed from config, no CSS editing required.
+       Derived tints keep soft badges / tags / hovers coherent with a new primary. */ -}}
+{{- $b := site.Params.brand -}}
+{{- if $b -}}
+<style id="popular-brand">html:root{
+{{- with $b.primary }}
+  --color-primary: {{ . }};
+  --gold-500: {{ . }};
+  --gold-50: color-mix(in srgb, {{ . }} 7%, #fff);
+  --gold-100: color-mix(in srgb, {{ . }} 20%, #fff);
+  --gold-300: color-mix(in srgb, {{ . }} 55%, #fff);
+{{- end }}
+{{- with $b.primaryHover }}  --color-primary-hover: {{ . }};{{ end }}
+{{- with $b.primaryActive }}
+  --color-primary-active: {{ . }};
+  --gold-700: {{ . }};
+  --text-link: {{ . }};
+{{- end }}
+{{- with $b.link }}  --text-link: {{ . }};{{ end }}
+{{- with $b.linkHover }}  --text-link-hover: {{ . }};{{ end }}
+{{- with $b.secondary }}  --color-secondary: {{ . }};{{ end }}
+{{- with $b.accent }}  --color-accent: {{ . }}; --indigo-500: {{ . }};{{ end }}
+{{- with $b.accentHover }}  --color-accent-hover: {{ . }};{{ end }}
+{{- with $b.ink }}  --ink-800: {{ . }}; --text-strong: {{ . }};{{ end }}
+{{- with $b.surfaceWash }}  --surface-wash: {{ . }};{{ end }}
+{{- with $b.surfaceWashSoft }}  --surface-wash-soft: {{ . }};{{ end }}
+{{- with $b.surfaceInk }}  --surface-ink: {{ . }};{{ end }}
+{{- /* Dark-palette keys: page/card surfaces, body text, borders, and the
+     text color on filled buttons. Setting these lets a site run the theme
+     on a dark background. */ -}}
+{{- with $b.surfacePage }}  --surface-page: {{ . }};{{ end }}
+{{- with $b.surfaceCard }}  --surface-card: {{ . }};{{ end }}
+{{- with $b.surfaceTertiary }}  --surface-tertiary: {{ . }};{{ end }}
+{{- with $b.textBody }}  --text-body: {{ . }}; --ink-700: {{ . }};{{ end }}
+{{- with $b.textMuted }}  --text-muted: {{ . }}; --ink-500: {{ . }};{{ end }}
+{{- with $b.textOnBrand }}  --text-on-brand: {{ . }};{{ end }}
+{{- with $b.borderSubtle }}  --border-subtle: {{ . }}; --border-default: {{ . }};{{ end }}
+{{- with $b.fontSans }}  --font-sans: {{ . | safeCSS }};{{ end }}
+{{- with $b.fontDisplay }}  --font-display: {{ . | safeCSS }};{{ end }}
+{{- with $b.radiusCard }}  --radius-xl: {{ . }};{{ end }}
+{{- with $b.containerMax }}  --container-max: {{ . }};{{ end }}
+}</style>
+{{- end -}}

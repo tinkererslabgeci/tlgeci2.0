@@ -1,0 +1,3 @@
+{{- /* Markdown links: site-absolute destinations get the baseURL subpath
+     prefixed (mirrors render-image.html); external URLs pass through. */ -}}
+<a href="{{ partial "rel-href.html" .Destination }}"{{ with .Title }} title="{{ . }}"{{ end }}>{{ .Text }}</a>

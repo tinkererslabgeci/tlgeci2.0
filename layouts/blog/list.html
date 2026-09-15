@@ -1,0 +1,29 @@
+{{ define "main" }}
+{{ partial "page-hero.html" (dict "eyebrow" (.Params.eyebrow | default (i18n "eyebrowBlog")) "title" .Title "lead" .Params.lead) }}
+<section class="g-bg-white g-section">
+  <div class="g-container">
+    {{- $posts := .Pages.ByDate.Reverse -}}
+    {{- $pager := .Paginate $posts -}}
+    {{- $tags := slice -}}
+    {{- range $posts }}{{ range .Params.tags }}{{ $tags = $tags | append . }}{{ end }}{{ end -}}
+    {{- $tags = uniq $tags -}}
+    <div class="g-row" style="justify-content:space-between;align-items:center;margin-bottom:var(--space-5)">
+      <div class="g-row" data-filterbar>
+        {{ with $tags }}
+          <span style="font-size:var(--text-sm);color:var(--text-muted)">{{ i18n "filterLabel" }}</span>
+          <button class="g-filter is-active" data-filter="*">{{ i18n "filterAll" }}</button>
+          {{ range . }}<button class="g-filter" data-filter="{{ . }}">#{{ . }}</button>{{ end }}
+        {{ end }}
+      </div>
+      {{ with .OutputFormats.Get "RSS" }}
+        <a class="g-btn g-btn--ghost g-btn--sm" href="{{ .RelPermalink }}" title="{{ i18n "subscribeRssTitle" }}"><i class="fa-solid fa-rss" aria-hidden="true"></i> {{ i18n "subscribeRss" }}</a>
+      {{ end }}
+    </div>
+    <div class="g-grid-3">
+      {{ range $pager.Pages }}{{ partial "post-card.html" . }}{{ end }}
+    </div>
+    {{ if not $posts }}<p class="g-lead">{{ i18n "noPosts" }}</p>{{ end }}
+    {{ partial "pagination.html" $pager }}
+  </div>
+</section>
+{{ end }}

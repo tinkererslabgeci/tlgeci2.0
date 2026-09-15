@@ -1,0 +1,15 @@
+{{ define "main" }}
+{{ partial "page-hero.html" (dict "eyebrow" .Params.eyebrow "title" .Title "lead" .Params.lead) }}
+<section class="g-bg-white g-section">
+  <div class="g-container">
+    {{ with .Content }}<div class="g-article g-prose" style="margin-bottom:var(--space-5)">{{ . }}</div>{{ end }}
+    {{ if .Pages }}
+      {{- $pager := .Paginate .Pages -}}
+      <div class="g-grid-3">
+        {{ range $pager.Pages }}{{ partial "post-card.html" . }}{{ end }}
+      </div>
+      {{ partial "pagination.html" $pager }}
+    {{ end }}
+  </div>
+</section>
+{{ end }}

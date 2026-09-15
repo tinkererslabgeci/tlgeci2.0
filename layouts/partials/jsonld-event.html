@@ -1,0 +1,41 @@
+{{- /* schema.org/Event JSON-LD for an event page. Emits only resolvable keys,
+     never empty strings/arrays/null. Time parsing follows the shared contract
+     in PARITY.md (the same vectors drive the Astro side and the test suite). */ -}}
+{{- $date := .Date.Format "2006-01-02" -}}
+{{- $startDate := $date -}}
+{{- $hm := partial "parse-time.html" .Params.time -}}
+{{- with $hm }}{{ $startDate = printf "%sT%s" $date . }}{{ end -}}
+{{- /* Venue → location. */ -}}
+{{- $venuePage := "" -}}
+{{- with .Params.venueRef }}{{ $venuePage = site.GetPage (print "/venues/" .) }}{{ end -}}
+{{- /* Performers from resolvable speakers. */ -}}
+{{- $perf := slice -}}
+{{- range .Params.speakers }}{{ with site.GetPage (print "/speakers/" .) }}{{ $perf = $perf | append (dict "@type" "Person" "name" .Title) }}{{ end }}{{ end -}}
+{{- $currency := "USD" -}}{{- with site.Params.seo }}{{ with .currency }}{{ $currency = . }}{{ end }}{{ end -}}
+{{- $ld := dict
+      "@context" "https://schema.org"
+      "@type" "Event"
+      "name" .Title
+      "startDate" $startDate
+      "eventStatus" (cond (eq .Params.cancelled true) "https://schema.org/EventCancelled" "https://schema.org/EventScheduled")
+      "eventAttendanceMode" (cond (eq .Params.online true) "https://schema.org/OnlineEventAttendanceMode" "https://schema.org/OfflineEventAttendanceMode")
+      "organizer" (dict "@type" "Organization" "name" site.Title "url" (partial "abs-url.html" "/"))
+-}}
+{{- with .Description | default .Summary }}{{ $ld = merge $ld (dict "description" (. | plainify | truncate 300)) }}{{ end -}}
+{{- if eq .Params.online true -}}
+  {{- $ld = merge $ld (dict "location" (dict "@type" "VirtualLocation" "url" (.Params.rsvp | default .Permalink))) -}}
+{{- else if $venuePage -}}
+  {{- $loc := dict "@type" "Place" "name" $venuePage.Title -}}
+  {{- with $venuePage.Params.address }}{{ $loc = merge $loc (dict "address" .) }}{{ end -}}
+  {{- $ld = merge $ld (dict "location" $loc) -}}
+{{- end -}}
+{{- $img := .Params.image | default site.Params.ogImage -}}
+{{- with $img }}{{ $ld = merge $ld (dict "image" (partial "abs-url.html" .)) }}{{ end -}}
+{{- with $perf }}{{ $ld = merge $ld (dict "performer" .) }}{{ end -}}
+{{- /* Offers / pricing. */ -}}
+{{- if .Params.price -}}
+  {{- $ld = merge $ld (dict "isAccessibleForFree" false "offers" (dict "@type" "Offer" "price" (printf "%v" .Params.price) "priceCurrency" (.Params.currency | default $currency) "availability" "https://schema.org/InStock" "url" .Permalink)) -}}
+{{- else if not .Params.cost -}}
+  {{- $ld = merge $ld (dict "isAccessibleForFree" true "offers" (dict "@type" "Offer" "price" "0" "priceCurrency" $currency "availability" "https://schema.org/InStock" "url" .Permalink)) -}}
+{{- end -}}
+<script type="application/ld+json">{{ $ld | jsonify | safeJS }}</script>

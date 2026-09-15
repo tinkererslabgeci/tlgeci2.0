@@ -1,0 +1,9 @@
+{{- /* Escape a text value for iCalendar. First undo HTML entity encoding
+     (the ICS is plain text, not HTML, so &amp; and &#39; must become & and
+     '), then apply iCal escaping: backslash, ; , and newline -> \n. */ -}}
+{{- $s := htmlUnescape . -}}
+{{- $s = replace $s `\` `\\` -}}
+{{- $s = replace $s ";" `\;` -}}
+{{- $s = replace $s "," `\,` -}}
+{{- $s = replace $s "\n" `\n` -}}
+{{- $s | safeHTML -}}

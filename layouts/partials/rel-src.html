@@ -1,0 +1,10 @@
+{{- /* Resolve an image or asset source. Both spellings the content model
+     allows have to work under a subpath deployment: "images/logo.png"
+     (Hugo's convention) and "/images/logo.png" (Astro's, and the two repos
+     share front matter, see PARITY.md). relURL prefixes the first with the
+     baseURL path but leaves the second at the server root, dropping the
+     subpath, so trim the leading slash before resolving. Remote sources
+     (https://, //) pass through untouched. */ -}}
+{{- $out := . -}}
+{{- if not (or (hasPrefix . "//") (hasPrefix . "http")) }}{{ $out = strings.TrimPrefix "/" . | relURL }}{{ end -}}
+{{- $out | safeHTML -}}

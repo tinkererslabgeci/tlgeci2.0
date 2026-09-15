@@ -1,0 +1,13 @@
+{{- /* Resolve an href that may be a site path or an external URL. Hugo's
+     relLangURL treats leading-slash input as server-root and drops the
+     baseURL subpath (breaks subpath deployments like Pages project sites),
+     so trim the slash first; anything else (https://, mailto:, #fragment,
+     a page-relative path) passes through untouched. That pass-through is
+     what makes this safe to apply to author-supplied config values and
+     front matter. Astro's counterpart is withBase() in lib/url.ts; image
+     and asset sources go through rel-src.html instead. */ -}}
+{{- $out := . -}}
+{{- if and (hasPrefix . "/") (not (hasPrefix . "//")) }}{{ $out = strings.TrimPrefix "/" . | relLangURL }}{{ end -}}
+{{- /* safeHTML: without it the output is escaped twice in href contexts and
+     query strings break (& becomes &amp;amp;). */ -}}
+{{- $out | safeHTML -}}

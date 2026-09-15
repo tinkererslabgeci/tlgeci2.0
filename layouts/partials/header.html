@@ -1,0 +1,40 @@
+{{- /* Sticky site header: brand + primary menu + CTA button. */ -}}
+<header class="g-header">
+  <nav class="g-container g-nav" aria-label="{{ i18n "primaryNav" }}">
+    <a class="g-brand" href="{{ "" | relLangURL }}">
+      {{ with site.Params.logo }}<img src="{{ partial "rel-src.html" . }}" alt="{{ site.Title }}">{{ end }}
+      <span class="g-brand__text">
+        <span class="g-brand__name">{{ site.Params.brandName | default site.Title }}</span>
+        {{ with site.Params.brandSub }}<span class="g-brand__sub">{{ . }}</span>{{ end }}
+      </span>
+    </a>
+
+    <button class="g-nav__toggle" aria-label="{{ i18n "toggleMenu" }}" aria-expanded="false">
+      <i class="fa-solid fa-bars" aria-hidden="true"></i>
+    </button>
+
+    <ul class="g-navlinks">
+      {{ range site.Menus.main }}
+        {{ $active := or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) }}
+        {{ if .Children }}
+          <li class="has-sub">
+            <a href="{{ .URL | relLangURL }}" class="{{ if $active }}is-active{{ end }}">{{ .Name }}<i class="fa-solid fa-chevron-down g-navlinks__caret" aria-hidden="true"></i></a>
+            <ul class="g-navlinks__sub">
+              {{ range .Children }}
+                <li><a href="{{ .URL | relLangURL }}" class="{{ if $.IsMenuCurrent "main" . }}is-active{{ end }}">{{ .Name }}</a></li>
+              {{ end }}
+            </ul>
+          </li>
+        {{ else }}
+          <li><a href="{{ .URL | relLangURL }}" class="{{ if $active }}is-active{{ end }}">{{ .Name }}</a></li>
+        {{ end }}
+      {{ end }}
+    </ul>
+
+    {{ with site.Params.cta }}
+      <a class="g-btn g-btn--primary g-btn--sm g-nav__cta" href="{{ partial "rel-href.html" .url }}">
+        {{ with .icon }}<i class="{{ . }}" aria-hidden="true"></i>{{ end }}{{ .label }}
+      </a>
+    {{ end }}
+  </nav>
+</header>

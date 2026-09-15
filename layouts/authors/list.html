@@ -1,0 +1,10 @@
+{{ define "main" }}
+{{ partial "page-hero.html" (dict "eyebrow" (.Params.eyebrow | default "Authors") "title" .Title "lead" .Params.lead) }}
+<section class="g-bg-white g-section">
+  <div class="g-container">
+    <div class="g-stack" style="max-width:52rem;margin:0 auto;gap:var(--space-3)">
+      {{ range .Pages.ByTitle }}{{ partial "author-box.html" (dict "page" .) }}{{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}

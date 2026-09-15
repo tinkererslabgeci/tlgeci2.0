@@ -1,0 +1,37 @@
+{{- /* Event row. Context = an event page (Date = event datetime). */ -}}
+{{- $venuePage := "" -}}
+{{- with .Params.venueRef }}{{ $venuePage = site.GetPage (print "/venues/" .) }}{{ if not $venuePage }}{{ warnf "%s: venueRef %q matches no venue page" $.File.Path . }}{{ end }}{{ end -}}
+{{- $tbd := or .Params.venueWanted (and (not .Params.venue) (not $venuePage)) -}}
+{{- /* Planning: the event is on the calendar but its details are not settled.
+     Wins over the venue-wanted badge, which is inferred, and hides the RSVP
+     button even when `rsvp` is already filled in. */ -}}
+{{- $planning := eq .Params.planning true -}}
+{{- /* Speaker line: resolved /speakers/ names, falling back to the plain string. */ -}}
+{{- $names := slice -}}
+{{- range .Params.speakers }}{{ with site.GetPage (print "/speakers/" .) }}{{ $names = $names | append .Title }}{{ else }}{{ warnf "%s: speaker %q matches no speaker page" $.File.Path . }}{{ end }}{{ end -}}
+{{- $speakerLine := or (delimit $names ", ") .Params.speaker -}}
+{{- /* Recording cue (§3): any event-level or per-talk recording. */ -}}
+{{- $hasRecording := false -}}
+{{- if .Params.talks }}{{ range .Params.talks }}{{ if .recording }}{{ $hasRecording = true }}{{ end }}{{ end }}{{ else }}{{ if .Params.recording }}{{ $hasRecording = true }}{{ end }}{{ end -}}
+<div class="g-event">
+  <div class="g-event__date">
+    <span class="g-event__dow">{{ .Date | time.Format "Mon" }}</span>
+    <span class="g-event__day">{{ .Date | time.Format "Jan 2" }}</span>
+    {{ with .Params.time }}<span class="g-event__time">{{ . }}</span>{{ end }}
+  </div>
+  <div class="g-event__body">
+    {{ with .Params.tags }}<div class="g-card__footer" style="padding-top:0">{{ range . }}<span class="g-tag">{{ . }}</span>{{ end }}</div>{{ end }}
+    <h3><a href="{{ .RelPermalink }}" style="color:inherit">{{ .Title }}</a></h3>
+    <p>{{ .Description | default .Summary }}</p>
+    <div class="g-event__meta"><i class="fa-solid fa-location-dot" aria-hidden="true"></i>{{ if $venuePage }}{{ $venuePage.Title }}{{ with $venuePage.Params.address }} · {{ . }}{{ end }}{{ else }}{{ with .Params.venue }}{{ . }}{{ else }}{{ i18n "venueTba" }}{{ end }}{{ with .Params.address }} · {{ . }}{{ end }}{{ end }}</div>
+    {{ with $speakerLine }}<div class="g-event__meta"><i class="fa-solid fa-microphone-lines" aria-hidden="true"></i>{{ . }}</div>{{ end }}
+    {{ if $hasRecording }}<div class="g-event__meta"><i class="fa-solid fa-circle-play" aria-hidden="true"></i>{{ i18n "hasRecording" }}</div>{{ end }}
+  </div>
+  <div class="g-event__aside">
+    {{ if eq .Params.cancelled true }}<span class="g-badge g-badge--danger g-badge--soft">{{ i18n "eventCancelled" }}</span>
+    {{ else if $planning }}<span class="g-badge g-badge--soft">{{ i18n "eventPlanning" }}</span>
+    {{ else if $tbd }}<span class="g-badge g-badge--warning g-badge--soft">{{ i18n "venueWanted" }}</span>
+    {{ else }}<span class="g-badge g-badge--success g-badge--soft">{{ i18n "confirmed" }}</span>{{ end }}
+    {{ if not $planning }}{{ with .Params.rsvp }}<a class="g-btn g-btn--primary g-btn--sm" href="{{ partial "rel-href.html" . }}"><i class="fa-solid fa-calendar" aria-hidden="true"></i>{{ i18n "rsvp" }}</a>{{ end }}{{ end }}
+  </div>
+</div>

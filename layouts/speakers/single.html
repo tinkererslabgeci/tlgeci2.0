@@ -1,0 +1,20 @@
+{{ define "main" }}
+{{- /* Speaker profile: bio card + every session they've led. */ -}}
+{{ partial "page-hero.html" (dict "eyebrow" (.Params.eyebrow | default (i18n "eyebrowSpeaker")) "title" .Title "backHref" "speakers/" "backLabel" (i18n "allSpeakers")) }}
+<section class="g-bg-white g-section">
+  <div class="g-container">
+    <div class="g-article" style="margin-bottom:var(--space-5)">
+      {{ partial "author-box.html" (dict "page" .) }}
+      {{ with .Content }}<div class="g-prose" style="margin-top:var(--space-4)">{{ . }}</div>{{ end }}
+    </div>
+    {{- $slug := .File.ContentBaseName -}}
+    {{- $events := where (where site.RegularPages "Section" "events") "Params.speakers" "intersect" (slice $slug) -}}
+    {{ with $events }}
+      <div class="g-section-head"><span class="g-eyebrow">{{ i18n "eyebrowEvents" }}</span><h2>{{ i18n "sessionsBy" $.Title }}</h2></div>
+      <div class="g-stack" style="margin-top:var(--space-4);gap:var(--space-3)">
+        {{ range .ByDate.Reverse }}{{ partial "event-row.html" . }}{{ end }}
+      </div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

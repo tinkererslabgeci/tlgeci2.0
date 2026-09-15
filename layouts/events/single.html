@@ -1,0 +1,73 @@
+{{ define "main" }}
+{{- /* Venue: a venueRef to a /venues/ page wins over the flat venue/address
+     fields; the page's arrival notes are inherited unless the event sets
+     its own venueNotes. */ -}}
+{{- $venuePage := "" -}}
+{{- with .Params.venueRef }}{{ $venuePage = site.GetPage (print "/venues/" .) }}{{ if not $venuePage }}{{ warnf "%s: venueRef %q matches no venue page" $.File.Path . }}{{ end }}{{ end -}}
+{{- $venueNotes := .Params.venueNotes -}}
+{{- if not $venueNotes }}{{ with $venuePage }}{{ $venueNotes = .Params.notes }}{{ end }}{{ end -}}
+<article>
+  <header class="g-pagehero">
+    <div class="g-container" style="padding-block:var(--space-6) var(--space-5)">
+      <div style="margin-bottom:1rem"><a href="{{ "events/" | relLangURL }}" style="display:inline-flex;gap:.4rem;align-items:center;font-size:var(--text-sm);font-weight:var(--weight-medium)"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> {{ i18n "allEvents" }}</a></div>
+      <span class="g-eyebrow">{{ .Date | time.Format ":date_full" }}{{ with .Params.time }} · {{ . }}{{ end }}</span>
+      <h1 style="margin:.5rem 0 0">{{ .Title }}{{ if eq .Params.cancelled true }} <span class="g-badge g-badge--danger" style="vertical-align:middle;font-size:var(--text-sm)">{{ i18n "eventCancelled" }}</span>{{ else if eq .Params.planning true }} <span class="g-badge g-badge--soft" style="vertical-align:middle;font-size:var(--text-sm)">{{ i18n "eventPlanning" }}</span>{{ end }}</h1>
+    </div>
+  </header>
+  <div class="g-container g-section--sm">
+   <div class="g-article">
+    <div class="g-meta-line" style="margin-bottom:var(--space-4)">
+      <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i> {{ if $venuePage }}<a href="{{ $venuePage.RelPermalink }}">{{ $venuePage.Title }}</a>{{ with $venuePage.Params.address }} · {{ . }}{{ end }}{{ else }}{{ with .Params.venue }}{{ . }}{{ else }}{{ i18n "venueTba" }}{{ end }}{{ with .Params.address }} · {{ . }}{{ end }}{{ end }}</span>
+      {{ if $venuePage }}{{ if eq $venuePage.Params.wheelchair true }}<span class="g-badge g-badge--success g-badge--soft"><i class="fa-solid fa-wheelchair" aria-hidden="true"></i> {{ i18n "wheelchairAccessible" }}</span>{{ end }}{{ if or $venuePage.Params.transit $venuePage.Params.parking $venuePage.Params.access }}<span><a href="{{ $venuePage.RelPermalink }}#{{ i18n "gettingThere" | urlize }}">{{ i18n "gettingThere" }}</a></span>{{ end }}{{ end }}
+      {{ with .Params.speaker }}<span><i class="fa-solid fa-microphone-lines" aria-hidden="true"></i> {{ . }}</span>{{ end }}
+      {{ if not .Params.talks }}{{ with .Params.recording }}<span><a href="{{ partial "rel-href.html" . }}" rel="noopener" target="_blank"><i class="fa-solid fa-circle-play" aria-hidden="true"></i> {{ i18n "watchRecording" }}</a></span>{{ end }}{{ with .Params.slides }}<span><a href="{{ partial "rel-href.html" . }}" rel="noopener" target="_blank"><i class="fa-solid fa-file-lines" aria-hidden="true"></i> {{ i18n "viewSlides" }}</a></span>{{ end }}{{ end }}
+    </div>
+
+    {{ if or .Params.checkin $venueNotes }}
+    <div class="g-callout" style="flex-direction:column;gap:.6rem;margin:0 0 var(--space-4)">
+      <div class="g-callout__title">{{ i18n "beforeYouArrive" }}</div>
+      {{ with .Params.checkin }}<div class="g-callout__body"><i class="fa-solid fa-ticket" aria-hidden="true"></i> {{ . }}</div>{{ end }}
+      {{ with $venueNotes }}<div class="g-callout__body"><i class="fa-solid fa-door-open" aria-hidden="true"></i> {{ . }}</div>{{ end }}
+    </div>
+    {{ end }}
+
+    <div class="g-prose">{{ .Content }}</div>
+
+    {{- /* Speaker profile cards, resolved from /speakers/ pages. */ -}}
+    {{- $boxes := slice -}}
+    {{- range .Params.speakers }}{{ with site.GetPage (print "/speakers/" .) }}{{ $boxes = $boxes | append (dict "page" .) }}{{ else }}{{ warnf "%s: speaker %q matches no speaker page" $.File.Path . }}{{ end }}{{ end -}}
+    {{ with $boxes }}
+      <h2 style="font-size:var(--text-xl);margin:var(--space-5) 0 1rem">{{ i18n "speakers" }}</h2>
+      <div class="g-stack" style="gap:var(--space-3)">
+        {{ range . }}{{ partial "author-box.html" . }}{{ end }}
+      </div>
+    {{ end }}
+
+    {{- /* §3 Talks section: multi-talk events (talks[]). Single-talk events
+         render recording/slides links in the meta block above. */ -}}
+    {{ with .Params.talks }}
+      <h2 style="font-size:var(--text-xl);margin:var(--space-5) 0 1rem">{{ i18n "talks" }}</h2>
+      <div class="g-stack" style="gap:var(--space-3)">
+        {{ range . }}
+        {{- $sp := "" -}}
+        {{- if .speaker }}{{ $sp = site.GetPage (print "/speakers/" .speaker) }}{{ if not $sp }}{{ warnf "%s: talk speaker %q matches no speaker page" $.File.Path .speaker }}{{ end }}{{ end -}}
+        <div class="g-talk">
+          <div class="g-talk__title">{{ .title }}</div>
+          {{ if $sp }}<div class="g-talk__by"><i class="fa-solid fa-microphone-lines" aria-hidden="true"></i> <a href="{{ $sp.RelPermalink }}">{{ $sp.Title }}</a></div>{{ end }}
+          {{ if or .recording .slides }}
+          <div class="g-row" style="gap:var(--space-2)">
+            {{ with .recording }}<a class="g-btn g-btn--sm g-btn--outline" href="{{ partial "rel-href.html" . }}" rel="noopener" target="_blank"><i class="fa-solid fa-circle-play" aria-hidden="true"></i> {{ i18n "watchRecording" }}</a>{{ end }}
+            {{ with .slides }}<a class="g-btn g-btn--sm g-btn--ghost" href="{{ partial "rel-href.html" . }}" rel="noopener" target="_blank"><i class="fa-solid fa-file-lines" aria-hidden="true"></i> {{ i18n "viewSlides" }}</a>{{ end }}
+          </div>
+          {{ end }}
+        </div>
+        {{ end }}
+      </div>
+    {{ end }}
+
+    {{- /* An event still being planned takes no RSVPs yet, even with `rsvp` set. */ -}}
+    {{ if ne .Params.planning true }}{{ with .Params.rsvp }}<div class="g-row" style="margin-top:var(--space-4)"><a class="g-btn g-btn--primary g-btn--lg" href="{{ partial "rel-href.html" . }}"><i class="fa-solid fa-calendar" aria-hidden="true"></i> {{ i18n "rsvpExternal" }}</a></div>{{ end }}{{ end }}
+   </div>
+  </div>
+</article>
+{{ end }}
