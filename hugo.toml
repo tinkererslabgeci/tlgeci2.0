@@ -81,7 +81,7 @@ buildFuture = true
   # Turn on the "Your name here?" invite card at the end of the speakers list,
   # pointing to /speak/. Off by default.
   [params.speakers]
-    invite = true
+    invite = false
 
 
   [[params.social]]
@@ -104,7 +104,7 @@ buildFuture = true
   [params.footer]
     tagline = "Prototype. Break. Improve. Repeat."
     [params.footer.credit]
-      label = "Popular. A Hugo theme by Mariatta."
+      label = "Maintained by the Outreach Team"
       url   = "https://popular.mariatta.ca/"
     [[params.footer.columns]]
       title = "Community"

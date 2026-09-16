@@ -21,7 +21,7 @@
     <div class="g-container">
       <span>© {{ now.Year }} {{ site.Title }}</span>
       {{ with site.Params.community }}{{ with .chat }}<span><a href="{{ partial "rel-href.html" .url }}"{{ if not (hasPrefix .url "/") }} rel="noopener" target="_blank"{{ end }}><i class="fa-solid fa-comments" aria-hidden="true"></i> {{ .label | default (i18n "joinChat") }}</a></span>{{ end }}{{ end }}
-      {{ with site.Params.footer.credit }}<span><a href="{{ partial "rel-href.html" .url }}" rel="noopener">{{ .label }}</a>{{ if and site.Params.popularVersion (in .url "mariatta.ca") }} · v{{ site.Params.popularVersion }}{{ end }}</span>{{ end }}
+      {{ with site.Params.footer.credit }}<span><a href="{{ partial "rel-href.html" .url }}" rel="noopener">{{ .label }}</a>{{ if and site.Params.popularVersion (in .url "mariatta.ca") }}{{ end }}</span>{{ end }}
       {{ with site.Params.footer.tagline }}<span>{{ . }}</span>{{ end }}
     </div>
   </div>
