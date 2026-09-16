@@ -2,7 +2,7 @@
 title = "Home"
 
 [hero]
-  eyebrow = "An Independent Lab"
+  eyebrow = "One of a kind"
   title = "This is Tinkerers’ Lab at GEC Idukki."
   lead = "We’re a round-the-clock independent student-run lab where everyone is welcome to do anything."
   image = "images/hero.png"

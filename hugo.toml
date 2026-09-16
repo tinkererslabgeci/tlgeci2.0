@@ -1,6 +1,6 @@
 baseURL = "https://example.com/"
 enableRobotsTXT = true
-title = "Your Community"
+title = "Tinkerers’ Lab"
 theme = "hugo-theme-popular"
 # A bare `hugo server` here cannot find the theme (it lives at the repo root,
 # not in themes/). Serve everything with scripts/serve-all.sh, or run:
@@ -53,9 +53,9 @@ buildFuture = true
 
 [params]
   tagline = "A starter site for the Popular theme"
-  description = "Describe your community here."
-  brandName = "Your"
-  brandSub = "Community"
+  description = "24×7 student-run lab for the tinkerers"
+  brandName = "Tinkerers’ Lab"
+  brandSub = "GECI"
   logo = "images/logo.png"
   ogImage = "images/hero.png"
   landAcknowledgement = "Add your community's land acknowledgement or welcome statement here, this demo keeps it as a placeholder."
@@ -102,7 +102,7 @@ buildFuture = true
     url   = "mailto:hello@example.com"
 
   [params.footer]
-    tagline = "Your community's motto goes here"
+    tagline = "Prototype. Break. Improve. Repeat."
     [params.footer.credit]
       label = "Popular. A Hugo theme by Mariatta."
       url   = "https://popular.mariatta.ca/"
