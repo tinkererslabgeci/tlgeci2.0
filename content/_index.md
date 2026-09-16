@@ -30,27 +30,27 @@ title = "Home"
   label = "rupees worth equipments"
 
 [featuresHead]
-  eyebrow = "What We Do"
+  eyebrow = "One of a kind"
   title = "Okay, but how’re we any different from the department labs?"
   lead = "Quite different."
 
 [[features]]
   icon = "fa-solid fa-people-group"
   title = "Run by You"
-  body = "Tinkerers’ Lab is run completely by student volunteers. No faculties involved."
+  body = "Run and managed completely by student volunteers. No faculties involved."
 [[features]]
   icon = "fa-solid fa-hand-sparkles"
   title = "Make Anything"
-  body = "Anyone can make anything in the lab. Just book a slot. No permission hassle or departmental beaureacracy."
+  body = "Make anything in the lab. Just book a slot. No permission hassle or departmental red tape."
 [[features]]
-  icon = "fa-solid fa-gear"
+  icon = "fa-solid fa-wrench"
   title = "State of the Art"
-  body = "Imagine highest quality equiments: Taparia, Bosch, Stanley, SIL."
+  body = "Imagine the equiments from the most prestigous of toolmakers: Bosch, Taparia, SIL, Stanley."
 
 [getInvolved]
   eyebrow = "Collaborate"
   title = "There's a place for everyone here"
-  lead = "Host a session at the lab, request fabrication orders, or sponsor events, regardless of whether technical or non-technical"
+  lead = "Host a session at the lab, request fabrication orders, or sponsor events."
   [[getInvolved.ctas]]
     label = "Get in touch"
     url = "/get-involved/"

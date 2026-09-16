@@ -17,7 +17,7 @@ buildFuture = true
   unsafe = true
 
 [[menu.main]]
-  name = "Start here"
+  name = "Introduction"
   url = "/start/"
   weight = 5
 [[menu.main]]
@@ -30,7 +30,7 @@ buildFuture = true
   url = "/about/"
   weight = 10
 [[menu.main]]
-  name = "Organizers"
+  name = "Team"
   parent = "About"
   url = "/organizers/"
   weight = 20
@@ -52,7 +52,7 @@ buildFuture = true
   weight = 50
 
 [params]
-  tagline = "A starter site for the Popular theme"
+  tagline = "24×7 student-run lak at GEC Idukki"
   description = "24×7 student-run lab for the tinkerers"
   brandName = "Tinkerers’ Lab"
   brandSub = "GECI"
