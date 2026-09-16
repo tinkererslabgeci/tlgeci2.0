@@ -62,8 +62,8 @@ buildFuture = true
 
   [params.brand]
     # Re-brand the whole site here, see /docs/theming/ on the theme site.
-    # primary       = "#0f766e"
-    # surfaceWash   = "#d7ece9"
+    primary       = "#6375a5"
+    surfaceWash   = "#98c355"
     # fontDisplay   = "Quantico, Inter, sans-serif"
 
   [params.cta]
