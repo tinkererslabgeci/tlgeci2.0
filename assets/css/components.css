@@ -309,6 +309,10 @@ pre:hover .g-copy, .g-copy:focus-visible { opacity: 1; }
   filter: invert(1);
 }
 
+.g-footer__ack {
+  white-space: pre-line;
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 920px) {
   .g-hero__grid, .g-feature, .g-doc, .g-event, .g-involve { grid-template-columns: 1fr; }

@@ -58,7 +58,7 @@ buildFuture = true
   brandSub = "GECI"
   logo = "images/logo.png"
   ogImage = "images/hero.png"
-  landAcknowledgement = "Add your community's land acknowledgement or welcome statement here, this demo keeps it as a placeholder."
+  landAcknowledgement = "2nd Floor, Administrative Block\nGovt. Engineering College Idukki\n685603 – Painavu\nIdukki, Kerala"
 
   [params.brand]
     # Re-brand the whole site here, see /docs/theming/ on the theme site.
