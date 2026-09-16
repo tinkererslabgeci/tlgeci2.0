@@ -202,17 +202,41 @@
     --gold-800: #5c3610;
     --gold-900: #3d2408;
 
+    --gold-900: #101424;
+    --gold-800: #1c223b;  /* theme dark, primary text on light */
+    --gold-700: #313b5e;
+    --gold-600: #4a5780;
+    --gold-500: #6573a3;  /* base color */
+    --gold-400: #8793ba;
+    --gold-300: #abb5d2;
+    --gold-200: #cfd5e6;
+    --gold-100: #ebeef5;
+    --gold-50:  #f6f8fb;  /* theme light */
+
     /* --- Ink neutrals (theme dark = sunglass black #141417) --- */
-    --ink-900: #0a0a0d;
-    --ink-800: #141417;  /* theme dark, primary text on light */
-    --ink-700: #243a47;
-    --ink-600: #41535e;
-    --ink-500: #61727c;
-    --ink-400: #8a98a1;
-    --ink-300: #b8c2c9;
-    --ink-200: #dce2e6;
-    --ink-100: #eef1f3;
-    --ink-50:  #f8f9fa;  /* theme light */
+
+    --ink-900: #071926;
+    --ink-800: #0c273d;  /* theme dark, primary text on light */
+    --ink-700: #144062;
+    --ink-600: #1f5f8b;
+    --ink-500: #2d82b7;
+    --ink-400: #54a5d8;
+    --ink-300: #8bc6ec;
+    --ink-200: #c2e2f6;
+    --ink-100: #e5f3fc;
+    --ink-50:  #f4f9fd;  /* theme light */
+
+    --ink-900: #13190b;
+    --ink-800: #273315;  /* theme dark, primary text on light */
+    --ink-700: #486024;
+    --ink-600: #709735;
+    --ink-500: #98c355;  /* base hue */
+    --ink-400: #b5d486;
+    --ink-300: #cee3af;
+    --ink-200: #e3eed2;
+    --ink-100: #f1f6e9;
+    --ink-50:  #fafcf8;  /* theme light */
+
     --white:   #ffffff;
 
     /* --- Periwinkle accent (a certain music-video blazer) --- */
@@ -236,31 +260,31 @@
     --color-accent:         var(--indigo-500);
     --color-accent-hover:   color-mix(in srgb, var(--indigo-500) 85%, #000);
 
-    --color-primary-subtle: var(--gold-50);        /* tinted fills, 10% vibe */
+    --color-primary-subtle: var(--ink-50);        /* tinted fills, 10% vibe */
     --color-accent-subtle:  #eef0fd;
 
     /* Text */
-    --text-strong:   var(--ink-800);
-    --text-body:     var(--ink-700);
-    --text-muted:    var(--ink-500);
+    --text-strong:   var(--gold-800);
+    --text-body:     var(--gold-700);
+    --text-muted:    var(--gold-500);
     --text-on-brand: var(--white);
-    --text-link:     var(--gold-700);
-    --text-link-hover: var(--gold-500);
+    --text-link:     var(--ink-700);
+    --text-link-hover: var(--ink-500);
 
     /* Surfaces */
     --surface-page:      var(--white);
-    --surface-wash:      var(--gold-100);   /* hero / section wash */
-    --surface-wash-soft: var(--gold-50);
+    --surface-wash:      var(--ink-100);   /* hero / section wash */
+    --surface-wash-soft: var(--ink-50);
     --surface-card:      var(--white);
-    --surface-tertiary:  var(--ink-50);     /* "body-tertiary" bands */
-    --surface-code:      var(--ink-100);    /* inline code chip */
-    --surface-code-block: var(--ink-900);   /* fenced code blocks */
-    --surface-ink:       var(--ink-800);    /* footer / dark sections */
+    --surface-tertiary:  var(--gold-50);     /* "body-tertiary" bands */
+    --surface-code:      var(--gold-100);    /* inline code chip */
+    --surface-code-block: var(--gold-900);   /* fenced code blocks */
+    --surface-ink:       var(--gold-800);    /* footer / dark sections */
 
     /* Borders */
-    --border-subtle:  var(--ink-200);
-    --border-default: var(--ink-300);
-    --border-strong:  var(--ink-800);
+    --border-subtle:  var(--gold-200);
+    --border-default: var(--gold-300);
+    --border-strong:  var(--gold-800);
 
     /* Focus ring */
     --focus-ring: color-mix(in srgb, var(--gold-500) 45%, transparent);
