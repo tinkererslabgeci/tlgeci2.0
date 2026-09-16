@@ -83,8 +83,8 @@
     --text-body:     var(--gold-700);
     --text-muted:    var(--gold-500);
     --text-on-brand: var(--white);
-    --text-link:     var(--ink-700);
-    --text-link-hover: var(--ink-500);
+    --text-link:     var(--ink-500);
+    --text-link-hover: var(--ink-300);
 
     /* Surfaces */
     --surface-page:      var(--white);
