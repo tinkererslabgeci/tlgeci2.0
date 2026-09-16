@@ -1,0 +1,106 @@
+/* ============================================================
+   COLORS: Popular theme
+   The default identity is Popular's own: marquee gold, sunglass
+   black, and periwinkle (the Pop!ular music-video palette).
+   Base palette ramps first, then semantic aliases.
+   ============================================================ */
+:root {
+    /* --- Marquee gold (primary) --- */
+    --gold-50:  #fdf7e7;  /* champagne, soft tint */
+    --gold-100: #f9edc9;  /* champagne, hero wash */
+    --gold-200: #f3dfa4;
+    --gold-300: #d9ba7b;
+    --gold-400: #c3963d;
+    --gold-500: #a16207;  /* theme primary, marquee gold */
+    --gold-600: #8a5303;
+    --gold-700: #713f12;  /* deep gold, links & active states */
+    --gold-800: #5c3610;
+    --gold-900: #3d2408;
+
+    --gold-900: #101424;
+    --gold-800: #1c223b;  /* theme dark, primary text on light */
+    --gold-700: #313b5e;
+    --gold-600: #4a5780;
+    --gold-500: #6573a3;  /* base color */
+    --gold-400: #8793ba;
+    --gold-300: #abb5d2;
+    --gold-200: #cfd5e6;
+    --gold-100: #ebeef5;
+    --gold-50:  #f6f8fb;  /* theme light */
+
+    /* --- Ink neutrals (theme dark = sunglass black #141417) --- */
+
+    --ink-900: #071926;
+    --ink-800: #0c273d;  /* theme dark, primary text on light */
+    --ink-700: #144062;
+    --ink-600: #1f5f8b;
+    --ink-500: #2d82b7;
+    --ink-400: #54a5d8;
+    --ink-300: #8bc6ec;
+    --ink-200: #c2e2f6;
+    --ink-100: #e5f3fc;
+    --ink-50:  #f4f9fd;  /* theme light */
+
+    --ink-900: #13190b;
+    --ink-800: #273315;  /* theme dark, primary text on light */
+    --ink-700: #486024;
+    --ink-600: #709735;
+    --ink-500: #98c355;  /* base hue */
+    --ink-400: #b5d486;
+    --ink-300: #cee3af;
+    --ink-200: #e3eed2;
+    --ink-100: #f1f6e9;
+    --ink-50:  #fafcf8;  /* theme light */
+
+    --white:   #ffffff;
+
+    /* --- Periwinkle accent (a certain music-video blazer) --- */
+    --indigo-500: #7d8ff2;
+    --indigo-400: #93a2f5;
+    --indigo-300: #b3bdf8;
+
+    /* --- Bootstrap semantic hues carried by the theme --- */
+    --green-500:  #198754;  /* success */
+    --cyan-500:   #0dcaf0;  /* info */
+    --amber-500:  #ffc107;  /* warning */
+    --red-500:    #dc3545;  /* danger */
+
+    /* ----------------------------------------------------------
+       SEMANTIC ALIASES: reference these in components
+       ---------------------------------------------------------- */
+    --color-primary:        var(--gold-500);
+    --color-primary-hover:  var(--gold-600);
+    --color-primary-active: var(--gold-700);
+    --color-secondary:      var(--ink-800);        /* sunglass black */
+    --color-accent:         var(--indigo-500);
+    --color-accent-hover:   color-mix(in srgb, var(--indigo-500) 85%, #000);
+
+    --color-primary-subtle: var(--ink-50);        /* tinted fills, 10% vibe */
+    --color-accent-subtle:  #eef0fd;
+
+    /* Text */
+    --text-strong:   var(--gold-800);
+    --text-body:     var(--gold-700);
+    --text-muted:    var(--gold-500);
+    --text-on-brand: var(--white);
+    --text-link:     var(--ink-700);
+    --text-link-hover: var(--ink-500);
+
+    /* Surfaces */
+    --surface-page:      var(--white);
+    --surface-wash:      var(--ink-100);   /* hero / section wash */
+    --surface-wash-soft: var(--ink-50);
+    --surface-card:      var(--white);
+    --surface-tertiary:  var(--gold-50);     /* "body-tertiary" bands */
+    --surface-code:      var(--gold-100);    /* inline code chip */
+    --surface-code-block: var(--gold-900);   /* fenced code blocks */
+    --surface-ink:       var(--gold-800);    /* footer / dark sections */
+
+    /* Borders */
+    --border-subtle:  var(--gold-200);
+    --border-default: var(--gold-300);
+    --border-strong:  var(--gold-800);
+
+    /* Focus ring */
+    --focus-ring: color-mix(in srgb, var(--gold-500) 45%, transparent);
+}
