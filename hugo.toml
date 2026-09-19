@@ -34,18 +34,18 @@ buildFuture = true
   parent = "About"
   url = "/organizers/"
   weight = 20
-[[menu.main]]
-  name = "Blog"
-  url = "/blog/"
-  weight = 20
+# [[menu.main]]
+#   name = "Blog"
+#   url = "/blog/"
+#   weight = 20
 [[menu.main]]
   name = "Events"
   url = "/events/"
   weight = 30
-[[menu.main]]
-  name = "Talks"
-  url = "/talks/"
-  weight = 35
+# [[menu.main]]
+#   name = "Talks"
+#   url = "/talks/"
+#   weight = 35
 [[menu.main]]
   name = "Handbook"
   url = "/handbook/"
@@ -111,9 +111,9 @@ buildFuture = true
       [[params.footer.columns.links]]
         label = "About us"
         url = "/about/"
-      [[params.footer.columns.links]]
-        label = "Blog"
-        url = "/blog/"
+      # [[params.footer.columns.links]]
+      #   label = "Blog"
+      #   url = "/blog/"
       [[params.footer.columns.links]]
         label = "Code of Conduct"
         url = "/code-of-conduct/"
