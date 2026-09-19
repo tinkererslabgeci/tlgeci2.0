@@ -1,8 +1,8 @@
 +++
-title = "Sam Example"
-weight = 10
-role = "Lead organizer"
-photo = "images/organizer-1.png"
+title = "Dr. Reena Nair"
+weight = 9
+role = "Faculty in Charge"
+photo = "images/organizers/faculty1.jpg"
 description = ""
 
 [[social]]
