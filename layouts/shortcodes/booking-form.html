@@ -1,0 +1,141 @@
+<div class="g-form-card">
+  <div class="g-card__body">
+    <h3 class="g-card__title">{{ .Get "title" | default "Please fill this form" }}</h3>
+
+    <!-- Success Feedback -->
+    <div id="booking-success" class="g-callout g-callout--tip" style="display: none;">
+      <i class="fa-solid fa-calendar-check"></i>
+      <div class="g-callout__body">
+        <div class="g-callout__title">Booking Confirmed!</div>
+        <p id="booking-success-msg">Your slot has been reserved. A confirmation email will be sent shortly.</p>
+      </div>
+    </div>
+
+    <!-- Error Feedback -->
+    <div id="booking-error" class="g-callout g-callout--warn" style="display: none;">
+      <i class="fa-solid fa-circle-exclamation"></i>
+      <div class="g-callout__body">
+        <div class="g-callout__title">Slot Unavailable</div>
+        <p id="booking-error-msg">Please select another date or time slot.</p>
+      </div>
+    </div>
+
+    <br>
+
+    <form id="booking-form" class="g-form" action="{{ .Get "worker_url" }}" method="POST">
+      <div class="g-form__grid">
+        <div class="g-form__group">
+          <label for="book-name" class="g-form__label">What’s your full name?</label>
+          <br>
+          <input type="text" id="book-name" name="name" class="g-form__input" required placeholder="Alex Rivera" />
+        </div>
+
+        <br>
+
+        <div class="g-form__group">
+          <label for="book-email" class="g-form__label">What’s your personal email address?</label>
+          <br>
+          <input type="email" id="book-email" name="email" class="g-form__input g-form__input__email" required placeholder="alex@example.com" />
+        </div>
+      </div>
+
+      <br>
+
+      <div class="g-form__grid">
+        <div class="g-form__group">
+          <label for="book-date" class="g-form__label">Which day do you wish to use the lab?</label>
+          <br>
+          <input type="date" id="book-date" name="date" class="g-form__input" required />
+        </div>
+
+        <br>
+
+        <div class="g-form__group">
+          <label for="book-slot" class="g-form__label">When do you wish to use the lab?</label>
+          <br>
+          <select id="book-slot" name="slot" class="g-form__input" required>
+            <option value="" disabled selected>Select an open slot</option>
+            <option value="09:00 - 10:00">09:00 AM – 10:00 AM</option>
+            <option value="10:00 - 11:00">10:00 AM – 11:00 AM</option>
+            <option value="11:00 - 12:00">11:00 AM – 12:00 PM</option>
+            <option value="13:00 - 14:00">01:00 PM – 02:00 PM</option>
+            <option value="14:00 - 15:00">02:00 PM – 03:00 PM</option>
+            <option value="15:00 - 16:00">03:00 PM – 04:00 PM</option>
+          </select>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="g-form__group">
+        <label for="book-notes" class="g-form__label">Why do you need the lab?</label>
+        <br>
+        <textarea id="book-notes" name="notes" class="g-form__input g-form__textarea" rows="3" placeholder="Briefly outline why you need the lab ..."></textarea>
+      </div>
+
+      <br>
+
+      <button type="submit" id="book-submit-btn" class="g-btn g-btn--primary g-btn--block">
+        <span>Confirm Reservation</span>
+        <i class="fa-solid fa-arrow-right"></i>
+      </button>
+    </form>
+  </div>
+</div>
+
+<script>
+  (() => {
+    const form = document.getElementById("booking-form");
+    if (!form) return;
+
+    // Prevent booking past dates
+    const dateInput = document.getElementById("book-date");
+    const today = new Date().toISOString().split("T")[0];
+    dateInput.setAttribute("min", today);
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const submitBtn = document.getElementById("book-submit-btn");
+      const successBox = document.getElementById("booking-success");
+      const errorBox = document.getElementById("booking-error");
+      const errorMsg = document.getElementById("booking-error-msg");
+
+      submitBtn.disabled = true;
+      submitBtn.style.opacity = "0.6";
+      successBox.style.display = "none";
+      errorBox.style.display = "none";
+
+      const payload = {
+        name: form.name.value.trim(),
+        email: form.email.value.trim(),
+        date: form.date.value,
+        slot: form.slot.value,
+        notes: form.notes.value.trim()
+      };
+
+      try {
+        const res = await fetch(form.action, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+
+        const data = await res.json();
+
+        if (!res.ok || data.status === "error") {
+          throw new Error(data.message || "This slot is no longer available.");
+        }
+
+        form.reset();
+        form.style.display = "none";
+        successBox.style.display = "flex";
+      } catch (err) {
+        errorMsg.textContent = err.message || "Failed to process booking.";
+        errorBox.style.display = "flex";
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.style.opacity = "1";
+      }
+    });
+  })();
+</script>
