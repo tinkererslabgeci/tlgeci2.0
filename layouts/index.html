@@ -22,7 +22,14 @@
         </div>
       {{ end }}
     </div>
-    {{ with .image }}<div class="g-hero__media"><img src="{{ partial "rel-src.html" . }}" alt="{{ site.Title }}"></div>{{ end }}
+    {{ with .image }}
+      <div class="g-hero__media">
+        <video autoplay loop muted>
+          <source src="{{ partial "rel-src.html" site.Params.ogImage }}" type="video/mp4">
+          Your browser does not support this HTML tag.
+        </video>
+      </div>
+    {{ end }}
   </div>
 </section>
 {{ end }}
@@ -90,6 +97,7 @@
 </section>
 {{- end }}
 
+<!--
 {{- with $posts }}
 <section class="g-bg-white g-section">
   <div class="g-container">
@@ -106,6 +114,7 @@
   </div>
 </section>
 {{ end }}
+-->
 
 {{- with $orgs }}
 {{- $team := $.Params.team -}}
@@ -114,7 +123,7 @@
     <div class="g-section-head g-section-head--center">
       <span class="g-eyebrow">{{ with $team }}{{ .eyebrow | default "The team" }}{{ else }}The team{{ end }}</span>
       <h2>{{ with $team }}{{ .title | default "Meet the organizers" }}{{ else }}Meet the organizers{{ end }}</h2>
-      <p class="g-lead">{{ with $team }}{{ .lead | default "The volunteers who make every meetup happen." }}{{ else }}The volunteers who make every meetup happen.{{ end }}</p>
+      <p class="g-lead">{{ with $team }}{{ .lead | default "The volunteers who make every meetup happen." }}{{ else }}The volunteers who make things happen.{{ end }}</p>
     </div>
     <div class="g-grid-3" style="margin-top:var(--space-5)">
       {{ range first 3 . }}{{ partial "organizer-card.html" . }}{{ end }}

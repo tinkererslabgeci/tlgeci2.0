@@ -57,7 +57,7 @@ buildFuture = true
   brandName = "Tinkerers’ Lab"
   brandSub = "GECI"
   logo = "images/logo.png"
-  ogImage = "images/hero.png"
+  ogImage = "images/hero.mp4"
   landAcknowledgement = "2nd Floor, Administrative Block\nGovt. Engineering College Idukki\n685603 – Painavu\nIdukki, Kerala"
 
   [params.brand]
@@ -67,7 +67,7 @@ buildFuture = true
     # fontDisplay   = "Quantico, Inter, sans-serif"
 
   [params.cta]
-    label = "RSVP"
+    label = "Book a Slot"
     url   = "https://example.com/rsvp"
     icon  = "fa-solid fa-calendar"
 
