@@ -8,7 +8,7 @@ title = "Home"
   image = "images/hero.png"
   [[hero.ctas]]
     label = "Book a Slot"
-    url = "https://example.com/rsvp"
+    url = "/booking/"
     icon = "fa-solid fa-calendar"
     variant = "primary"
   [[hero.ctas]]

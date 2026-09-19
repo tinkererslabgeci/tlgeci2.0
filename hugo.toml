@@ -68,7 +68,7 @@ buildFuture = true
 
   [params.cta]
     label = "Book a Slot"
-    url   = "https://example.com/rsvp"
+    url   = "/booking/"
     icon  = "fa-solid fa-calendar"
 
   # The community lives in chat between events. Set this and a "Join the chat"
