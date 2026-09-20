@@ -35,7 +35,7 @@
         <div class="g-form__group">
           <label for="book-name" class="g-form__label">What’s your KTU ID?</label>
           <br>
-          <input type="text" id="book-ktuid" name="ktu_id" class="g-form__input g-form__input__ktuid" required placeholder="IDK24CS001" />
+          <input type="text" id="book-ktuid" name="ktuid" class="g-form__input g-form__input__ktuid" required placeholder="IDK24CS001" />
         </div>
 
         <br>
@@ -43,7 +43,7 @@
         <div class="g-form__group">
           <label for="book-name" class="g-form__label">What’s your phone number?</label>
           <br>
-          <input type="tel" id="book-phone" name="phoneno" class="g-form__input g-form__input__phone" required placeholder="939 309 3930" />
+          <input type="tel" id="book-phone" name="phone" class="g-form__input g-form__input__phone" required placeholder="939 309 3930" />
         </div>
 
         <br>
@@ -51,7 +51,7 @@
         <div class="g-form__group">
           <label for="book-email" class="g-form__label">What’s your personal email address?</label>
           <br>
-          <input type="email" id="book-email" name="email_id" class="g-form__input g-form__input__email" required placeholder="lahayilvakkachan@gmail.com" />
+          <input type="email" id="book-email" name="email" class="g-form__input g-form__input__email" required placeholder="lahayilvakkachan@gmail.com" />
         </div>
       </div>
 
@@ -176,10 +176,10 @@
             count = count - 1 < 0 ? 0 : count - 1;
             cntVal.innerText = count;
 
+            summaryData[tool["name"]] = count;
             if (count < 1)
               delete summaryData[tool["name"]];
             console.log(summaryData);
-            summaryData[tool["name"]] = count;
 
             summaryEntry.remove();
             if (count > 0) {
@@ -224,12 +224,14 @@
 
       const payload = {
         name: form.name.value.trim(),
-        email: form.email_id.value.trim(),
+        ktuid: form.ktuid.value.trim(),
+        phone: form.phone.value.trim(),
+        email: form.email.value.trim(),
         slot_date: form.slot_date.value,
         slot_time_from: form.slot_time_from.value,
         slote_time_to: form.slot_time_to.value,
         purpose: form.purpose.value.trim(),
-        tools: summaryData,
+        tools: summaryData
       };
 
       console.log(payload);
