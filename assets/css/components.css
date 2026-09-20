@@ -441,7 +441,12 @@ details {
   border: var(--border-width) solid var(--border-subtle);
   border-radius: 8px;
   padding: 0.5rem 0.5rem 0.5rem 0.5rem;
-  overflow-x: scroll;
+  overflow: scroll;
+}
+
+details[open] {
+  white-space: nowrap;
+  overflow-y: scroll;
 }
 
 details[open] summary {
