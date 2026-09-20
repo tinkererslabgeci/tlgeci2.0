@@ -33,9 +33,17 @@
         <br>
 
         <div class="g-form__group">
+          <label for="book-name" class="g-form__label">What’s your KTU ID?</label>
+          <br>
+          <input type="text" id="book-name" name="ktu_id" class="g-form__input g-form__input__ktuid" required placeholder="IDK24CS001" />
+        </div>
+
+        <br>
+
+        <div class="g-form__group">
           <label for="book-email" class="g-form__label">What’s your personal email address?</label>
           <br>
-          <input type="email" id="book-email" name="email" class="g-form__input g-form__input__email" required placeholder="alex@example.com" />
+          <input type="email" id="book-email" name="email_id" class="g-form__input g-form__input__email" required placeholder="alex@example.com" />
         </div>
       </div>
 
@@ -45,23 +53,23 @@
         <div class="g-form__group">
           <label for="book-date" class="g-form__label">Which day do you wish to use the lab?</label>
           <br>
-          <input type="date" id="book-date" name="date" class="g-form__input" required />
+          <input type="date" id="book-date" name="slot_date" class="g-form__input" required />
         </div>
+      </div>
 
         <br>
 
+      <div class="g-form__grid">
         <div class="g-form__group">
-          <label for="book-slot" class="g-form__label">When do you wish to use the lab?</label>
+          <label for="book-slot-time" class="g-form__label">What time do you wish to use the lab?</label>
           <br>
-          <select id="book-slot" name="slot" class="g-form__input" required>
-            <option value="" disabled selected>Select an open slot</option>
-            <option value="09:00 - 10:00">09:00 AM – 10:00 AM</option>
-            <option value="10:00 - 11:00">10:00 AM – 11:00 AM</option>
-            <option value="11:00 - 12:00">11:00 AM – 12:00 PM</option>
-            <option value="13:00 - 14:00">01:00 PM – 02:00 PM</option>
-            <option value="14:00 - 15:00">02:00 PM – 03:00 PM</option>
-            <option value="15:00 - 16:00">03:00 PM – 04:00 PM</option>
-          </select>
+          <div class="g-form__group">
+            <label class="g-form__label">From</label>
+            <input type="time" id="book-time" name="slot_time_to" class="g-form__input" required/>
+            <br>
+            <label class="g-form__label">To</label>
+            <input type="time" id="book-time" name="slot_time_from" class="g-form__input" required/>
+          </div>
         </div>
       </div>
 

@@ -380,6 +380,10 @@ pre:hover .g-copy, .g-copy:focus-visible { opacity: 1; }
   height: 2.5rem;
   padding: 0.5rem;
 }
+.g-form__input__ktuid {
+  font-family: monospace;
+  text-transform: uppercase;
+}
 .g-form__input__email {
   font-family: monospace;
 }
