@@ -1,5 +1,5 @@
 +++
-title = "Organizers"
+title = "Team"
 eyebrow = "The team"
-lead = "Your community is run by volunteers. Want to help? Say hi."
+lead = "Tinkerers’ Lab at GEC Idukki is run by volunteers, run by you. Get to know them."
 +++
