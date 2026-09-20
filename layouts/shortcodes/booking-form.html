@@ -84,7 +84,7 @@
       <div class="g-form__group">
         <label for="book-notes" class="g-form__label">Why do you need the lab?</label>
         <br>
-        <textarea id="book-notes" name="notes" class="g-form__input g-form__textarea" rows="3" placeholder="Briefly outline why you need the lab ..."></textarea>
+        <textarea id="book-notes" name="purpose" class="g-form__input g-form__textarea" rows="3" placeholder="Briefly outline why you need the lab ..."></textarea>
       </div>
 
       <br>
@@ -118,6 +118,7 @@
       throw new Error("failed to fetch tools data: ${resp.status}");
     }
     const toolsData = await resp.json();
+    let summaryData = {};
 
     const toolsGroupCheckbox = document.getElementById("tools-group-checkbox");
     if (toolsGroupCheckbox) {
@@ -158,6 +159,9 @@
             count = count + 1 > tool["qty"] ? tool["qty"] : count + 1;
             cntVal.innerText = count;
 
+            summaryData[tool["name"]] = count;
+            console.log(summaryData);
+
             summaryEntry.remove();
             summaryEntry.textContent = `${tool['name']} (${count} Nos)`;
             toolsSummary.appendChild(summaryEntry);
@@ -171,6 +175,11 @@
           decBtn.addEventListener("click", () => {
             count = count - 1 < 0 ? 0 : count - 1;
             cntVal.innerText = count;
+
+            if (count < 1)
+              delete summaryData[tool["name"]];
+            console.log(summaryData);
+            summaryData[tool["name"]] = count;
 
             summaryEntry.remove();
             if (count > 0) {
@@ -192,9 +201,7 @@
         toolsGroupCheckbox.appendChild(details);
       });
     }
-  })();
 
-  (() => {
     const form = document.getElementById("booking-form");
     if (!form) return;
 
@@ -217,11 +224,15 @@
 
       const payload = {
         name: form.name.value.trim(),
-        email: form.email.value.trim(),
-        date: form.date.value,
-        slot: form.slot.value,
-        notes: form.notes.value.trim()
+        email: form.email_id.value.trim(),
+        slot_date: form.slot_date.value,
+        slot_time_from: form.slot_time_from.value,
+        slote_time_to: form.slot_time_to.value,
+        purpose: form.purpose.value.trim(),
+        tools: summaryData,
       };
+
+      console.log(payload);
 
       try {
         const res = await fetch(form.action, {
