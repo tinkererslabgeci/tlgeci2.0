@@ -93,6 +93,10 @@
           <label class="g-form__label">Select the equipments you require from the list below.</label>
           <br>
           <ul id="tools-group-checkbox" style="padding: 0; margin: 0; margin-top: 0.5rem;"></ul>
+          <fieldset class="g-fieldset">
+            <legend class="g-form__label">Summary</legend>
+            <ol id="equipments-summary" class="g-equipments__summary"></ol>
+          </fieldset>
       </div>
 
       <br>
@@ -127,17 +131,13 @@
 
         const toolsList = document.createElement("ul");
 
+        const toolsSummary = document.getElementById("equipments-summary");
+
         toolsData[key].forEach((tool) => {
           const toolLabel = document.createElement("label");
-          // const checkbox = document.createElement("input");
-          // checkbox.type = "checkbox";
-          // checkbox.id = tool["name"];
-          // checkbox.value = tool["name"];
-
           const equipmentName = document.createElement("label");
           equipmentName.textContent = tool["name"];
           equipmentName.classList.add("g-equipment__label");
-          // equipmentName.htmlFor = tool["name"];
 
           const cntDiv = document.createElement("span");
           let count = 0;
@@ -145,6 +145,9 @@
           const cntVal = document.createElement("span");
           cntVal.classList.add("g-equipment__cnt");
           cntVal.textContent = count;
+
+          const summaryEntry = document.createElement("li");
+          summaryEntry.textContent = "${tool['name']} x${cntVal}";
 
           const incBtn = document.createElement("button");
           incBtn.classList.add("g-equipment__btn");
@@ -154,6 +157,10 @@
           incBtn.addEventListener("click", () => {
             count = count + 1 > tool["qty"] ? tool["qty"] : count + 1;
             cntVal.innerText = count;
+
+            summaryEntry.remove();
+            summaryEntry.textContent = `${tool['name']} (${count} Nos)`;
+            toolsSummary.appendChild(summaryEntry);
           });
 
           const decBtn = document.createElement("button");
@@ -164,13 +171,18 @@
           decBtn.addEventListener("click", () => {
             count = count - 1 < 0 ? 0 : count - 1;
             cntVal.innerText = count;
+
+            summaryEntry.remove();
+            if (count > 0) {
+              summaryEntry.textContent = `${tool['name']} (${count} Nos)`;
+              toolsSummary.appendChild(summaryEntry);
+            }
           });
 
           cntDiv.appendChild(incBtn);
           cntDiv.appendChild(cntVal);
           cntDiv.appendChild(decBtn);
 
-          // toolLabel.appendChild(checkbox);
           toolLabel.appendChild(cntDiv);
           toolLabel.appendChild(equipmentName);
           toolsList.appendChild(toolLabel);

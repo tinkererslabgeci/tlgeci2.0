@@ -394,7 +394,6 @@ pre:hover .g-copy, .g-copy:focus-visible { opacity: 1; }
   resize: none;
   height: 8rem;
 }
-
 .g-fieldset {
   border: var(--border-width) solid var(--border-subtle);
   border-radius: 8px;
@@ -413,7 +412,6 @@ pre:hover .g-copy, .g-copy:focus-visible { opacity: 1; }
 .g-equipment__label {
   font-size: 0.9rem;
   padding-left: 1rem;
-  padding-right: 0.5rem;
 }
 .g-equipment__cnt {
   font-family: monospace;
@@ -424,6 +422,10 @@ pre:hover .g-copy, .g-copy:focus-visible { opacity: 1; }
   font-size: 0.8rem;
   width: 0.4rem;
   height: 0.4rem;
+}
+.g-equipments__summary {
+  font-size: 0.9rem;
+  margin-left: 1rem;
 }
 
 /* Definitions that are more global than specific */
