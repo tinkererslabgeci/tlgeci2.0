@@ -412,7 +412,18 @@ pre:hover .g-copy, .g-copy:focus-visible { opacity: 1; }
 }
 .g-equipment__label {
   font-size: 0.9rem;
-  padding-left: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 0.5rem;
+}
+.g-equipment__cnt {
+  font-family: monospace;
+  padding: 0.5rem;
+}
+.g-equipment__btn {
+  font-family: monospace;
+  font-size: 0.8rem;
+  width: 0.4rem;
+  height: 0.4rem;
 }
 
 /* Definitions that are more global than specific */

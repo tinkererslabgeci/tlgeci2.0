@@ -129,23 +129,54 @@
 
         toolsData[key].forEach((tool) => {
           const toolLabel = document.createElement("label");
-          const checkbox = document.createElement("input");
-          checkbox.type = "checkbox";
-          checkbox.id = tool["name"];
-          checkbox.value = tool["name"];
+          // const checkbox = document.createElement("input");
+          // checkbox.type = "checkbox";
+          // checkbox.id = tool["name"];
+          // checkbox.value = tool["name"];
 
           const equipmentName = document.createElement("label");
           equipmentName.textContent = tool["name"];
           equipmentName.classList.add("g-equipment__label");
-          equipmentName.htmlFor = tool["name"];
+          // equipmentName.htmlFor = tool["name"];
 
-          toolLabel.appendChild(checkbox);
+          const cntDiv = document.createElement("span");
+          let count = 0;
+
+          const cntVal = document.createElement("span");
+          cntVal.classList.add("g-equipment__cnt");
+          cntVal.textContent = count;
+
+          const incBtn = document.createElement("button");
+          incBtn.classList.add("g-equipment__btn");
+          incBtn.classList.add("g-btn");
+          incBtn.type = "button";
+          incBtn.textContent = "+";
+          incBtn.addEventListener("click", () => {
+            count = count + 1 > tool["qty"] ? tool["qty"] : count + 1;
+            cntVal.innerText = count;
+          });
+
+          const decBtn = document.createElement("button");
+          decBtn.classList.add("g-equipment__btn");
+          decBtn.classList.add("g-btn");
+          decBtn.type = "button";
+          decBtn.textContent = "-";
+          decBtn.addEventListener("click", () => {
+            count = count - 1 < 0 ? 0 : count - 1;
+            cntVal.innerText = count;
+          });
+
+          cntDiv.appendChild(incBtn);
+          cntDiv.appendChild(cntVal);
+          cntDiv.appendChild(decBtn);
+
+          // toolLabel.appendChild(checkbox);
+          toolLabel.appendChild(cntDiv);
           toolLabel.appendChild(equipmentName);
           toolsList.appendChild(toolLabel);
         });
 
         details.appendChild(toolsList);
-
         toolsGroupCheckbox.appendChild(details);
       });
     }
