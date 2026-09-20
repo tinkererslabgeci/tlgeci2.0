@@ -106,7 +106,8 @@
 </div>
 
 <script>
-  /* Fetch tools.json from static */
+  /* Fetch tools.json from static and list each tool by group. These groups can be
+     expanded to reveal tools under the group. */
   (async () => {
     const resp = await fetch("/data/tools.json");
     if (!resp.ok) {
@@ -123,6 +124,27 @@
         const summary = document.createElement("summary");
         summary.textContent = key;
         details.appendChild(summary);
+
+        const toolsList = document.createElement("ul");
+
+        toolsData[key].forEach((tool) => {
+          const toolLabel = document.createElement("label");
+          const checkbox = document.createElement("input");
+          checkbox.type = "checkbox";
+          checkbox.id = tool["name"];
+          checkbox.value = tool["name"];
+
+          const equipmentName = document.createElement("label");
+          equipmentName.textContent = tool["name"];
+          equipmentName.classList.add("g-equipment__label");
+          equipmentName.htmlFor = tool["name"];
+
+          toolLabel.appendChild(checkbox);
+          toolLabel.appendChild(equipmentName);
+          toolsList.appendChild(toolLabel);
+        });
+
+        details.appendChild(toolsList);
 
         toolsGroupCheckbox.appendChild(details);
       });
