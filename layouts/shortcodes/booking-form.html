@@ -1,6 +1,5 @@
 <div class="g-form-card">
   <div class="g-card__body">
-    <h3 class="g-card__title">{{ .Get "title" | default "Please fill this form" }}</h3>
 
     <!-- Success Feedback -->
     <div id="booking-success" class="g-callout g-callout--tip" style="display: none;">
@@ -22,7 +21,8 @@
 
     <br>
 
-    <form id="booking-form" class="g-form" action="{{ .Get "worker_url" }}" method="POST">
+    <!-- <form id="booking-form" class="g-form" action="{{ .Get "worker_url" }}" method="POST"> -->
+    <form id="booking-form" class="g-form" method="POST">
       <div class="g-form__grid">
         <div class="g-form__group">
           <label for="book-name" class="g-form__label">What’s your full name?</label>
@@ -63,12 +63,10 @@
         <div class="g-form__group">
           <label for="book-slot-time" class="g-form__label">What time do you wish to use the lab?</label>
           <br>
-          <div class="g-form__group">
-            <label class="g-form__label">From</label>
-            <input type="time" id="book-time" name="slot_time_to" class="g-form__input" required/>
-            <br>
-            <label class="g-form__label">To</label>
+          <div class="g-form__group" style="display: flex; align-items: center; gap: 15px;">
             <input type="time" id="book-time" name="slot_time_from" class="g-form__input" required/>
+            <label class="g-form__label" style="font-size: 1.2rem;">&rarr;</label>
+            <input type="time" id="book-time" name="slot_time_to" class="g-form__input" required/>
           </div>
         </div>
       </div>
@@ -83,6 +81,14 @@
 
       <br>
 
+      <div class="g-form__group">
+          <label class="g-form__label">Select the equipments you require from the list below.</label>
+          <br>
+          <ul id="tools-group-checkbox" style="padding: 0; margin: 0; margin-top: 0.5rem;"></ul>
+      </div>
+
+      <br>
+
       <button type="submit" id="book-submit-btn" class="g-btn g-btn--primary g-btn--block">
         <span>Confirm Reservation</span>
         <i class="fa-solid fa-arrow-right"></i>
@@ -92,6 +98,29 @@
 </div>
 
 <script>
+  /* Fetch tools.json from static */
+  (async () => {
+    const resp = await fetch("/data/tools.json");
+    if (!resp.ok) {
+      throw new Error("failed to fetch tools data: ${resp.status}");
+    }
+    const toolsData = await resp.json();
+
+    const toolsGroupCheckbox = document.getElementById("tools-group-checkbox");
+    if (toolsGroupCheckbox) {
+      console.log(toolsData);
+      Object.keys(toolsData).forEach((key) => {
+        const details = document.createElement("details");
+
+        const summary = document.createElement("summary");
+        summary.textContent = key;
+        details.appendChild(summary);
+
+        toolsGroupCheckbox.appendChild(details);
+      });
+    }
+  })();
+
   (() => {
     const form = document.getElementById("booking-form");
     if (!form) return;

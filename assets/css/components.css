@@ -388,5 +388,39 @@ pre:hover .g-copy, .g-copy:focus-visible { opacity: 1; }
   font-family: monospace;
 }
 .g-form__textarea {
+  resize: none;
   height: 8rem;
+}
+.g-fieldset {
+  border: var(--border-width) solid var(--border-subtle);
+  border-radius: 8px;
+}
+.g-checkbox-list {
+  display: block;
+}
+.g-equipment__check {
+  display: flex;
+  width: 100%;
+  background: none;
+  border: none;
+  text-align: center;
+  align-items: center;
+}
+.g-equipment__label {
+  font-size: 0.9rem;
+  padding-left: 0.5rem;
+  padding-bottom: 0.25rem;
+}
+
+details {
+  font-size: 0.9rem;
+  border: var(--border-width) solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 0.5em 0.5em 0;
+}
+
+summary {
+  font-size: 0.9rem;
+  margin: -0.5em -0.5em 0;
+  padding: 0.5em;
 }
