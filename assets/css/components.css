@@ -384,13 +384,14 @@ pre:hover .g-copy, .g-copy:focus-visible { opacity: 1; }
   font-family: monospace;
   text-transform: uppercase;
 }
-.g-form__input__email {
+.g-form__input__email, .g-form__input__phone {
   font-family: monospace;
 }
 .g-form__textarea {
   resize: none;
   height: 8rem;
 }
+
 .g-fieldset {
   border: var(--border-width) solid var(--border-subtle);
   border-radius: 8px;
