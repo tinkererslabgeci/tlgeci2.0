@@ -109,10 +109,16 @@
   </div>
 </div>
 
-<script>
-  /* Fetch tools.json from static and list each tool by group. These groups can be
-     expanded to reveal tools under the group. */
+<script type="module">
+  import { sheetapi } from "/js/sheetapi.js";
+
   (async () => {
+    const bookings = await sheetapi.get();
+    console.log(bookings);
+
+    /* Fetch tools.json from static and list each tool by group. These groups can be
+       expanded to reveal tools under the group. */
+
     const resp = await fetch("/data/tools.json");
     if (!resp.ok) {
       throw new Error("failed to fetch tools data: ${resp.status}");
@@ -207,8 +213,6 @@
 
     // Prevent booking past dates
     const dateInput = document.getElementById("book-date");
-    const today = new Date().toISOString().split("T")[0];
-    dateInput.setAttribute("min", today);
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
@@ -229,12 +233,14 @@
         email: form.email.value.trim(),
         slot_date: form.slot_date.value,
         slot_time_from: form.slot_time_from.value,
-        slote_time_to: form.slot_time_to.value,
+        slot_time_to: form.slot_time_to.value,
         purpose: form.purpose.value.trim(),
-        tools: summaryData
+        tools: summaryData,
       };
 
       console.log(payload);
+      const result = await sheetapi.post(payload);
+      console.log(result);
 
       try {
         const res = await fetch(form.action, {
