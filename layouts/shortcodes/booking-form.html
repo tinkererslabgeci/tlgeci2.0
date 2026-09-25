@@ -113,9 +113,6 @@
   import { sheetapi } from "/js/sheetapi.js";
 
   (async () => {
-    const bookings = await sheetapi.get();
-    console.log(bookings);
-
     /* Fetch tools.json from static and list each tool by group. These groups can be
        expanded to reveal tools under the group. */
 
@@ -208,6 +205,9 @@
       });
     }
 
+    const bookings = await sheetapi.get();
+    console.log(bookings);
+
     const form = document.getElementById("booking-form");
     if (!form) return;
 
@@ -258,9 +258,11 @@
         form.reset();
         form.style.display = "none";
         successBox.style.display = "flex";
+
       } catch (err) {
         errorMsg.textContent = err.message || "Failed to process booking.";
         errorBox.style.display = "flex";
+
       } finally {
         submitBtn.disabled = false;
         submitBtn.style.opacity = "1";

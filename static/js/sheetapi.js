@@ -1,4 +1,4 @@
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbymgrxd5qmS5J66QM8QL_0-BQ2kQMRgkjhSkvyxSUWb2VWhExErG2O72mqC5jYvzSh7xg/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx48NB3B4S5MmLiadjq5UAh7BMNfS2Lj-9T6pc8ZSDmM0NNKvQmJSqW1mmoX-oKMaFwlg/exec";
 
 export const sheetapi = {
   async get() {
@@ -13,7 +13,7 @@ export const sheetapi = {
     const result = await response.json();
     if (result.status >= 400)
       throw new Error(response.data?.error || "failed to fetch data");
-    return result.data;
+    return result;
   },
 
   async post(payload) {
