@@ -1,4 +1,4 @@
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx48NB3B4S5MmLiadjq5UAh7BMNfS2Lj-9T6pc8ZSDmM0NNKvQmJSqW1mmoX-oKMaFwlg/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyYfpCV6Gj4yyyVt2UwGN2T_kPeaGo_LncJ5Mp3d3ngxuSVH-_F2zAKYeqAW_W_H3bTyQ/exec";
 
 export const sheetapi = {
   async get() {

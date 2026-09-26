@@ -162,7 +162,7 @@
             count = count + 1 > tool["qty"] ? tool["qty"] : count + 1;
             cntVal.innerText = count;
 
-            summaryData[tool["name"]] = count;
+            summaryData[tool["name"]] = [count, tool["qty"]];
             console.log(summaryData);
 
             summaryEntry.remove();
@@ -179,7 +179,7 @@
             count = count - 1 < 0 ? 0 : count - 1;
             cntVal.innerText = count;
 
-            summaryData[tool["name"]] = count;
+            summaryData[tool["name"]] = [count, tool["qty"]];
             if (count < 1)
               delete summaryData[tool["name"]];
             console.log(summaryData);
@@ -238,26 +238,10 @@
         tools: summaryData,
       };
 
-      console.log(payload);
-      const result = await sheetapi.post(payload);
-      console.log(result);
-
       try {
-        const res = await fetch(form.action, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload)
-        });
-
-        const data = await res.json();
-
-        if (!res.ok || data.status === "error") {
-          throw new Error(data.message || "This slot is no longer available.");
-        }
-
-        form.reset();
-        form.style.display = "none";
-        successBox.style.display = "flex";
+        console.log(payload);
+        const result = await sheetapi.post(payload);
+        console.log(result);
 
       } catch (err) {
         errorMsg.textContent = err.message || "Failed to process booking.";
