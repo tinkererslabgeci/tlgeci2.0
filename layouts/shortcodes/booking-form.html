@@ -102,8 +102,14 @@
       <br>
 
       <button type="submit" id="book-submit-btn" class="g-btn g-btn--primary g-btn--block">
-        <span>Confirm Reservation</span>
-        <i class="fa-solid fa-arrow-right"></i>
+        <span id="btn-confirm-reservation" style="display: flex;">
+          <span>Confirm Reservation &thinsp;</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </span>
+        <span id="btn-checking-availability" style="display: none;">
+          <span>Checking Availability &ensp;</span>
+          <i class="fa fa-spinner"></i>
+        </span>
       </button>
     </form>
   </div>
@@ -221,8 +227,15 @@
       const errorBox = document.getElementById("booking-error");
       const errorMsg = document.getElementById("booking-error-msg");
 
+      const btnMsgConfirm = document.getElementById("btn-confirm-reservation");
+      const btnMsgChecking = document.getElementById("btn-checking-availability");
+
       submitBtn.disabled = true;
       submitBtn.style.opacity = "0.6";
+      btnMsgConfirm.style.display = "none";
+      btnMsgChecking.style.display = "flex";
+
+
       successBox.style.display = "none";
       errorBox.style.display = "none";
 
@@ -250,6 +263,8 @@
       } finally {
         submitBtn.disabled = false;
         submitBtn.style.opacity = "1";
+        btnMsgConfirm.style.display = "flex";
+        btnMsgChecking.style.display = "none";
       }
     });
   })();
