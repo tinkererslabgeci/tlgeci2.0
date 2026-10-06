@@ -1,26 +1,6 @@
 <div class="g-form-card">
   <div class="g-card__body">
 
-    <!-- Success Feedback -->
-    <div id="booking-success" class="g-callout g-callout--tip" style="display: none;">
-      <i class="fa-solid fa-calendar-check"></i>
-      <div class="g-callout__body">
-        <div class="g-callout__title">Booking Confirmed!</div>
-        <p id="booking-success-msg">Your slot has been reserved. A confirmation email will be sent shortly.</p>
-      </div>
-    </div>
-
-    <!-- Error Feedback -->
-    <div id="booking-error" class="g-callout g-callout--warn" style="display: none;">
-      <i class="fa-solid fa-circle-exclamation"></i>
-      <div class="g-callout__body">
-        <div class="g-callout__title">Slot Unavailable</div>
-        <p id="booking-error-msg">Please select another date or time slot.</p>
-      </div>
-    </div>
-
-    <br>
-
     <!-- <form id="booking-form" class="g-form" action="{{ .Get "worker_url" }}" method="POST"> -->
     <form id="booking-form" class="g-form" method="POST">
       <div class="g-form__grid">
@@ -97,6 +77,30 @@
             <legend class="g-form__label">Summary</legend>
             <ol id="equipments-summary" class="g-equipments__summary"></ol>
           </fieldset>
+      </div>
+
+      <br>
+
+      <div id="form-response-callout-success" class="g-callout g-callout--tip" style="display:none;">
+        <i id="form-response--icon" class="fa-solid fa-calendar-check"></i>
+        <div class="g-callout__body">
+          <div id="form-response-msg-title-success" class="g-callout__title">
+            Your request is under review.
+          </div>
+          <p id="form-response-msg-body-success">
+          </p>
+        </div>
+      </div>
+
+      <div id="form-response-callout-error" class="g-callout g-callout--warn" style="display:none;">
+        <i id="form-response--icon" class="fa-solid fa-circle-exclamation"></i>
+        <div class="g-callout__body">
+          <div id="form-response-msg-title-success" class="g-callout__title">
+            We cannot reserve your slot.
+          </div>
+          <p id="form-response-msg-body-error">
+          </p>
+        </div>
       </div>
 
       <br>
@@ -223,9 +227,12 @@
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
       const submitBtn = document.getElementById("book-submit-btn");
-      const successBox = document.getElementById("booking-success");
-      const errorBox = document.getElementById("booking-error");
-      const errorMsg = document.getElementById("booking-error-msg");
+
+      const successMsg = document.getElementById("form-response-msg-body-success");
+      const successBox = document.getElementById("form-response-callout-success");
+
+      const errorMsg = document.getElementById("form-response-msg-body-error");
+      const errorBox = document.getElementById("form-response-callout-error");
 
       const btnMsgConfirm = document.getElementById("btn-confirm-reservation");
       const btnMsgChecking = document.getElementById("btn-checking-availability");
@@ -234,10 +241,6 @@
       submitBtn.style.opacity = "0.6";
       btnMsgConfirm.style.display = "none";
       btnMsgChecking.style.display = "flex";
-
-
-      successBox.style.display = "none";
-      errorBox.style.display = "none";
 
       const payload = {
         name: form.name.value.trim(),
@@ -254,10 +257,22 @@
       try {
         console.log(payload);
         const result = await sheetapi.post(payload);
+
+        if (result.status === "error") {
+          errorMsg.textContent = result.message;
+          successBox.style.display = "none";
+          errorBox.style.display = "flex";
+        }
+        if (result.status === "success") {
+          successMsg.textContent = result.message;
+          errorBox.style.display = "none";
+          successBox.style.display = "flex";
+        }
+
         console.log(result);
 
       } catch (err) {
-        errorMsg.textContent = err.message || "Failed to process booking.";
+        errorMsg.textContent = err.message;
         errorBox.style.display = "flex";
 
       } finally {
