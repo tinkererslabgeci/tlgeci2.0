@@ -162,8 +162,8 @@
 
       <!-- Filter Controls (components.css) -->
       <div class="g-admin__filters">
-        <button type="button" class="g-filter is-active" data-filter="ALL">All</button>
-        <button type="button" class="g-filter" data-filter="PENDING">Pending</button>
+        <button type="button" class="g-filter" data-filter="ALL">All</button>
+        <button type="button" class="g-filter is-active" data-filter="PENDING">Pending</button>
         <button type="button" class="g-filter" data-filter="APPROVED">Approved</button>
         <button type="button" class="g-filter" data-filter="DENIED">Denied</button>
       </div>
@@ -209,7 +209,7 @@
     const errorMsg = document.getElementById("admin-callout-error-msg");
 
     let allBookings = [];
-    let currentFilter = "ALL";
+    let currentFilter = "PENDING";
 
     function showFeedback(type, message) {
       if (type === "success") {
