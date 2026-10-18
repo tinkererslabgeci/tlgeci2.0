@@ -1,0 +1,405 @@
+<style>
+  /* Admin Dashboard Layout & Scaffolding */
+  .g-admin__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    border-bottom: var(--border-width) solid var(--border-subtle);
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .g-admin__title {
+    margin: 0;
+    font-size: 1.4rem;
+    color: var(--text-strong);
+  }
+
+  .g-admin__count {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .g-admin__filters {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+
+  .g-admin__list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .g-admin__loading,
+  .g-admin__empty {
+    text-align: center;
+    padding: 2.5rem 1rem;
+    color: var(--text-muted);
+  }
+
+  .g-admin__empty {
+    border: 1px dashed var(--border-subtle);
+    border-radius: var(--radius-lg, 8px);
+  }
+
+  .g-admin__fetch-error {
+    color: #c8102e;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  /* Booking Card Structure */
+  .g-admin-card {
+    background: var(--surface-card);
+    border: var(--border-width) solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 1.2rem;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .g-admin-card__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding: 0rem 1rem;
+  }
+
+  .g-admin-card__name {
+    font-size: 1.1rem;
+    font-weight: var(--weight-semibold);
+    color: var(--text-strong);
+  }
+
+  .g-admin-card__link {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .g-admin-card__meta {
+    font-family: monospace;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  .g-admin-card__details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.8rem;
+    background: var(--surface-wash-soft, #f9fafb);
+    padding: 0.8rem 1rem;
+    border-radius: var(--radius-md, 6px);
+  }
+
+  .g-admin-card__field-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: bold;
+    display: block;
+  }
+
+  .g-admin-card__field-val {
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-top: 2px;
+    color: var(--text-body);
+  }
+
+  .g-admin-card__field-val--purpose {
+    font-size: 0.9rem;
+    font-weight: normal;
+  }
+
+  .g-admin-card__tools-details {
+    padding: 0.4rem 0.6rem;
+    border-radius: var(--radius-md, 6px);
+  }
+
+  .g-admin-card__tools-summary {
+    font-weight: 500;
+    cursor: pointer;
+    color: var(--text-strong);
+  }
+
+  .g-admin-card__tools-list {
+    margin: 0.5rem 0 0.2rem 1.2rem;
+    padding: 0;
+    font-size: 0.9rem;
+  }
+
+  .g-admin-card__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.6rem;
+    padding-top: 1rem;
+    border-top: var(--border-width) solid var(--border-subtle);
+  }
+
+  .g-admin-card__actions button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+</style>
+
+<div class="g-form-card">
+  <div class="g-card__body">
+    <!-- Header & Filter Bar -->
+    <div class="g-admin__header">
+      <div>
+        <h2 class="g-admin__title">Lab Bookings Dashboard</h2>
+        <span id="admin-summary-count" class="g-admin__count">Loading reservations...</span>
+      </div>
+
+      <!-- Filter Controls (components.css) -->
+      <div class="g-admin__filters">
+        <button type="button" class="g-filter is-active" data-filter="ALL">All</button>
+        <button type="button" class="g-filter" data-filter="PENDING">Pending</button>
+        <button type="button" class="g-filter" data-filter="APPROVED">Approved</button>
+        <button type="button" class="g-filter" data-filter="DENIED">Denied</button>
+      </div>
+    </div>
+
+    <!-- Notification Callouts (components.css) -->
+    <div id="admin-callout-success" class="g-callout g-callout--tip" style="display: none;">
+      <i class="fa-solid fa-circle-check"></i>
+      <div class="g-callout__body">
+        <div class="g-callout__title">Success</div>
+        <p id="admin-callout-success-msg"></p>
+      </div>
+    </div>
+
+    <div id="admin-callout-error" class="g-callout g-callout--warn" style="display: none;">
+      <i class="fa-solid fa-circle-exclamation"></i>
+      <div class="g-callout__body">
+        <div class="g-callout__title">Action Failed</div>
+        <p id="admin-callout-error-msg"></p>
+      </div>
+    </div>
+
+    <!-- Bookings Listing Container -->
+    <div id="admin-bookings-list" class="g-admin__list">
+      <div class="g-admin__loading">
+        <i class="fa fa-spinner fa-spin"></i> Fetching booking records...
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+  import { sheetapi } from "/js/sheetapi.js";
+
+  (async () => {
+    const listContainer = document.getElementById("admin-bookings-list");
+    const summaryCount = document.getElementById("admin-summary-count");
+    const filterButtons = document.querySelectorAll(".g-filter");
+
+    const successBox = document.getElementById("admin-callout-success");
+    const successMsg = document.getElementById("admin-callout-success-msg");
+    const errorBox = document.getElementById("admin-callout-error");
+    const errorMsg = document.getElementById("admin-callout-error-msg");
+
+    let allBookings = [];
+    let currentFilter = "ALL";
+
+    function showFeedback(type, message) {
+      if (type === "success") {
+        successMsg.textContent = message;
+        successBox.style.display = "flex";
+        errorBox.style.display = "none";
+      } else {
+        errorMsg.textContent = message;
+        errorBox.style.display = "flex";
+        successBox.style.display = "none";
+      }
+      setTimeout(() => {
+        successBox.style.display = "none";
+        errorBox.style.display = "none";
+      }, 5000);
+    }
+
+    function getStatusBadge(status) {
+      const clean = (status || "PENDING").toUpperCase();
+      if (clean === "APPROVED") {
+        return `<span class="g-badge g-badge--success g-badge--soft"><i class="fa-solid fa-check"></i> APPROVED</span>`;
+      }
+      if (clean === "DENIED" || clean === "REJECTED") {
+        return `<span class="g-badge g-badge--danger g-badge--soft"><i class="fa-solid fa-xmark"></i> DENIED</span>`;
+      }
+      return `<span class="g-badge g-badge--warning g-badge--soft"><i class="fa-solid fa-clock"></i> PENDING</span>`;
+    }
+
+    function renderBookings() {
+      const filtered = allBookings.filter(b => {
+        const status = (b.status || "PENDING").toUpperCase();
+        if (currentFilter === "ALL") return true;
+        if (currentFilter === "DENIED") return status === "DENIED" || status === "REJECTED";
+        return status === currentFilter;
+      });
+
+      summaryCount.textContent = `Showing ${filtered.length} of ${allBookings.length} total bookings`;
+
+      if (filtered.length === 0) {
+        listContainer.innerHTML = `
+          <div class="g-admin__empty">
+            No bookings found for the selected filter.
+          </div>`;
+        return;
+      }
+
+      listContainer.innerHTML = "";
+
+      filtered.forEach((booking) => {
+        let parsedTools = {};
+        if (typeof booking.tools === "string") {
+          try {
+            parsedTools = JSON.parse(booking.tools);
+          } catch (e) {
+            parsedTools = {};
+          }
+        } else if (booking.tools) {
+          parsedTools = booking.tools;
+        }
+
+        const toolListHtml = Object.keys(parsedTools).length > 0
+          ? Object.keys(parsedTools)
+              .map(t => `<li>${t} (${parsedTools[t][0]} unit)</li>`)
+              .join("")
+          : `<li><em>No specific equipment specified</em></li>`;
+
+        const card = document.createElement("div");
+        card.className = "g-admin-card";
+
+        const statusUpper = (booking.status || "PENDING").toUpperCase();
+
+        card.innerHTML = `
+          <div class="g-admin-card__top">
+            <div>
+              <div class="g-admin-card__name">
+                ${booking.name || "Unknown Applicant"}
+              </div>
+              <div class="g-admin-card__meta">
+                <i class="fa-regular fa-id-card"></i>
+                ${booking.ktuid || "n/a"}
+                <br>
+                <i class="fa-regular fa-envelope"></i>
+                <a class=".g-admin-card__link" href="mailto:${booking.email}">
+                  ${booking.email || "n/a"}
+                </a>
+                <br>
+                <i class="fa fa-phone"></i>
+                <a class=".g-admin-card__link" href="tel:+91${booking.phone}">
+                  +91 ${booking.phone || "n/a"}
+                </a>
+              </div>
+            </div>
+            <div>
+              ${getStatusBadge(booking.status)}
+            </div>
+          </div>
+
+          <div class="g-admin-card__details">
+            <div>
+              <span class="g-admin-card__field-label">Date & Time</span>
+              <div class="g-admin-card__field-val">
+                <i class="fa-regular fa-calendar"></i>
+                ${booking.slot_date}
+                <br>
+                <i class="fa-regular fa-clock"></i>
+                ${booking.slot_time_from} &rarr; ${booking.slot_time_to}
+              </div>
+            </div>
+            <div>
+              <span class="g-admin-card__field-label">Purpose</span>
+              <div class="g-admin-card__field-val g-admin-card__field-val--purpose">
+                ${booking.purpose || "<em>No purpose submitted</em>"}
+              </div>
+            </div>
+          </div>
+
+          <details class="g-admin-card__tools-details">
+            <summary class="g-admin-card__tools-summary">
+              Requested Equipment (${Object.keys(parsedTools).length})
+            </summary>
+            <ol class="g-admin-card__tools-list">
+              ${toolListHtml}
+            </ol>
+          </details>
+
+          <div class="g-admin-card__actions">
+            <button type="button" class="g-btn g-btn--sm g-btn--primary btn-approve" ${statusUpper === "APPROVED" ? "disabled" : ""}>
+              <i class="fa-solid fa-check"></i> Approve
+            </button>
+            <button type="button" class="g-btn g-btn--sm g-btn--danger btn-deny" ${statusUpper === "DENIED" ? "disabled" : ""}>
+              <i class="fa-solid fa-xmark"></i> Deny
+            </button>
+          </div>
+        `;
+
+        const btnApprove = card.querySelector(".btn-approve");
+        const btnDeny = card.querySelector(".btn-deny");
+
+        btnApprove.addEventListener("click", () => handleStatusChange(booking, "APPROVED", card));
+        btnDeny.addEventListener("click", () => handleStatusChange(booking, "DENIED", card));
+
+        listContainer.appendChild(card);
+      });
+    }
+
+    async function handleStatusChange(booking, newStatus, cardElement) {
+      const buttons = cardElement.querySelectorAll("button");
+      buttons.forEach(btn => btn.disabled = true);
+
+      try {
+        const payload = {
+          action: "update-status",
+          timestamp: booking.timestamp,
+          status: newStatus,
+        };
+
+        const result = await sheetapi.post(payload);
+
+        if (result && result.status === "error") {
+          throw new Error(result.message || "Failed to update record");
+        }
+
+        booking.status = newStatus;
+        showFeedback("success", `Booking for ${booking.name} marked as ${newStatus}.`);
+        renderBookings();
+
+      } catch (err) {
+        showFeedback("error", err.message || "Server error while updating status.");
+        buttons.forEach(btn => btn.disabled = false);
+      }
+    }
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        filterButtons.forEach(b => b.classList.remove("is-active"));
+        btn.classList.add("is-active");
+        currentFilter = btn.dataset.filter;
+        renderBookings();
+      });
+    });
+
+    try {
+      const data = await sheetapi.get();
+      allBookings = Array.isArray(data) ? data : (data.data || []);
+      renderBookings();
+    } catch (err) {
+      listContainer.innerHTML = `
+        <div class="g-admin__fetch-error">
+          Failed to load bookings: ${err.message}
+        </div>`;
+    }
+  })();
+</script>
