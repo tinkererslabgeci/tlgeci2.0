@@ -245,7 +245,7 @@
       const payload = {
         action: "book-slot",
         name: form.name.value.trim(),
-        ktuid: form.ktuid.value.trim(),
+        ktuid: form.ktuid.value.trim().toUpperCase(),
         phone: form.phone.value.trim(),
         email: form.email.value.trim(),
         slot_date: form.slot_date.value,
