@@ -9,7 +9,7 @@
     width: 100%;
     height: 100%;
 
-    display: flex;
+    display: none;
   }
 
   #authentication-form {
@@ -121,6 +121,53 @@
 
 <script type="module">
   import { sheetapi } from "/js/sheetapi.js";
+
+  /*
+    A function to generate SHA512 digets using the Web Crypto API and a global variable
+    to the store the hash to use it later.
+  */
+  let hashKey = null;
+  async function generateSHA512(text) {
+    if (!window.crypto?.subtle) {
+      throw new Error("Web Crypto API is unavailable. The context is not secure.");
+    }
+
+    const encoder = new TextEncoder();
+    const data = encoder.encode(text);
+
+    const hashBuffer = await crypto.subtle.digest("SHA-512", data);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    const hashHex = hashArray
+      .map(bytes => bytes.toString(16).padStart(2, "0"))
+      .join("");
+
+    return hashHex;
+  }
+
+  /*
+    This is an anti-lay-user wall that is not secure in the usual sense.
+    It does nothing other than simply deter users. If someone gets their hand
+    into DevTools, they may be able to approve/deny requests.
+  */
+  (async () => {
+    const passkeyInput = document.getElementById("passkey-input");
+    const passkeyForm = document.getElementById("authentication-form");
+    const passkeyBtn = document.getElementById("passkey-submit-btn");
+
+    passkeyForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const psk = passkeyInput.value.trim();
+      const pskSHA512 = await generateSHA512(psk);
+
+      console.log(psk);
+      console.log(pskSHA512);
+      console.log(pskSHA512.length);
+
+      hashKey = pskSHA512;
+    });
+
+  })();
 
   (async () => {
     const listContainer = document.getElementById("admin-bookings-list");

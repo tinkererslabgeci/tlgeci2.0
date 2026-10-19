@@ -1,10 +1,13 @@
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyoATVEYJ5zY7v1ZVKeMDoLqSYkSFLQtEabAEGMdAYuZqvfdPKonuq7YmkJWkQnndSQuw/exec";
+const API_ENDPOINT = "/api/bookings/"
 
 export const sheetapi = {
-  async get() {
-    const response = await fetch(SCRIPT_URL, {
+  async get(params = {}) {
+    const url = new URL(API_ENDPOINT, window.location.origin);
+    Object.keys(params).forEach(k => url.searchParams.set(k, params[k]));
+
+    const response = await fetch(url.toString(), {
       method: "GET",
-      redirect: "follow",
     });
 
     if (!response.ok)
@@ -13,6 +16,7 @@ export const sheetapi = {
     const result = await response.json();
     if (result.status >= 400)
       throw new Error(response.data?.error || "failed to fetch data");
+
     return result;
   },
 
