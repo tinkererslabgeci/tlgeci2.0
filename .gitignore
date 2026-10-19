@@ -1,2 +1,4 @@
 /public/
 *.swp
+.dev.vars
+.wrangler
