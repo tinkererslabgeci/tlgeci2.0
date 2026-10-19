@@ -1,4 +1,3 @@
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyoATVEYJ5zY7v1ZVKeMDoLqSYkSFLQtEabAEGMdAYuZqvfdPKonuq7YmkJWkQnndSQuw/exec";
 const API_ENDPOINT = "/api/bookings/"
 
 export const sheetapi = {
@@ -21,12 +20,17 @@ export const sheetapi = {
   },
 
   async post(payload) {
-    const response = await fetch(SCRIPT_URL, {
+    const headers = {
+      "Content-Type": "application/json",
+    };
+
+    const adminKey = sessionStorage.getItem("admin_passkey");
+    if (adminKey)
+      headers["x-admin-key"] = adminKey;
+
+    const response = await fetch(API_ENDPOINT, {
       method: "POST",
-      redirect: "follow",
-      headers: {
-        "Content-Type": "text/plain;charset=utf-8",
-      },
+      headers: headers,
       body: JSON.stringify(payload),
     });
 
@@ -36,6 +40,7 @@ export const sheetapi = {
     const result = await response.json();
     if (result.status >= 400)
       throw new Error(response.data?.error || "failed to fetch data");
+
     return result;
   },
 };

@@ -9,7 +9,7 @@
     width: 100%;
     height: 100%;
 
-    display: none;
+    display: flex;
   }
 
   #authentication-form {
@@ -126,7 +126,6 @@
     A function to generate SHA512 digets using the Web Crypto API and a global variable
     to the store the hash to use it later.
   */
-  let hashKey = null;
   async function generateSHA512(text) {
     if (!window.crypto?.subtle) {
       throw new Error("Web Crypto API is unavailable. The context is not secure.");
@@ -144,6 +143,23 @@
     return hashHex;
   }
 
+  async verifyPasskey(sha512hash) {
+    const reponse = await fethc("/api/authenticate/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ hash: sha512hash }),
+    });
+
+    const data = await response.json();
+    if (data.success) {
+      const passkeyForm = document.getElementById("authentication-form");
+      passkeyForm.style.display = "none";
+      sessionStorage.setItem("admin_passkey", sha512hash);
+    } else {
+      alert(`Access Denied: ${data.message || "Unauthorized"}`);
+    }
+  }
+
   /*
     This is an anti-lay-user wall that is not secure in the usual sense.
     It does nothing other than simply deter users. If someone gets their hand
@@ -159,12 +175,7 @@
 
       const psk = passkeyInput.value.trim();
       const pskSHA512 = await generateSHA512(psk);
-
-      console.log(psk);
-      console.log(pskSHA512);
-      console.log(pskSHA512.length);
-
-      hashKey = pskSHA512;
+      await verifyPasskey(pskSHA512);
     });
 
   })();
