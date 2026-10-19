@@ -22,7 +22,7 @@
   }
 </style>
 
-<div class="g-authenticate__overlay">
+<div class="g-authenticate__overlay" id="authentication-overlay">
   <form id="authentication-form">
     <div class="g-form__group">
       <label for="passkey-input" class="g-form__label">Enter your passkey</label>
@@ -152,8 +152,8 @@
 
     const data = await response.json();
     if (data.success) {
-      const passkeyForm = document.getElementById("authentication-form");
-      passkeyForm.style.display = "none";
+      const authOverlay = document.getElementById("authentication-overlay");
+      authOverlay.style.display = "none";
       sessionStorage.setItem("admin_passkey", sha512hash);
     } else {
       alert(`Access Denied: ${data.message || "Unauthorized"}`);
