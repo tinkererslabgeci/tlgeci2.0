@@ -22,6 +22,12 @@
     max-width: 40rem;
     width: 80vw;
   }
+
+  #logged-in-user {
+    font-size: 0.9rem;
+    height: 3rem;
+    justify-content: center;
+  }
 </style>
 
 <div class="g-authenticate__overlay" id="authentication-overlay">
@@ -58,6 +64,10 @@
 
 <div class="g-form-card">
   <div class="g-card__body">
+    <span class="g-badge g-badge--soft" id="logged-in-user">
+        Hello
+    </span>
+
     <!-- Header & Filter Bar -->
     <div class="g-admin__header">
       <div>
@@ -166,7 +176,10 @@
     const data = await response.json();
     if (data.success) {
       const authOverlay = document.getElementById("authentication-overlay");
+      const loggedInBadge = document.getElementById("logged-in-user");
+
       authOverlay.style.display = "none";
+      loggedInBadge.textContent = `Logged in as: ${data.username}`;
 
       sessionStorage.setItem("admin_passkey", sha512hash);
       sessionStorage.setItem("admin_name", data.username);

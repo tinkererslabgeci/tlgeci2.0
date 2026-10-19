@@ -1,6 +1,7 @@
 export async function onRequestPost({ env, request }) {
   try {
-    const keyConfig = env.ADMIN_KEY;
+    const keyConfig = env.ADMIN_KEY.replaceAll("'", '"');
+
     if (!keyConfig) {
       return new Response(
         JSON.stringify({ success: false, message: "server misconfiguration" }),
@@ -15,9 +16,7 @@ export async function onRequestPost({ env, request }) {
     const body = await request.json();
     const clientHash = body.hash;
 
-    console.log(hashes);
-
-    Object.keys(hashes).forEach(k => {
+    for (const k of Object.keys(hashes)) {
       if (clientHash === hashes[k]) {
         return new Response(
           JSON.stringify({ success: true, message: "authorized", username: k }),
@@ -27,7 +26,7 @@ export async function onRequestPost({ env, request }) {
           }
         );
       }
-    });
+    }
 
     return new Response(
       JSON.stringify({ success: false, message: "invalid passkey"}),
