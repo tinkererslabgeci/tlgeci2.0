@@ -1,6 +1,6 @@
 export async function onRequestPost({ env, request }) {
   try {
-    const expectedHash = env.ADMIN_HASH;
+    const expectedHash = env.ADMIN_KEY;
     if (!expectedHash) {
       return new Response(
         JSON.stringify({ success: false, message: "server misconfiguration" }),
