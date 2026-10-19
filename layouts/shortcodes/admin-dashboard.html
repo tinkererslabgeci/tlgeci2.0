@@ -23,18 +23,18 @@
 </style>
 
 <div class="g-authenticate__overlay" id="authentication-overlay">
-  <div id="auth-callout-error" class="g-callout g-callout--warn" style="display: none;">
-    <i class="fa-solid fa-circle-exclamation"></i>
-    <div class="g-callout__body">
-      <div class="g-callout__title">Authentcation Failed</div>
-      <p id="auth-callout-error-msg">
-        The passkey you provided does not correspond to any of the valid passkeys of the
-        members. Please try again or contact the admin.
-      </p>
-    </div>
-  </div>
-
   <form id="authentication-form">
+    <div id="auth-callout-error" class="g-callout g-callout--warn" style="display: none;">
+      <i class="fa-solid fa-circle-exclamation"></i>
+      <div class="g-callout__body">
+        <div class="g-callout__title">Authentcation Failed</div>
+        <p id="auth-callout-error-msg">
+          The passkey you provided does not correspond to any of the valid passkeys of the
+          members. Please try again or contact the admin.
+        </p>
+      </div>
+    </div>
+
     <div class="g-form__group">
       <label for="passkey-input" class="g-form__label">Enter your passkey</label>
       <br>
