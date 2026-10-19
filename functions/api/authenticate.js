@@ -15,6 +15,8 @@ export async function onRequestPost({ env, request }) {
     const body = await request.json();
     const clientHash = body.hash;
 
+    console.log(hashes);
+
     Object.keys(hashes).forEach(k => {
       if (clientHash === hashes[k]) {
         return new Response(
