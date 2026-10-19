@@ -65,7 +65,7 @@
 <div class="g-form-card">
   <div class="g-card__body">
     <span class="g-badge g-badge--soft" id="logged-in-user">
-        Hello
+      Logged in as: 
     </span>
 
     <!-- Header & Filter Bar -->
@@ -185,6 +185,7 @@
       sessionStorage.setItem("admin_name", data.username);
 
       console.log(response);
+      console.log(sessionStorage.getItem("admin_name"));
 
     } else {
       const authCalloutErr = document.getElementById("auth-callout-error");
@@ -370,7 +371,7 @@
         const btnDeny = card.querySelector(".btn-deny");
 
         btnApprove.addEventListener("click", () => {
-          handleStatusChange(booking, "APPROVED", card)
+          handleStatusChange(booking, "APPROVED", card, sessionStorage.getItem("admin_name"));
         });
         btnDeny.addEventListener("click", () => {
           pendingDenialContext = { booking, card };
@@ -400,14 +401,17 @@
       const reason = denyReasonInput.value.trim();
       if (!reason || !pendingDenialContext) return;
 
+      const pertinent_member = sessionStorage.getItem("admin_name");
       const { booking, card } = pendingDenialContext;
       denyDialog.close();
 
-      handleStatusChange(booking, "DENIED", card, reason);
+      handleStatusChange(booking, "DENIED", card, pertinent_member, reason);
       pendingDenialContext = null;
     });
 
-    async function handleStatusChange(booking, new_status, cardElement, reason = "") {
+    async function handleStatusChange(booking, new_status, cardElement, pertinent_member, reason = "") {
+      console.log(`Pertinent Member: ${pertinent_member}`);
+
       const buttons = cardElement.querySelectorAll("button");
       buttons.forEach(btn => btn.disabled = true);
 
@@ -423,6 +427,7 @@
           tools: JSON.parse(booking.tools),
           status: new_status,
           denial_reason: reason,
+          pertinent_member: pertinent_member,
         };
 
         const result = await sheetapi.post(payload);
