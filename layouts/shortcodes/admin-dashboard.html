@@ -1,3 +1,48 @@
+<style>
+  .g-authenticate__overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 49;
+    background: #fff;
+
+    margin: 0rem;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+  }
+
+  #authentication-form {
+    margin: auto;
+  }
+
+  #passkey-input {
+    max-width: 40rem;
+    width: 80vw;
+  }
+</style>
+
+<div class="g-authenticate__overlay">
+  <form id="authentication-form">
+    <div class="g-form__group">
+      <label for="passkey-input" class="g-form__label">Enter your passkey</label>
+      <br>
+      <input type="password" id="passkey-input" name="passkey" class="g-form__input" />
+    </div>
+    <br>
+    <button type="submit" id="passkey-submit-btn" class="g-btn g-btn--primary g-btn--block">
+      <span id="btn-submit-passkey" style="display: flex;">
+        <span>Authenticate &thinsp;</span>
+        <i class="fa fa-key"></i>
+      </span>
+      <span id="btn-check-passkey" style="display: none;">
+        <span>Authenticating &ensp;</span>
+        <i class="fa fa-spinner fa-spin"></i>
+      </span>
+    </button>
+  </form>
+</div>
+
 <div class="g-form-card">
   <div class="g-card__body">
     <!-- Header & Filter Bar -->
@@ -234,7 +279,9 @@
         const btnApprove = card.querySelector(".btn-approve");
         const btnDeny = card.querySelector(".btn-deny");
 
-        btnApprove.addEventListener("click", () => handleStatusChange(booking, "APPROVED", card));
+        btnApprove.addEventListener("click", () => {
+          handleStatusChange(booking, "APPROVED", card)
+        });
         btnDeny.addEventListener("click", () => {
           pendingDenialContext = { booking, card };
           denyStudentName.textContent = booking.name || "The Applicant";

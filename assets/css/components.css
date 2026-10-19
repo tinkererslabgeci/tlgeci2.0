@@ -593,7 +593,7 @@ pre:hover .g-copy, .g-copy:focus-visible { opacity: 1; }
 
 .g-dialog::backdrop {
   background: rgba(0, 0, 0, 0.45);
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(0);
 }
 
 .g-dialog__title {
