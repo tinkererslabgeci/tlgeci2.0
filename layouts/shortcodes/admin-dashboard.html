@@ -136,7 +136,7 @@
   import { sheetapi } from "/js/sheetapi.js";
 
   /*
-    A function to generate SHA512 digets using the Web Crypto API and a global variable
+    A function to generate SHA512 digests using the Web Crypto API and a global variable
     to the store the hash to use it later.
   */
   async function generateSHA512(text) {
@@ -167,7 +167,12 @@
     if (data.success) {
       const authOverlay = document.getElementById("authentication-overlay");
       authOverlay.style.display = "none";
+
       sessionStorage.setItem("admin_passkey", sha512hash);
+      sessionStorage.setItem("username", data.username);
+
+      console.log(response);
+
     } else {
       const authCalloutErr = document.getElementById("auth-callout-error");
       authCalloutErr.style.display = "flex";
