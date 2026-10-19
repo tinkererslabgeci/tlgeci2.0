@@ -143,7 +143,7 @@
     return hashHex;
   }
 
-  async verifyPasskey(sha512hash) {
+  async function verifyPasskey(sha512hash) {
     const reponse = await fetch("/api/authenticate/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
