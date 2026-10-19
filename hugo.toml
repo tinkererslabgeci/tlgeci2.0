@@ -132,13 +132,13 @@ buildFuture = true
         label = "Sponsors"
         url = "/sponsors/"
     [[params.footer.columns]]
-      title = "Organizers"
+      title = "Services"
       [[params.footer.columns.links]]
-        label = "Organizer Handbook"
-        url = "/handbook/"
+        label = "Book a Slot"
+        url = "/booking/"
       [[params.footer.columns.links]]
-        label = "Meetup Runbooks"
-        url = "/runbooks/"
+        label = "Admin Dashboard"
+        url = "/dashboard/"
 
 [mediaTypes."text/calendar"]
   suffixes = ["ics"]
