@@ -1,7 +1,7 @@
 export async function onRequestPost({ env, request }) {
   try {
     const keyConfig = env.ADMIN_KEY;
-    if (!expectedHash) {
+    if (!keyConfig) {
       return new Response(
         JSON.stringify({ success: false, message: "server misconfiguration" }),
         {
