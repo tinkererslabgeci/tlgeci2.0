@@ -27,6 +27,8 @@ export const sheetapi = {
     const adminKey = sessionStorage.getItem("admin_passkey");
     if (adminKey)
       headers["x-admin-key"] = adminKey;
+    else
+      throw new Error(`Authorization Error: Unauthorized`);
 
     const response = await fetch(API_ENDPOINT, {
       method: "POST",
