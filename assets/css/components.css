@@ -364,6 +364,21 @@ pre:hover .g-copy, .g-copy:focus-visible { opacity: 1; }
 .g-pullquote figcaption { margin-top: 0.5rem; font-size: var(--text-sm); color: var(--text-muted); font-style: normal; }
 .g-pullquote figcaption::before { content: "\2014 \00a0"; }
 
+/* These are modifications to the main/index page.
+   They overwrite definitions above. */
+
+.g-hero {
+  background-image:
+    linear-gradient(to bottom, rgba(245, 246, 252, 0.3), rgba(152, 195, 85, 1)),
+    url("/images/banner-bg.jpg");
+  background-size: 100%;
+  background-position: center;
+}
+
+.g-hero__media {
+  display: none;
+}
+
 /* Everything onwards is custom defined.
   They did not come predefined with the template. */
 
