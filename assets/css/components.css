@@ -364,30 +364,6 @@ pre:hover .g-copy, .g-copy:focus-visible { opacity: 1; }
 .g-pullquote figcaption { margin-top: 0.5rem; font-size: var(--text-sm); color: var(--text-muted); font-style: normal; }
 .g-pullquote figcaption::before { content: "\2014 \00a0"; }
 
-/* These are modifications to the main/index page.
-   They overwrite definitions above. */
-
-.g-hero {
-  background-image:
-    linear-gradient(to bottom, rgba(245, 246, 252, 0.3), 35%, rgba(152, 195, 85, 1)),
-    url("/images/banner-bg.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.g-hero__grid {
-  grid-template-columns: 1.5fr 0.5fr;
-}
-
-.g-hero__media {
-  display: none;
-}
-
-@media (max-width: 920px) {
-  .g-hero__grid { grid-template-columns: 1fr; }
-}
-
 /* Everything onwards is custom defined.
   They did not come predefined with the template. */
 
@@ -673,3 +649,37 @@ summary {
   margin: -0.5em -0.5em 0;
   padding: 0.5rem 0.5rem 0;
 }
+
+/* These are modifications to the overall style.
+   They overwrite all previous definitions. */
+
+.g-hero {
+  background-image:
+    linear-gradient(to bottom, rgba(245, 246, 252, 0.3), 35%, rgba(152, 195, 85, 1)),
+    url("/images/banner-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.g-hero__grid {
+  grid-template-columns: 1.5fr 0.5fr;
+}
+
+.g-pagehero {
+  background: linear-gradient(to bottom, rgba(245, 246, 252, 0), 50%, rgba(152, 195, 85, 1));
+  border-bottom: 50px solid var(--surface-ink);
+}
+
+.g-header {
+  border-bottom: none;
+}
+
+.g-hero__media {
+  display: none;
+}
+
+@media (max-width: 920px) {
+  .g-hero__grid { grid-template-columns: 1fr; }
+}
+
