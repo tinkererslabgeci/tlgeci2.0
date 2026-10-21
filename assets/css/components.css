@@ -371,12 +371,21 @@ pre:hover .g-copy, .g-copy:focus-visible { opacity: 1; }
   background-image:
     linear-gradient(to bottom, rgba(245, 246, 252, 0.3), rgba(152, 195, 85, 1)),
     url("/images/banner-bg.jpg");
-  background-size: 100%;
+  background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
+}
+
+.g-hero__grid {
+  grid-template-columns: 1.5fr 0.5fr;
 }
 
 .g-hero__media {
   display: none;
+}
+
+@media (max-width: 920px) {
+  .g-hero__grid { grid-template-columns: 1fr; }
 }
 
 /* Everything onwards is custom defined.
