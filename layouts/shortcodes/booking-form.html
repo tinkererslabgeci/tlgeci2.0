@@ -23,7 +23,16 @@
         <div class="g-form__group">
           <label for="book-name" class="g-form__label">What’s your phone number?</label>
           <br>
-          <input type="tel" id="book-phone" name="phone" class="g-form__input g-form__input__phone" required placeholder="9446645451" />
+          <div style="display:flex;">
+            <span class="g-form__input-prefix">
+              +91
+            </span>
+            <input type="tel" id="book-phone" name="phone"
+              style="flex-grow:1;"
+              class="g-form__input g-form__input__phone"
+              required placeholder="9446645451"
+            />
+          </div>
         </div>
 
         <br>
@@ -51,9 +60,9 @@
         <div class="g-form__group">
           <label for="book-slot-time" class="g-form__label">What time do you wish to use the lab?</label>
           <br>
-          <div class="g-form__group" style="display: flex; align-items: center; gap: 15px;">
+          <div class="g-form__group" style="display: flex;">
             <input type="time" id="book-time" name="slot_time_from" class="g-form__input" required/>
-            <label class="g-form__label" style="font-size: 1.2rem;">&rarr;</label>
+            <label style="font-size: 1.4rem;margin:0 10px;">&rarr;</label>
             <input type="time" id="book-time" name="slot_time_to" class="g-form__input" required/>
           </div>
         </div>
