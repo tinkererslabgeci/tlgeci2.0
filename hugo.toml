@@ -76,7 +76,7 @@ buildFuture = true
   # state. Platform-agnostic: Discord, Slack, Matrix, Zulip all fit.
   [params.community.chat]
     url   = "https://example.com/chat"
-    label = "Join the chat"
+    label = "Join the channel"
 
   # Turn on the "Your name here?" invite card at the end of the speakers list,
   # pointing to /speak/. Off by default.
