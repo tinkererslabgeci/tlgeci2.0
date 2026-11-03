@@ -108,8 +108,8 @@ buildFuture = true
   [params.footer]
     tagline = "Prototype. Break. Improve. Repeat."
     [params.footer.credit]
-      label = "Maintained by the Outreach Team"
-      url   = "https://popular.mariatta.ca/"
+      label = "Maintained by H. Ali"
+      url   = "https://github.com/476ali/"
     [[params.footer.columns]]
       title = "Community"
       [[params.footer.columns.links]]
