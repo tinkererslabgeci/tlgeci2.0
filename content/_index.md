@@ -14,7 +14,7 @@ title = "Home"
   [[hero.ctas]]
     label = "About us"
     url = "/about/"
-    variant = "outline"
+    variant = "dark"
 
 [[stats]]
   value = "@pastEventCount"

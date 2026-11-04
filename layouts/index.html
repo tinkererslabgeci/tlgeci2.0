@@ -17,7 +17,7 @@
       {{ with .lead }}<p class="g-hero__lead">{{ . }}</p>{{ end }}
       {{ if or .ctas $chat }}
         <div class="g-row">
-          {{ range .ctas }}<a class="g-btn g-btn--lg g-btn--{{ .variant | default "primary" }}" href="{{ partial "rel-href.html" .url }}">{{ with .icon }}<i class="{{ . }}" aria-hidden="true"></i>{{ end }}{{ .label }}</a>{{ end }}
+          {{ range .ctas }}<a class="g-btn g-btn--lg g-btn--{{ .variant  | default "primary" }}" href="{{ partial "rel-href.html" .url }}">{{ with .icon }}<i class="{{ . }}" aria-hidden="true"></i>{{ end }}{{ .label }}</a>{{ end }}
           {{ with $chat }}<a class="g-btn g-btn--lg g-btn--secondary" href="{{ partial "rel-href.html" .url }}"{{ if not (hasPrefix .url "/") }} rel="noopener" target="_blank"{{ end }}><i class="fa-solid fa-comments" aria-hidden="true"></i> {{ .label | default (i18n "joinChat") }}</a>{{ end }}
         </div>
       {{ end }}
