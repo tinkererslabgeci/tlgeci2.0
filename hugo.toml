@@ -108,7 +108,7 @@ buildFuture = true
   [params.footer]
     tagline = "Prototype. Break. Improve. Repeat."
     [params.footer.credit]
-      label = "Maintained by H. Ali"
+      label = "Maintained by the IT Team "
       url   = "https://github.com/476ali/"
     [[params.footer.columns]]
       title = "Community"
