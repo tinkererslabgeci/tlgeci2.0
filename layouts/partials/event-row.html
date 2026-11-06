@@ -14,24 +14,35 @@
 {{- $hasRecording := false -}}
 {{- if .Params.talks }}{{ range .Params.talks }}{{ if .recording }}{{ $hasRecording = true }}{{ end }}{{ end }}{{ else }}{{ if .Params.recording }}{{ $hasRecording = true }}{{ end }}{{ end -}}
 <div class="g-event">
-  <div class="g-event__date">
-    <span class="g-event__dow">{{ .Date | time.Format "Mon" }}</span>
-    <span class="g-event__day">{{ .Date | time.Format "Jan 2" }}</span>
-    {{ with .Params.time }}<span class="g-event__time">{{ . }}</span>{{ end }}
+  <div class="g-event__image">
+    <img src="{{ .Params.image }}" loading=lazy />
   </div>
   <div class="g-event__body">
     {{ with .Params.tags }}<div class="g-card__footer" style="padding-top:0">{{ range . }}<span class="g-tag">{{ . }}</span>{{ end }}</div>{{ end }}
     <h3><a href="{{ .RelPermalink }}" style="color:inherit">{{ .Title }}</a></h3>
     <p>{{ .Description | default .Summary }}</p>
-    <div class="g-event__meta"><i class="fa-solid fa-location-dot" aria-hidden="true"></i>{{ if $venuePage }}{{ $venuePage.Title }}{{ with $venuePage.Params.address }} · {{ . }}{{ end }}{{ else }}{{ with .Params.venue }}{{ . }}{{ else }}{{ i18n "venueTba" }}{{ end }}{{ with .Params.address }} · {{ . }}{{ end }}{{ end }}</div>
+      <div class="g-event__meta"><i class="fa-solid fa-location-dot" aria-hidden="true"></i>{{ if $venuePage }}{{ $venuePage.Title }}{{ with $venuePage.Params.address }} · {{ . }}{{ end }}{{ else }}{{ with .Params.venue }}{{ . }}{{ else }}{{ i18n "venueTba" }}{{ end }}{{ with .Params.address }} · {{ . }}{{ end }}{{ end }}</div>
+    <div class="g-event__date">
+      <i class="fa-solid fa-calendar" aria-hidden=true></i>
+      <span class="g-event__day">{{ .Date | time.Format "January 2" }}</span>
+      <span style="margin-right:4px; margin-left:4px;">·</span>
+      <span class="g-event__dow">{{ .Date | time.Format "Monday" }}</span>
+      <span style="margin-right:4px; margin-left:4px;">·</span>
+      {{ with .Params.time }}<span class="g-event__time">{{ . }}</span>{{ end }}
+    </div>
+    <!--
     {{ with $speakerLine }}<div class="g-event__meta"><i class="fa-solid fa-microphone-lines" aria-hidden="true"></i>{{ . }}</div>{{ end }}
     {{ if $hasRecording }}<div class="g-event__meta"><i class="fa-solid fa-circle-play" aria-hidden="true"></i>{{ i18n "hasRecording" }}</div>{{ end }}
+    -->
   </div>
   <div class="g-event__aside">
     {{ if eq .Params.cancelled true }}<span class="g-badge g-badge--danger g-badge--soft">{{ i18n "eventCancelled" }}</span>
     {{ else if $planning }}<span class="g-badge g-badge--soft">{{ i18n "eventPlanning" }}</span>
     {{ else if $tbd }}<span class="g-badge g-badge--warning g-badge--soft">{{ i18n "venueWanted" }}</span>
     {{ else }}<span class="g-badge g-badge--success g-badge--soft">{{ i18n "confirmed" }}</span>{{ end }}
+    <!--
     {{ if not $planning }}{{ with .Params.rsvp }}<a class="g-btn g-btn--primary g-btn--sm" href="{{ partial "rel-href.html" . }}"><i class="fa-solid fa-calendar" aria-hidden="true"></i>{{ i18n "rsvp" }}</a>{{ end }}{{ end }}
+    -->
+    {{ if not $planning }}{{ with .Params.rsvp }}<a class="g-btn g-btn--primary" href="{{ partial "rel-href.html" . }}"><i class="fa-solid fa-link" aria-hidden="true"></i>Register</a>{{ end }}{{ end }}
   </div>
 </div>

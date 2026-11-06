@@ -1,6 +1,7 @@
 {{ define "main" }}
 {{- $hero := .Params.hero -}}
 {{- $allEvents := where site.RegularPages "Section" "events" -}}
+{{- $running := where $allEvents "Params.tags" "intersect" (slice "running") -}}
 {{- $upcoming := where $allEvents "Date" ">=" now -}}
 {{- $upcoming = sort $upcoming "Date" "asc" -}}
 {{- $posts := first 3 (where site.RegularPages "Section" "blog") -}}
@@ -67,12 +68,19 @@
 </section>
 {{ end }}
 
-{{- range (first 1 $upcoming) }}
+{{- $featured := first 1 $upcoming -}}
+{{- if $running -}}
+  {{- $featured = first 1 $running -}}
+{{- end -}}
+
+{{- range $featured }}
 <section class="g-bg-wash-soft">
   <div class="g-container g-feature">
     {{ with .Params.image | default site.Params.ogImage }}<div class="g-feature__media"><img src="{{ partial "rel-src.html" . }}" alt="{{ $.Title }}"></div>{{ end }}
     <div class="g-feature__body">
+      <!--
       <span class="g-badge g-badge--soft"><i class="fa-solid fa-calendar" aria-hidden="true"></i> {{ i18n "nextMeetup" }}</span>
+      -->
       <h2 style="margin:0">{{ .Title }}</h2>
       <div class="g-meta-line">
         <span><i class="fa-solid fa-calendar-day" aria-hidden="true"></i> {{ .Date | time.Format ":date_full" }}{{ with .Params.time }} · {{ . }}{{ end }}</span>
@@ -80,7 +88,7 @@
       </div>
       <p style="margin:0;color:var(--text-muted);max-width:34rem">{{ .Description | default .Summary }}</p>
       <div class="g-row">
-        {{ if ne .Params.planning true }}{{ with .Params.rsvp }}<a class="g-btn g-btn--primary" href="{{ partial "rel-href.html" . }}"><i class="fa-solid fa-calendar" aria-hidden="true"></i> {{ i18n "rsvpExternal" }}</a>{{ end }}{{ end }}
+        {{ if ne .Params.planning true }}{{ with .Params.rsvp }}<a class="g-btn g-btn--primary" href="{{ partial "rel-href.html" . }}"><i class="fa-solid fa-link" aria-hidden="true"></i>Register</a>{{ end }}{{ end }}
         <a class="g-btn g-btn--outline" href="{{ "events/" | relLangURL }}">{{ i18n "allEvents" }}</a>
       </div>
     </div>
@@ -91,7 +99,7 @@
 {{- /* Empty state only on a community that has an events section but nothing
      upcoming (a dormant club), never on an event-less site like this docs
      site. */ -}}
-{{- if and $allEvents (not $upcoming) }}
+{{- if and $allEvents (not $featured) }}
 <section class="g-bg-wash-soft g-section">
   <div class="g-container">{{ partial "events-empty.html" . }}</div>
 </section>
