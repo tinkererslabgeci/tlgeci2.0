@@ -3,7 +3,7 @@ title = "Training Session"
 date = 2026-09-01
 description = "This is our college-wide training sessions on 3D printers and laser cutters, for every batch and every department"
 image = "/images/events/training-session-2026.jpg"
-tags = ["meetup", "running"]
+tags = ["running"]
 
 time = "6:00 PM – 8:00 PM"
 # This event references a venue page (content/venues/community-hall.md) and a
