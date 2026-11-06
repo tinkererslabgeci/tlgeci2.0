@@ -1,0 +1,237 @@
+# Popular theme UI strings. Override any of these by creating i18n/<lang>.toml
+# in your site root. Keys map 1:1 to STRINGS in astro-theme-popular's config.ts
+# (see PARITY.md).
+
+[skipToContent]
+other = "Skip to content"
+
+[primaryNav]
+other = "Primary"
+
+[toggleMenu]
+other = "Toggle menu"
+
+[nextMeetup]
+other = "Next meetup"
+
+[venueTba]
+other = "Venue to be announced"
+
+[eventCancelled]
+other = "Cancelled"
+
+[rsvp]
+other = "RSVP"
+
+[rsvpExternal]
+other = "RSVP on Luma"
+
+[allEvents]
+other = "All events"
+[allSpeakers]
+other = "All speakers"
+
+[allVenues]
+other = "All venues"
+
+[allOrganizers]
+other = "All organizers"
+
+
+[comingUp]
+other = "Current and coming up"
+
+[upcomingEvents]
+other = "Running and upcoming"
+
+[upcomingLead]
+other = "Save your slots quickly, they are limited."
+
+[noUpcomingEvents]
+other = "Nothing on the calendar right now, follow us to hear when the next one lands."
+
+[lookingBack]
+other = "Looking back"
+
+[pastEvents]
+other = "Past events"
+
+[venueWanted]
+other = "Venue wanted"
+
+[eventPlanning]
+other = "Planning"
+
+[confirmed]
+other = "Confirmed"
+
+[fromTheBlog]
+other = "From the blog"
+
+[latestFromCommunity]
+other = "Latest from our community"
+
+[readTheBlog]
+other = "Read the blog"
+
+[allPosts]
+other = "All posts"
+
+[filterLabel]
+other = "Filter:"
+
+[filterAll]
+other = "All"
+
+[subscribeRss]
+other = "Subscribe via RSS"
+
+[subscribeCalendar]
+other = "Subscribe to calendar"
+
+[watchRecording]
+other = "Watch"
+
+[viewSlides]
+other = "Slides"
+
+[hasRecording]
+other = "Recording available"
+
+[talks]
+other = "Talks"
+
+[talksLead]
+other = "Every talk from our past events, with recordings and slides where we have them."
+
+[learnMore]
+other = "Learn more"
+
+[joinChat]
+other = "Join the chat"
+
+[speakerInviteTitle]
+other = "Your name here?"
+
+[speakerInviteBody]
+other = "We are always looking for new voices. Lightning talks welcome, and we will help you prepare."
+
+[noPosts]
+other = "No posts yet, check back soon."
+
+[ourSpeaker]
+other = "Our speaker"
+
+[minRead]
+one = "{{ .Count }} min read"
+other = "{{ .Count }} min read"
+
+[authorsBy]
+other = "By"
+
+[listSeparator]
+other = ", "
+
+[listSeparatorFinal]
+other = " & "
+
+[posts]
+other = "Posts"
+
+[guest]
+other = "Guest"
+
+[website]
+other = "Website"
+
+[checklist]
+other = "Checklist"
+
+[copyCode]
+other = "Copy code"
+
+[checklistDone]
+other = "done"
+
+[writtenBy]
+other = "Written by {{ . }}"
+
+[subscribeRssTitle]
+other = "Follow new posts in any feed reader"
+
+[eyebrowBlog]
+other = "Blog"
+
+[eyebrowEvents]
+other = "Events"
+
+[eyebrowAuthor]
+other = "Author"
+
+[eyebrowDocs]
+other = "Docs"
+
+# Used by the Astro implementation's tag pages; kept here so the key set
+# matches STRINGS in astro-theme-popular's config.ts (see PARITY.md).
+[eyebrowTag]
+other = "Tag"
+
+[taggedCount]
+other = "{{ .Count }} post(s) tagged"
+
+[speakers]
+other = "Speakers"
+
+[eyebrowSpeaker]
+other = "Speaker"
+
+[eyebrowOrganizer]
+other = "Organizer"
+
+[sessionsBy]
+other = "Sessions by {{ . }}"
+
+[eyebrowVenue]
+other = "Venue"
+
+[venueEvents]
+other = "Events held here"
+
+[beforeYouArrive]
+other = "Before you arrive"
+
+[paginationLabel]
+other = "Pagination"
+
+[paginationPrev]
+other = "Previous"
+
+[paginationNext]
+other = "Next"
+
+[postNavigation]
+other = "More posts"
+
+[newerPost]
+other = "Newer post"
+
+[olderPost]
+other = "Older post"
+
+[gettingThere]
+other = "Getting there & access"
+
+[wheelchairAccessible]
+other = "Wheelchair accessible"
+
+[transit]
+other = "Transit"
+
+[parking]
+other = "Parking"
+
+[previewLabel]
+other = "Preview"
+
+[previewBanner]
+other = "This is a preview. Nothing here is published yet."
