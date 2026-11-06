@@ -198,7 +198,7 @@ other = "Venue"
 other = "Events held here"
 
 [beforeYouArrive]
-other = "Before you arrive"
+other = "As you arrive"
 
 [paginationLabel]
 other = "Pagination"
