@@ -14,5 +14,14 @@ checkin = ""
 rsvp = ""
 +++
 
-Describe the event. This one is dated in the future so it shows under **Upcoming**,
-events move to **Past** automatically after their date.
+
+We are delighted to invite you to the Logo Revealing Ceremony of the Tinkerers' Lab, GEC
+Idukki, an initiative sponsored by the Maker Bhavan Foundation.
+
+Tinkerers' Lab is envisioned as a creative space where students explore ideas, experiment
+with technologies, and innovate solutions through hands-on learning. The unveiling of our
+logo marks a milestone in building a vibrant innovation ecosystem within our campus.
+
+We warmly welcome all students, faculty members, and well-wishers to join us in
+celebrating the beginning of a new chapter of innovation, creativity, and collaborative
+learning.
