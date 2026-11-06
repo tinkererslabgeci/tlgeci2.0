@@ -15,9 +15,9 @@ rsvp = "https://example.com/rsvp?event=first-meetup&src=site"
 +++
 
 Get hands-on experience at the Tinkerers' Lab GECI through an interactive training
-session on 3D printer and laser cutting , designed to help you explore, learn, and
+session on 3D printer and laser cutting, designed to help you explore, learn, and
 experiment with the available facilities.
 
-For any queries, contact
-1. K S Mohammad Ihsaan: [+91 97449 07092](phone:+919744907092)
-2. Pranay K Pradeep: [+91 80784 79399](phone:+918078479399)
+For any queries, contact \
+K S Mohammad Ihsaan: [+91 97449 07092](tel:+919744907092) \
+Pranay K Pradeep: [+91 80784 79399](tel:+918078479399)
