@@ -245,11 +245,51 @@ pre:hover .g-copy, .g-copy:focus-visible { opacity: 1; }
   align-items: center;
   text-align: center;
   background: var(--surface-page);
-  border-radius: var(--radius-lg); padding: var(--space-3);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3);
+}
+.g-event__image-large {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: var(--surface-page);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
 }
 .g-event__image img {
   width: 100%;
+  border-radius: var(--radius-lg);
 }
+.g-event__image-large img {
+  width: 100%;
+  border-radius: var(--radius-xl);
+}
+
+@media (max-width: 920px) {
+  .g-event__image-large {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: var(--surface-page);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
+  .g-event__image-large img {
+    width: 100%;
+    border-radius: var(--radius-xl);
+  }
+}
+
 .g-event__date {
   display: flex;
   flex-direction: row;
