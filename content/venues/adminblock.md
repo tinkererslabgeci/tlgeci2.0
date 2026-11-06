@@ -10,5 +10,5 @@ access = "The first floor and ground floor can be accessed directly through sepa
 website = ""
 +++
 
-The Administraive Block of Government Engineering College Idukki. The first building you
+The Administrative Block of Government Engineering College Idukki. The first building you
 spot as you enter the college premises.
