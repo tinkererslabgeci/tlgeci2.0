@@ -31,6 +31,12 @@
     </div>
     {{ end }}
 
+    {{ with .Params.image }}
+      <div class="g-event__image-large">
+        <img src="{{ . }}" loading=lazy />
+      </div>
+    {{ end }}
+
     <div class="g-prose">{{ .Content }}</div>
 
     {{- /* Speaker profile cards, resolved from /speakers/ pages. */ -}}
