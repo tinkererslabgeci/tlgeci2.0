@@ -2,5 +2,5 @@
 title = "Events"
 outputs = ["HTML", "RSS", "Calendar"]
 eyebrow = "Events"
-lead = "Upcoming gatherings. All events are free, and newcomers are always welcome."
+lead = "Have a look at all our current, upcoming, and past events."
 +++
