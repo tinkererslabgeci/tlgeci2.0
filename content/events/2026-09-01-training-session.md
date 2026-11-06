@@ -1,7 +1,7 @@
 +++
 title = "Training Session"
-date = 2026-11-04
-description = "Describe the event in a sentence or two."
+date = 2026-09-01
+description = "This is our college-wide training sessions on 3D printers and laser cutters, for every batch and every department"
 image = "/images/events/training-session-2026.jpg"
 tags = ["meetup", "running"]
 
