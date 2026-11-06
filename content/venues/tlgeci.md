@@ -1,8 +1,8 @@
 +++
-title = "Tinkerers’ Lab GECI"
+title = "Tinkerers’ Lab"
 address = "2nd Foor, Admin Block"
-notes = "Call the managers if the door’s still locked."
-accessibility = "Via the main staircase"
+notes = "Check if the lab is open."
+accessibility = ""
 wheelchair = false
 transit = ""
 parking = ""
@@ -10,6 +10,6 @@ access = ""
 website = ""
 +++
 
-Describe the venue: the room, the vibe, anything a first-time visitor should know. Events
-that set `venueRef = "community-hall"` inherit this venue's name, address and arrival
-notes automatically.
+This is where Tinkerers’ Lab is situated in the college. Book a slot, get working. Get in
+touch, conduct events. All our programs are conducted here. The LEAP programs are
+conducted here.
