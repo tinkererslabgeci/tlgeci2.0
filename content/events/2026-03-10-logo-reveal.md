@@ -1,7 +1,7 @@
 +++
 title = "Logo Reveal"
 date = 2026-03-10
-description = "This is our college-wide training sessions on 3D printers and laser cutters, for every batch and every department"
+description = "Tinkerers' Lab is envisioned as a creative space where students explore ideas, experiment with technologies, and innovate solutions through hands-on learning. The unveiling of our logo marks a milestone in building a vibrant innovation ecosystem within our campus."
 image = "/images/events/2026-03-10-logo-reveal.jpg"
 tags = []
 
