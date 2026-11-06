@@ -21,10 +21,10 @@ other = "Venue to be announced"
 other = "Cancelled"
 
 [rsvp]
-other = "RSVP"
+other = "Register"
 
 [rsvpExternal]
-other = "RSVP on Luma"
+other = "Register"
 
 [allEvents]
 other = "All events"
