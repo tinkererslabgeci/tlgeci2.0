@@ -43,6 +43,6 @@
     <!--
     {{ if not $planning }}{{ with .Params.rsvp }}<a class="g-btn g-btn--primary g-btn--sm" href="{{ partial "rel-href.html" . }}"><i class="fa-solid fa-calendar" aria-hidden="true"></i>{{ i18n "rsvp" }}</a>{{ end }}{{ end }}
     -->
-    {{ if not $planning }}{{ with .Params.rsvp }}<a class="g-btn g-btn--primary" href="{{ partial "rel-href.html" . }}"><i class="fa-solid fa-link" aria-hidden="true"></i>Register</a>{{ end }}{{ end }}
+    {{ if not $planning }}{{ with .Params.rsvp }}<a class="g-btn g-btn--primary" href="{{ partial "rel-href.html" . }}"><i class="fa-solid fa-link" aria-hidden="true"></i>{{ i18n "rsvp" }}</a>{{ end }}{{ end }}
   </div>
 </div>
