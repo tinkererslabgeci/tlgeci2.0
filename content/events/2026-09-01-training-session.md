@@ -9,6 +9,7 @@ time = "6:00 PM – 8:00 PM"
 # This event references a venue page (content/venues/community-hall.md) and a
 # speaker profile (content/speakers/alex.md); it inherits the venue's name,
 # address and arrival notes, and shows Alex's bio card.
+queriesContact = ["pranay-k-pradeep", "k-s-ihsaan-mohammed"]
 venueRef = "tlgeci"
 checkin = ""
 rsvp = "https://example.com/rsvp?event=first-meetup&src=site"
@@ -17,7 +18,3 @@ rsvp = "https://example.com/rsvp?event=first-meetup&src=site"
 Get hands-on experience at the Tinkerers' Lab GECI through an interactive training
 session on 3D printer and laser cutting, designed to help you explore, learn, and
 experiment with the available facilities.
-
-For any queries, contact \
-K S Mohammad Ihsaan: [+91 97449 07092](tel:+919744907092) \
-Pranay K Pradeep: [+91 80784 79399](tel:+918078479399)
