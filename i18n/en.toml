@@ -28,6 +28,7 @@ other = "Register"
 
 [allEvents]
 other = "All events"
+
 [allSpeakers]
 other = "All speakers"
 
@@ -181,6 +182,9 @@ other = "{{ .Count }} post(s) tagged"
 
 [speakers]
 other = "Speakers"
+
+[queriesContact]
+other = "For queries, contact"
 
 [eyebrowSpeaker]
 other = "Speaker"
