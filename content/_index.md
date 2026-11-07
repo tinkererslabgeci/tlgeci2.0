@@ -36,7 +36,7 @@ title = "Home"
 
 [[features]]
   icon = "fa-solid fa-people-group"
-  title = "Run by You"
+  title = "Run by you"
   body = "Run and managed completely by student volunteers, from the maintenance of machines to accounts and finances."
 [[features]]
   icon = "fa-solid fa-hand-sparkles"
@@ -44,7 +44,7 @@ title = "Home"
   body = "Make anything. Just book a slot. Creativity without departmental red tape."
 [[features]]
   icon = "fa-solid fa-wrench"
-  title = "State of the Art"
+  title = "State of the art"
   body = "Bosch, Taparia, Bambu Lab, SIL, Stanley: equipments only from the most prestigious toolmakers."
 
 [getInvolved]
