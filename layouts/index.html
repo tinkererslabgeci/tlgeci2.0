@@ -58,8 +58,10 @@
     <div class="g-grid-3" style="margin-top:var(--space-5)">
       {{ range . }}
         <div class="g-card"><div class="g-card__body">
-          <span class="g-medallion"><i class="{{ .icon }}" aria-hidden="true"></i></span>
-          <h3 class="g-card__title">{{ .title }}</h3>
+          <span class="g-card__header">
+            <span class="g-medallion"><i class="{{ .icon }}" aria-hidden="true"></i></span>
+            <h3 class="g-card__title">{{ .title }}</h3>
+          </span>
           <p class="g-card__text">{{ .body }}</p>
         </div></div>
       {{ end }}

@@ -102,10 +102,23 @@ a.g-pager__num:hover, .g-pager__nav:hover { border-color: var(--color-primary); 
 
 /* ---------- Cards ---------- */
 .g-card {
-  display: flex; flex-direction: column; height: 100%;
-  background: var(--surface-card); border: var(--border-width) solid var(--border-subtle);
-  border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--surface-card);
+  border: var(--border-width) solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
   transition: transform var(--duration-slow) var(--ease-out), box-shadow var(--duration-slow) var(--ease-out);
+}
+.g-card__header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.g-card__header h3 {
+  margin: 0 0.8rem;
 }
 .g-card:hover { transform: var(--hover-lift); box-shadow: var(--shadow-lg); }
 .g-card__media { aspect-ratio: 16 / 9; overflow: hidden; background: var(--gold-100); }
