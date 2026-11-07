@@ -31,25 +31,25 @@ title = "Home"
 
 [featuresHead]
   eyebrow = "One of a kind"
-  title = "Okay, but how’re we any different from the department labs?"
+  title = "Are we any different from the others?"
   lead = "Quite different."
 
 [[features]]
   icon = "fa-solid fa-people-group"
   title = "Run by You"
-  body = "Run and managed completely by student volunteers. No faculties involved."
+  body = "Run and managed completely by student volunteers, from the maintenance of machines to accounts and finances."
 [[features]]
   icon = "fa-solid fa-hand-sparkles"
-  title = "Make Anything"
-  body = "Make anything in the lab. Just book a slot. No permission hassle or departmental red tape."
+  title = "Sky’s the limit"
+  body = "Make anything. Just book a slot. Creativity without departmental red tape."
 [[features]]
   icon = "fa-solid fa-wrench"
   title = "State of the Art"
-  body = "Imagine the equiments from the most prestigous of toolmakers: Bosch, Taparia, SIL, Stanley."
+  body = "Bosch, Taparia, Bambu Lab, SIL, Stanley: equipments from prestigious toolmakers."
 
 [getInvolved]
   eyebrow = "Collaborate"
-  title = "There's a place for everyone here"
+  title = "Something else? Something more?"
   lead = "Host a session at the lab, request fabrication orders, or sponsor events."
   [[getInvolved.ctas]]
     label = "Get in touch"
