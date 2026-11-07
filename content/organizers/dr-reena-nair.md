@@ -4,6 +4,7 @@ weight = 9
 role = "Faculty in Charge"
 photo = "images/organizers/dr-reena-nair.jpg"
 description = ""
+past = false
 
 [[social]]
   label = "Mail"
