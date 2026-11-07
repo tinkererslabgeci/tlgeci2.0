@@ -31,8 +31,8 @@ title = "Home"
 
 [featuresHead]
   eyebrow = "One of a kind"
-  title = "Are we any different from the others?"
-  lead = "Quite different."
+  title = "How’re we any different? What’s new?"
+  lead = "Quite different. Lots."
 
 [[features]]
   icon = "fa-solid fa-people-group"
@@ -45,7 +45,7 @@ title = "Home"
 [[features]]
   icon = "fa-solid fa-wrench"
   title = "State of the Art"
-  body = "Bosch, Taparia, Bambu Lab, SIL, Stanley: equipments from prestigious toolmakers."
+  body = "Bosch, Taparia, Bambu Lab, SIL, Stanley: equipments only from the most prestigious toolmakers."
 
 [getInvolved]
   eyebrow = "Collaborate"
