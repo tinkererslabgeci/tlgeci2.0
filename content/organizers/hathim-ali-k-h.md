@@ -1,9 +1,14 @@
 +++
-title = "Dr. Reena Nair"
-weight = 9
-role = "Faculty in Charge"
-photo = "images/organizers/faculty1.jpg"
+title = "Hathim Ali K. H."
+weight = 12
+role = "Project-Handling Lead"
+photo = "images/organizers/hathim-ali-k-h.jpg"
 description = ""
+
+[[social]]
+  label = "Phone"
+  icon = "fa-solid fa-phone"
+  url = "tel:+919090590905"
 
 [[social]]
   label = "Mail"

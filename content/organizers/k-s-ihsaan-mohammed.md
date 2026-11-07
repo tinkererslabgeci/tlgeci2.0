@@ -1,9 +1,14 @@
 +++
-title = "Prof. Ratheesh T. K."
-weight = 10
-role = "Faculty in Charge"
-photo = "images/organizers/faculty2.jpg"
+title = "K. S. Ihsaan Mohammed"
+weight = 13
+role = "Event-Management Lead"
+photo = "images/organizers/k-s-ihsaan-mohammed.jpg"
 description = ""
+
+[[social]]
+  label = "Phone"
+  icon = "fa-solid fa-phone"
+  url = "tel:+919090590905"
 
 [[social]]
   label = "Mail"

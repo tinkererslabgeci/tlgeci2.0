@@ -1,9 +1,14 @@
 +++
-title = "Pratheesh S."
+title = "Pranay K. Pradeep"
 weight = 11
-role = "Lab Champion"
-photo = "images/organizers/lab_champion.jpeg"
+role = "Lab Manager"
+photo = "images/organizers/pranay-k-pradeep.jpg"
 description = ""
+
+[[social]]
+  label = "Phone"
+  icon = "fa-solid fa-phone"
+  url = "tel:+919090590905"
 
 [[social]]
   label = "Mail"
