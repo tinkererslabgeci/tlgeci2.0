@@ -461,9 +461,18 @@ pre:hover .g-copy, .g-copy:focus-visible { opacity: 1; }
 
 .g-form-card {
   display: flex; flex-direction: column; height: 100%;
-  background: var(--surface-card); border: var(--border-width) solid var(--border-subtle);
-  border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-sm);
-  transition: transform var(--duration-slow) var(--ease-out), box-shadow var(--duration-slow) var(--ease-out);
+  background: var(--surface-card);
+  overflow: hidden;
+  transition: transform var(--duration-slow) var(--ease-out), box-shadow
+    var(--duration-slow) var(--ease-out);
+}
+.g-form__group {
+  /*
+  border: var(--border-width) solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-4);
+  */
 }
 .g-form__label {
   font-size: 0.9rem;
