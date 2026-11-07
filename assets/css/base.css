@@ -88,6 +88,12 @@ pre code { font-size: inherit; background: none; padding: 0; border-radius: 0; }
 .g-stack { display: flex; flex-direction: column; gap: 1.2rem; }
 .g-row { display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; }
 
+@media (max-width: 920px) {
+  .g-grid-3--limit-mobile > :nth-child(n+4) {
+    display: none;
+  }
+}
+
 .g-prose { font-size: var(--text-md); line-height: var(--leading-relaxed); color: var(--text-body); }
 /* Underline prose links so color is never the only distinguisher (WCAG 1.4.1);
    matters for adopters whose brand link color is close to the body text.
