@@ -165,12 +165,36 @@ a.g-pager__num:hover, .g-pager__nav:hover { border-color: var(--color-primary); 
 
 /* ---------- FAQ (native <details>, zero JS) ---------- */
 .g-faq { display: flex; flex-direction: column; gap: 0.6rem; margin: 1.2rem 0; }
-.g-faq__item { border: var(--border-width) solid var(--border-subtle); border-radius: var(--radius-lg); background: var(--surface-card); overflow: hidden; }
-.g-faq__q { cursor: pointer; padding: var(--space-3) var(--space-4); font-weight: var(--weight-semibold); color: var(--text-strong); list-style: none; display: flex; justify-content: space-between; align-items: center; gap: var(--space-3); }
+.g-faq__item {
+  border: var(--border-width) solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  background: var(--surface-card);
+  overflow: hidden;
+}
+.g-faq__q {
+  cursor: pointer;
+  font-weight: var(--weight-regular);
+  color: var(--text-strong);
+  padding: var(--space-2) var(--space-3) var(--space-1) var(--space-3);
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-3);
+}
 .g-faq__q::-webkit-details-marker { display: none; }
-.g-faq__q::after { content: "\f078"; font-family: "Font Awesome 6 Free"; font-weight: 900; font-size: 0.75em; color: var(--text-muted); transition: transform 0.2s; }
+.g-faq__q::after {
+  content: "\f078";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  font-size: 0.75em;
+  color: var(--text-muted);
+  transition: transform 0.2s;
+}
 .g-faq__item[open] .g-faq__q::after { transform: rotate(180deg); }
-.g-faq__a { padding: 0 var(--space-4) var(--space-3); }
+.g-faq__a {
+  padding: var(--space-2) var(--space-3);
+}
 .g-faq__a > :first-child { margin-top: 0; }
 
 /* ---------- Post navigation (older/newer neighbors on blog singles) ---------- */
