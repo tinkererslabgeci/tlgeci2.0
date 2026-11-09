@@ -36,7 +36,7 @@ other = "All speakers"
 other = "All venues"
 
 [allOrganizers]
-other = "All organizers"
+other = "All members"
 
 
 [comingUp]
@@ -46,10 +46,10 @@ other = "Current and coming up"
 other = "Running and upcoming"
 
 [upcomingLead]
-other = "Save your slots quickly, they are limited."
+other = "Get your hands on a slot as quickly as you can, they don’t last."
 
 [noUpcomingEvents]
-other = "Nothing on the calendar right now, follow us to hear when the next one lands."
+other = "Nothing’s coming up. It’s a quiet week here."
 
 [lookingBack]
 other = "Looking back"
