@@ -1,7 +1,7 @@
 +++
 title = "Vinayak Sabu"
 weight = 14
-role = "Role"
+role = "Event-Management Member"
 photo = "images/organizers/vinayak-sabu.jpg"
 description = ""
 
