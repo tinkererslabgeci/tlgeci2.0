@@ -1,5 +1,5 @@
 +++
 title = "Meet the Team"
 eyebrow = "Our pillars"
-lead = "Tinkerers’ Lab at GEC Idukki is run by volunteers, run by you. Get to know them."
+lead = "This is our executive committee members for 2026–27. Get to know them."
 +++
