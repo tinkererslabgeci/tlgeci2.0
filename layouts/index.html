@@ -139,7 +139,7 @@
       {{ range first 6 . }}{{ partial "organizer-card.html" . }}{{ end }}
     </div>
     <div class="g-row" style="justify-content:center;margin-top:var(--space-4)">
-      <a class="g-btn g-btn--outline" href="{{ (print $teamSec "/") | relLangURL }}">{{ with $team }}{{ .cta | default "All organizers" }}{{ else }}All organizers{{ end }}</a>
+      <a class="g-btn g-btn--outline" href="{{ (print $teamSec "/") | relLangURL }}">{{ with $team }}{{ .cta | default "All organizers" }}{{ else }}All members{{ end }}</a>
     </div>
   </div>
 </section>
