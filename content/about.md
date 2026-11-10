@@ -25,8 +25,7 @@ was the foremost proponent of such an endeavour in our college. She acted as
 the link between us and MakerBhavan Foundation. She took the initiative
 to manage the paperworks and formalities involved in bringing this lab.
 
-![Dr.&nbsp;Reena Nair with Sandeep
-Natekar](/images/about-us/nair-with-natekar.jpg)
+![](/images/about-us/nair-with-natekar.jpg)
 
 MakerBhavan Foundation is a non-profit Section 8 company registered in Mumbai,
 Maharashtra, and also registered in the U.S. as a 501(c)(3) tax-exempt public
