@@ -94,7 +94,10 @@ pre code { font-size: inherit; background: none; padding: 0; border-radius: 0; }
   }
 }
 
-.g-prose { font-size: var(--text-md); line-height: var(--leading-relaxed); color: var(--text-body); }
+.g-prose {
+  font-size: var(--text-md); line-height: var(--leading-relaxed);
+  color: var(--text-body);
+}
 /* Underline prose links so color is never the only distinguisher (WCAG 1.4.1);
    matters for adopters whose brand link color is close to the body text.
    Only bare markdown links: components inside prose (buttons, tags) carry a

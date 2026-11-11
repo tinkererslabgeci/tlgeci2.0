@@ -170,10 +170,12 @@ a.g-pager__num:hover, .g-pager__nav:hover { border-color: var(--color-primary); 
   border-radius: var(--radius-lg);
   background: var(--surface-card);
   overflow: hidden;
+  min-width: 0;
 }
 .g-faq__q {
   cursor: pointer;
   font-weight: var(--weight-regular);
+  font-size: var(--text-md);
   color: var(--text-strong);
   padding: var(--space-2) var(--space-3) var(--space-1) var(--space-4);
   list-style: none;
@@ -187,13 +189,14 @@ a.g-pager__num:hover, .g-pager__nav:hover { border-color: var(--color-primary); 
   content: "\f078";
   font-family: "Font Awesome 6 Free";
   font-weight: 900;
-  font-size: 0.75em;
+  font-size: var(--text-md);
   color: var(--text-muted);
   transition: transform 0.2s;
 }
 .g-faq__item[open] .g-faq__q::after { transform: rotate(180deg); }
 .g-faq__a {
   padding: var(--space-2) var(--space-3);
+  text-wrap: pretty;
 }
 .g-faq__a > :first-child { margin-top: 0; }
 
