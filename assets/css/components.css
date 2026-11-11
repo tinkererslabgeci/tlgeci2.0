@@ -196,7 +196,7 @@ a.g-pager__num:hover, .g-pager__nav:hover { border-color: var(--color-primary); 
 .g-faq__item[open] .g-faq__q::after { transform: rotate(180deg); }
 .g-faq__a {
   padding: var(--space-2) var(--space-3);
-  text-wrap: pretty;
+  text-wrap: wrap;
 }
 .g-faq__a > :first-child { margin-top: 0; }
 
@@ -496,7 +496,7 @@ pre:hover .g-copy, .g-copy:focus-visible { opacity: 1; }
   font-size: var(--text-sm);
   color: var(--text-muted);
   margin-top: 0.35rem;
-  padding: 1ex 4ex;
+  padding: 1ex 2ex;
 }
 
 .g-pullquote { margin: var(--space-4) 0; padding-left: var(--space-4); border-left: 3px solid var(--text-link); }
