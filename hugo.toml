@@ -52,7 +52,7 @@ buildFuture = true
   weight = 50
 
 [params]
-  tagline = "24×7 student-run lak at GEC Idukki"
+  tagline = "24×7 student-run lab at GEC Idukki"
   description = "24×7 student-run lab for the tinkerers"
   brandName = "Tinkerers’ Lab"
   brandSub = "GECI"
