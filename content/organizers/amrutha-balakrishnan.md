@@ -1,6 +1,6 @@
 +++
 title = "Amrutha Balakrishnan"
-weight = 15
+weight = 4
 role = "Unspecified Member"
 photo = "images/organizers/amrutha-balakrishnan.jpg"
 description = ""

@@ -1,6 +1,6 @@
 +++
 title = "Alan Anto"
-weight = 14
+weight = 4
 role = "Outreach Member"
 photo = "images/organizers/alan-anto.jpg"
 description = ""

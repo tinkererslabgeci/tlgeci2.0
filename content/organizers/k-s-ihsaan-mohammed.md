@@ -1,6 +1,6 @@
 +++
 title = "K. S. Mohammed Ihsaan"
-weight = 13
+weight = 3
 role = "Event-Management Lead"
 photo = "images/organizers/k-s-ihsaan-mohammed.jpg"
 description = ""

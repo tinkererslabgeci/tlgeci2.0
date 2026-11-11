@@ -1,6 +1,6 @@
 +++
 title = "Saniya Mariya"
-weight = 15
+weight = 4
 role = "Unspecified Member"
 photo = "images/organizers/saniya-mariya.jpg"
 description = ""
