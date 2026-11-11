@@ -2,9 +2,9 @@
 title = "Home"
 
 [hero]
-  eyebrow = "One of a kind"
+  eyebrow = "High on creativity"
   title = "This is Tinkerers’ Lab at GEC Idukki."
-  lead = "We’re a round-the-clock independent student-run lab where everyone is welcome to do anything."
+  lead = "We’re an independent round-the-clock student-run lab where the inquisitive get high on creativity."
   image = "images/hero.png"
   [[hero.ctas]]
     label = "Book a Slot"
@@ -32,7 +32,7 @@ title = "Home"
 [featuresHead]
   eyebrow = "One of a kind"
   title = "How’re we any different? What’s new?"
-  lead = "Quite different. Lots."
+  lead = "Quite different. And Lots."
 
 [[features]]
   icon = "fa-solid fa-people-group"
