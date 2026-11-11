@@ -1,7 +1,7 @@
 +++
 title = "About us"
 eyebrow = "About us"
-lead = "A space to explore, create and learn together."
+lead = "There’s more to the Lab than meets the eye."
 +++
 
 ## Tinkerers’ Lab?
@@ -25,7 +25,10 @@ was the foremost proponent of such an endeavour in our college. She acted as
 the link between us and MakerBhavan Foundation. She took the initiative
 to manage the paperworks and formalities involved in bringing this lab.
 
-![](/images/about-us/nair-with-natekar.jpg)
+
+![](/images/about-us/nair-with-natekar.jpg "Dr. Reena Nair with Sandeep
+Natekar from MakerBhavan Foundation, together with them V. S. Narasimhan of
+Bliksem Tech® Singapore.")
 
 MakerBhavan Foundation is a non-profit Section 8 company registered in Mumbai,
 Maharashtra, and also registered in the U.S. as a 501(c)(3) tax-exempt public
@@ -49,7 +52,10 @@ together with the vanguard student volunteers through night and day that set up
 the Lab by the winter of ‘25 and summer of ‘26, and the Lab was officially
 inaugurated on the 10th of March.
 
-![](/images/about-us/inauguration-group-photo.jpg)
+![](/images/about-us/inauguration-group-photo.jpg "The vanguard student
+volunteers who took the first initiative in setting up the Lab and kept it
+beating through its nascence. Behind us, Sandeep Natekar,
+V. S. Narasimhan, and Dr. Reena Nair (the one hiding).")
 
 The Lab has gone through a lot of changes since. Although the core members
 remained, there were many revisions of the execom. We’ve worked the furniture,
