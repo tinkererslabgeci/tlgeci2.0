@@ -69,16 +69,20 @@ separate and independent financial committee solely for that purpose.
 
 {{< faq >}}
 
-{{< question q="What activities does the lab offer?" >}}
-We conduct workshops, technical sessions, competitions and hands-on projects.
+{{< question q="Whose lab is it?" >}}
+It’s our lab, all of us. Tinkerers’ Lab is distinct and separate from all the
+other labs in the college. It’s run by a capable student execom. Take look
+at [our team](/organizers/) for that matter.
 {{< /question >}}
 
 {{< question q="Can I work on my own projects at the lab?" >}}
-Absolutely! Students are encouraged to share their ideas and work on their own projects.
+Well, of course. That’s what the Lab was actually made for. It’s a lab removed
+from academics. Do whatever you want. Think of the Lab as public utility.
 {{< /question >}}
 
 {{< question q="How can I get involved?" >}}
-Follow our official announcements for upcoming activities and opportunities.
+Just follow our official announcements for execom calls. If you’re looking
+for something else, perhaps [get in touch](/get-involved/) with us.
 {{< /question >}}
 
 {{< /faq >}}
