@@ -1,4 +1,11 @@
 {{- /* Body images: resolved through rel-src.html so posts work under subpath
      deployments, whether the path is written "images/x.png" or "/images/x.png"
      (relURL alone drops the subpath on the latter). */ -}}
-<img src="{{ partial "rel-src.html" .Destination }}" alt="{{ .Text }}"{{ with .Title }} title="{{ . }}"{{ end }} loading="lazy" decoding="async">
+<figure class="g-gallery__item">
+  <a href="{{ .Destination | safeURL }}">
+    <img src="{{ .Destination | safeURL }}" alt="{{ .Text }}" loading="lazy" />
+  </a>
+  {{ with .Title }}
+    <figcaption>{{ . }}</figcaption>
+  {{ end }}
+</figure>
