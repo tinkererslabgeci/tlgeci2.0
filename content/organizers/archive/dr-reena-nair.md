@@ -1,6 +1,6 @@
 +++
 title = "Dr. Reena Nair"
-weight = 9
+weight = 0
 role = "Faculty in Charge"
 photo = "images/organizers/dr-reena-nair.jpg"
 description = ""
