@@ -3,11 +3,13 @@
 <section class="g-bg-white g-section">
   <div class="g-container">
     {{ with .Content }}<div class="g-article g-prose" style="margin-bottom:var(--space-5)">{{ . }}</div>{{ end }}
-    {{- $pager := .Paginate .Pages.ByWeight -}}
+    <!-- {{- $pager := .Paginate .Pages.ByWeight -}} -->
     <div class="g-grid-3">
-      {{ range $pager.Pages }}{{ partial "organizer-card.html" . }}{{ end }}
+    {{ range .Pages.ByWeight }}
+      {{ partial "organizer-card.html" . }}
+    {{ end }}
     </div>
-    {{ partial "pagination.html" $pager }}
+    <!-- {{ partial "pagination.html" $pager }} -->
   </div>
 </section>
 {{ end }}
