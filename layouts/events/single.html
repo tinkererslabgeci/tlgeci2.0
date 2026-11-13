@@ -41,7 +41,18 @@
 
     {{- /* Speaker profile cards, resolved from /speakers/ pages. */ -}}
     {{- $boxes := slice -}}
-    {{- range .Params.queriesContact }}{{ with site.GetPage (print "/organizers/" .) }}{{ $boxes = $boxes | append (dict "page" .) }}{{ else }}{{ warnf "%s: speaker %q matches no speaker page" $.File.Path . }}{{ end }}{{ end -}}
+    {{- $orgs := slice -}}
+    {{- with site.GetPage "/orgainzers/" }}
+      {{ $orgs = .RegularPagesRecursive }}
+    {{ end -}}
+    {{- range .Params.queriesContact -}
+      {{ slug := . }}
+      {{ with where $orgs "File.ContentBaseName" $slug }}
+        {{ $boxes = $boxes | append (dict "page" (index . 0)) }}
+      {{ else }}
+        {{ warnf "%s: speaker %q matches no speaker page" $.File.Path . }}
+      {{ end }}
+    {{ end -}}
     {{ with $boxes }}
       <h2 style="font-size:var(--text-xl);margin:var(--space-5) 0 1rem">{{ i18n "queriesContact" }}</h2>
       <div class="g-stack" style="gap:var(--space-3)">
