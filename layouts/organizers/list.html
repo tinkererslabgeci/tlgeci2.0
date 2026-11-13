@@ -5,7 +5,7 @@
     {{ with .Content }}<div class="g-article g-prose" style="margin-bottom:var(--space-5)">{{ . }}</div>{{ end }}
     <!-- {{- $pager := .Paginate .Pages.ByWeight -}} -->
     <div class="g-grid-3">
-    {{ range .Pages.ByWeight }}
+    {{ range .RegularPagesRecursive.ByWeight }}
       {{ partial "organizer-card.html" . }}
     {{ end }}
     </div>
