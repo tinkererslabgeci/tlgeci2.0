@@ -1,6 +1,6 @@
 +++
 title = "Hathim Ali K. H."
-weight = 3
+weight = 4
 role = "Project-Handling Lead"
 photo = "images/organizers/hathim-ali-k-h.jpg"
 description = ""

@@ -1,7 +1,7 @@
 +++
 title = "Vyshnav K. S."
-weight = 4
-role = "Project-Handling Member"
+weight = 5
+role = "Project-Handling Co-Lead"
 photo = "images/organizers/vyshnav-k-s.jpg"
 description = ""
 

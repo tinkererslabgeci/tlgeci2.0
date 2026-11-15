@@ -1,7 +1,7 @@
 +++
 title = "Anjoom Dariya A. S."
-weight = 4
-role = "Documentation Member"
+weight = 5
+role = "Media and Documentation Team Co-Lead "
 photo = "images/organizers/anjoom-dariya-a-s.jpg"
 description = ""
 

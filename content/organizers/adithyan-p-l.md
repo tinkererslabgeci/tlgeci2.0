@@ -1,7 +1,7 @@
 +++
 title = "Adithyan P. L."
-weight = 3
-role = "Outreach Lead"
+weight = 4
+role = "Outreach Team Lead"
 photo = "images/organizers/adithyan-p-l.jpg"
 description = ""
 

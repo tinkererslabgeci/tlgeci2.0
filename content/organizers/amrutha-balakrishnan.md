@@ -1,7 +1,7 @@
 +++
 title = "Amrutha Balakrishnan"
-weight = 4
-role = "Unspecified Member"
+weight = 12
+role = "Outreach Team Member"
 photo = "images/organizers/amrutha-balakrishnan.jpg"
 description = ""
 
