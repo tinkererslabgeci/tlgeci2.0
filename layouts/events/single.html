@@ -42,11 +42,11 @@
     {{- /* Speaker profile cards, resolved from /speakers/ pages. */ -}}
     {{- $boxes := slice -}}
     {{- $orgs := slice -}}
-    {{- with site.GetPage "/orgainzers/" }}
+    {{- with site.GetPage "/organizers/" }}
       {{ $orgs = .RegularPagesRecursive }}
     {{ end -}}
-    {{- range .Params.queriesContact -}
-      {{ slug := . }}
+    {{- range .Params.queriesContact -}}
+      {{ $slug := . }}
       {{ with where $orgs "File.ContentBaseName" $slug }}
         {{ $boxes = $boxes | append (dict "page" (index . 0)) }}
       {{ else }}
