@@ -64,6 +64,20 @@ because that’s another fact about the Lab. It is entirely run and managed by
 the students, from the repair of machines to accounting of finances. It’s run
 by the students for the students, no faculties involved.
 
+# Vision and Mission
+
+---
+
+## Vision
+
+"To be a Centre of Excellence in Innovation, fostering a culture of interdisciplinary, student-led innovation and nurturing creative thinkers, problem-solvers, and future entrepreneurs."
+
+## Mission
+
+1. Promote experiential and hands-on learning.
+2. Foster a culture of student-led innovation and interdisciplinary collaboration.
+3. Encourage & empower students to develop technology-driven solutions to real-world challenges.
+
 ## Our finances
 
 We raise funds through events and activities that we organise, and through
