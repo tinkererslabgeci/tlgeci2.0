@@ -1,7 +1,7 @@
 +++
 title = "Diya Sara Shyju"
-weight = 4
-role = "Finance Member"
+weight = 5
+role = "Event-Management Team Co-Lead"
 photo = "images/organizers/diya-sara-shyju.jpg"
 description = ""
 

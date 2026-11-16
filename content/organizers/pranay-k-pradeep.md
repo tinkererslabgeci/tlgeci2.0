@@ -1,7 +1,7 @@
 +++
 title = "Pranay K. Pradeep"
 weight = 2
-role = "Lab Manager"
+role = "Advisory"
 photo = "images/organizers/pranay-k-pradeep.jpg"
 description = ""
 
