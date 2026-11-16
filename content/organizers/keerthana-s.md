@@ -2,7 +2,7 @@
 title = "Keerthana S"
 weight = 20
 role = ""
-photo = "images/organizers/keerthana-s.jpeg"
+photo = "images/organizers/keerthana-s.jpg"
 description = ""
 
 [[social]]
