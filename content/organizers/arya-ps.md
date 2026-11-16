@@ -2,7 +2,7 @@
 title = "Arya P S"
 weight = 11
 role = "Media and Documentation Team Member"
-photo = "images/organizers/arya-ps.png"
+photo = "images/organizers/arya-ps.jpg"
 description = ""
 
 [[social]]
