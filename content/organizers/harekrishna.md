@@ -1,6 +1,6 @@
 +++
 title = "Harekrishna K. G."
-weight = 3
+weight = 2
 role = "Lab Manager"
 photo = "images/organizers/harekrishna.jpg"
 description = ""

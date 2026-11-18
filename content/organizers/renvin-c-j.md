@@ -1,6 +1,6 @@
 +++
 title = "Renvin C. J."
-weight = 2
+weight = 3
 role = "Advisory"
 photo = "images/organizers/renvin-c-j.jpg"
 description = ""

@@ -1,6 +1,6 @@
 +++
 title = "K. S. Mohammed Ihsaan"
-weight = 3
+weight = 2
 role = "Lab Manager"
 photo = "images/organizers/k-s-ihsaan-mohammed.jpg"
 description = ""
